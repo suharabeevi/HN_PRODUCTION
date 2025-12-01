@@ -1,0 +1,495 @@
+.team-card-item {
+    margin-top: 30px;
+
+    .team-image {
+        img {
+            @include imgw; 
+            border-radius: 16px;
+        }
+    }
+
+    .team-content {
+        padding: 30px 25px;
+        background-color: var(--white);
+        box-shadow: 0px 4px 25px rgba(56, 75, 255, 0.08);
+        margin: -68px 15px 0px;
+        position: relative;
+        z-index: 9;
+        // -webkit-clip-path: polygon(220px 222px, 383px 14px, 0px -1px, 11px 205px);
+        border-radius: 16px;
+
+        @include breakpoint(max-xxl) {
+            padding: 30px 22px;
+        }
+      
+        h4 {
+
+            @include breakpoint(max-xxl) {
+                font-size: 20px;
+            }
+
+            a {
+                &:hover {
+                    color: $theme-color;
+                }
+            }
+        }
+
+        p {
+            color: $text-color;
+        }
+
+        .social-profile {
+            position: absolute;
+            right: 24px;
+            bottom: 95px;
+            content: "";
+            -webkit-transition: all .4s ease-in-out;
+            transition: all .4s ease-in-out;
+            z-index: 2;
+            display: inline-block;
+            overflow: hidden;
+            cursor: pointer;
+
+            ul {
+                transform: translateY(100px);
+                transition: all 0.6s ease-in-out;
+                opacity: 0;
+                visibility: hidden;
+                z-index: -1;
+
+                li {
+                    a {
+                        width: 36px;
+                        height: 36px;
+                        line-height: 36px;
+                        border-radius: 50px;
+                        text-align: center;
+                        display: block;
+                        background: $white;
+                        color: $theme-color;
+                        -webkit-transition: all .4s ease-in-out;
+                        transition: all .4s ease-in-out;
+                        text-align: center;
+                        margin: 0 auto;
+                        font-size: 16px;
+                        margin-bottom: 5px;
+
+                        &:hover {
+                            color: $white;
+                            background-color: $theme-color;
+                        }
+                    }
+                }
+            }
+
+            .plus-btn {
+                z-index: 9;
+                cursor: pointer;
+                width: 36px;
+                height: 36px;
+                line-height: 36px;
+                border-radius: 50px;
+                text-align: center;
+                display: inline-block;
+                background: $theme-color;
+                color: $white;
+                -webkit-transition: all .3s ease-in-out;
+                transition: all .3s ease-in-out;
+                font-size: 16px;
+
+                // &:hover {
+                //     background-color: $theme-color-2;
+                //     color: $white;
+                //     border-radius: 0 0 5px 5px;
+                // }
+            }
+
+            &:hover {
+                ul {
+                    transform: translateY(0);
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
+        }
+    }
+}
+
+.team-details-wrapper {
+    .team-author-items {
+        @include flex;
+        gap: 30px;
+        padding: 30px;
+        border: 1px solid $border-color;
+        border-radius: 12px;
+        position: relative;
+
+        @include breakpoint (max-xl){
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .shape {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+
+            @include breakpoint(max-xl) {
+                display: none;
+            }
+        }
+        .thumb {
+            max-width: 370px;
+
+            img {
+                @include imgw;
+                border-radius: 8px;
+            }
+        }
+
+        .content {
+            max-width: 700px;
+
+            h2 {
+                font-size: 30px;
+                margin-bottom: 5px;
+
+                @include breakpoint (max-sm){
+                    font-size: 26px;
+                }
+            }
+
+            span {
+                margin-bottom: 10px;
+                display: inline-block;
+            }
+
+            ul {
+                margin-top: 20px;
+                @include flex;
+                gap: 50px;
+                border-top: 1px solid $border-color;
+                padding: 20px 0;
+
+                @include breakpoint (max-xl){
+                    flex-wrap: wrap;
+                    gap: 15px;
+                    margin-bottom: 20px;
+                    margin-top: 20px;
+                    justify-content: center;
+                }
+
+                li {
+                    color: $header-color;
+
+                    span {
+                        font-weight: 500;
+                        color: $theme-color;
+                    }
+
+                    i {
+                        margin-right: 5px;
+                    }
+
+                    .color-star {
+                        color: $theme-color;
+                    }
+                }
+            }
+
+            .social-icon {
+                gap: 15px;
+                position: relative;
+                z-index: 9;
+
+            a {
+                width: 36px;
+                height: 36px;
+                line-height: 36px;
+                text-align: center;
+                font-size: 16px;
+                display: block;
+                color: $theme-color;
+                transition: all .4s ease-in-out;
+                text-align: center;
+                background-color: transparent;
+                border: 1px solid $theme-color;
+
+                    &:hover {
+                        background-color: $theme-color;
+                        color: $white;
+                        border: 1px solid transparent
+                    }
+                }
+            }
+        }
+    }
+
+    .details-info-items {
+        padding: 70px 0;
+        border-bottom: 1px solid $border-color;
+
+        @include breakpoint (max-md){
+            padding: 50px 0;
+        }
+
+        @include breakpoint (max-sm){
+            padding: 40px 0;
+        }
+
+        .info-content {
+            h2 {
+                font-size: 30px;
+                margin-bottom: 15px;
+            }
+        }
+
+        .progress-wrap {
+            margin-left: 30px;
+
+            @include breakpoint (max-lg){
+                margin-left: 0;
+            }
+
+            .pro-items {
+                width: 100%;
+
+                &:not(:last-child){
+                    margin-bottom: 20px;
+                }
+                .pro-head {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin-bottom: 10px;
+
+                    .title {
+                        font-size: 16px;
+                        font-weight: 600;
+                        color: $header-color;
+                    }
+                    
+                    .point {
+                        font-size: 16px;
+                        color: $header-color;
+                    }
+                }
+                .progress {
+                    background: $bg-color;
+                    justify-content: flex-start;
+                    border-radius: 0px;
+                    align-items: center;
+                    position: relative;
+                    display: flex;
+                    height: 10px;
+                    width: 100%;
+                }
+                
+                .progress-value {
+                    animation: load 3s normal forwards;
+                    border-radius: 0;
+                    background: $theme-color;
+                    height: 10px;
+                    width: 0;
+                }
+                .style-two{
+                    animation: load2 3s normal forwards;
+                }
+                .style-three{
+                    animation: load3 3s normal forwards;
+                }
+                @keyframes load {
+                    0% { width: 0; }
+                    100% { width: 90%; }
+                }
+                @keyframes load2 {
+                    0% { width: 0; }
+                    100% { width: 70%; }
+                }
+                @keyframes load3 {
+                    0% { width: 0; }
+                    100% { width: 55%; }
+                }
+            }
+        }
+    }
+}
+
+
+.team-wrapper {
+    .team-wrap {
+        @include flex;
+       justify-content: space-between;
+       margin-bottom: 50px;
+
+       @include breakpoint(max-xl) {
+        flex-wrap: wrap;
+        gap: 20px;
+     }
+
+       h2 {
+        font-size: 40px;
+
+        @include breakpoint(max-md) {
+            font-size: 34px;
+        }
+
+        @include breakpoint(max-sm) {
+            font-size: 28px;
+        }
+      }
+
+      .array-button {
+        @include flex;
+        gap: 10px;
+        
+        .array-prev,.array-next {
+            width: 56px;
+            height: 56px;
+            border-radius: 50px;
+            line-height: 56px;
+            text-align: center;
+            @include transition;
+        }
+
+        .array-prev {
+            background-color: $white;
+            box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.06);
+    
+            &:hover {
+                background-color: $theme-color;
+                color: $white;
+            }
+        }
+    
+        .array-next {
+            background: $theme-color;
+            color: $white;
+
+            &:hover {
+                background-color: $header-color;
+            }
+        }
+    }
+
+    }
+
+    .team-card-items-2 {
+        margin-bottom: 30px;
+
+        .team-image {
+            img {
+                @include imgw; 
+                border-radius: 10px;
+            }
+        }
+    
+        .team-content {
+            border-radius: 0px 10px 10px 10px;
+            background: $white;
+            padding: 30px 60px;
+            box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.06);
+            text-align: center;
+            margin: -80px 0px 0px;
+            position: relative;
+            margin-right: 30px;
+            @include transition;
+            z-index: 1;
+
+            &::before {
+                @include before;
+                background-color: $theme-color;
+                opacity: 0;
+                visibility: hidden;
+                top: 0;
+                left: 0;
+                width: 0;
+                height: 100%;
+                @include transition;
+                border-radius: 0px 10px 10px 10px;
+                z-index: -1;
+            }
+
+            @include breakpoint(max-md) {
+                padding: 30px 20px
+            }
+            
+            h4 {
+                @include breakpoint(max-xl) {
+                    font-size: 20px;
+                }
+            }
+            .social-icon {
+                @include flex;
+                gap: 10px;
+                position: relative;
+                z-index: 9;
+                margin-top: 24px;
+                justify-content: center;
+    
+                @include breakpoint(max-sm) {
+                    margin-top: 10px;
+                }
+    
+                a {
+                    width: 40px;
+                    height: 40px;
+                    line-height: 40px;
+                    border-radius: 50%;
+                    text-align: center;
+                    font-size: 16px;
+                    display: block;
+                    color: $theme-color;
+                    transition: all .4s ease-in-out;
+                    text-align: center;
+                    background-color: $white;
+                    filter: drop-shadow(0px 4px 25px rgba(19, 76, 179, 0.15));
+                }
+            }
+        }
+
+        &:hover {
+
+            .team-content {
+                
+                h4 {
+                    
+                    a {
+                        color: $white;
+                    }
+                }
+    
+                p {
+                    color: $white;
+                }
+
+                &:before{
+                    width: 100%;
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
+        }
+    }
+}
+
+.team-section-2 {
+    margin-bottom: -30px;
+}
+
+.team-section {
+    position: relative;
+
+    .jip-shape {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+
+        @include breakpoint(max-xl) {
+            display: none;
+        }
+    }
+}

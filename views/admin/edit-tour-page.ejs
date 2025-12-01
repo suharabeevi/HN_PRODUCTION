@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <title>First Class Trails</title>
+
+    <meta name="author" content="themesflat.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link rel="stylesheet" href="/app/css/app.css">
+    <link rel="stylesheet" href="/app/css/map.min.css">
+
+    <%-include('../layouts/admin/favicon.ejs')%>
+
+</head>
+
+<body class="body header-fixed ">
+
+    <div class="preload preload-container">
+        <svg class="pl" width="240" height="240" viewBox="0 0 240 240">
+            <circle class="pl__ring pl__ring--a" cx="120" cy="120" r="105" fill="none" stroke="#000" stroke-width="20" stroke-dasharray="0 660" stroke-dashoffset="-330" stroke-linecap="round"></circle>
+            <circle class="pl__ring pl__ring--b" cx="120" cy="120" r="35" fill="none" stroke="#000" stroke-width="20" stroke-dasharray="0 220" stroke-dashoffset="-110" stroke-linecap="round"></circle>
+            <circle class="pl__ring pl__ring--c" cx="85" cy="120" r="70" fill="none" stroke="#000" stroke-width="20" stroke-dasharray="0 440" stroke-linecap="round"></circle>
+            <circle class="pl__ring pl__ring--d" cx="155" cy="120" r="70" fill="none" stroke="#000" stroke-width="20" stroke-dasharray="0 440" stroke-linecap="round"></circle>
+        </svg>
+    </div>
+
+    <!-- /preload -->
+
+    <div id="wrapper">
+
+        <div id="pagee" class="clearfix">
+
+            <%-include('../layouts/admin/sideheader.ejs')%>
+            
+                <!-- End Main Header -->
+
+<main id="main" class="container py-5">
+  <section class="profile-dashboard">
+    <div class="inner-header text-center mb-5">
+      <h2 class="title font-weight-bold">✏️ Edit Tour</h2>
+      <p class="text-muted">Update the details of your tour package</p>
+    </div>
+
+    <form id="editTourForm" action="/admin/tours/update/<%= tour._id %>" method="POST" enctype="multipart/form-data" class="tour-form">
+      
+      <!-- Tour Basic Info -->
+      <div class="card shadow-sm mb-4">
+        <div class="card-header bg-primary text-white">📝 Basic Information</div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="title">Tour Title</label>
+            <input type="text" class="form-control" id="title" name="title" value="<%= tour.title %>" required>
+          </div>
+
+          <div class="form-group">
+            <label for="dates">Tour Dates</label>
+            <input type="text" class="form-control" id="dates" name="subtitle" value="<%= tour.subtitle %>" required>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="tourPlace">Tour Place</label>
+              <input type="text" class="form-control" id="tourPlace" name="tourPlace" value="<%= tour.tourPlace %>">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="duration">Duration</label>
+              <input type="text" class="form-control" id="duration" name="duration" value="<%= tour.duration %>">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="groupSize">Group Size</label>
+              <input type="number" class="form-control" id="groupSize" name="groupSize" value="<%= tour.groupSize %>">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>People Type</label>
+            <select multiple class="form-control" name="peopleType">
+              <option <%= (tour.peopleType || []).includes("Families") ? "selected" : "" %>>Families</option>
+              <option <%= (tour.peopleType || []).includes("Friends") ? "selected" : "" %>>Friends</option>
+              <option <%= (tour.peopleType || []).includes("Couples") ? "selected" : "" %>>Couples</option>
+              <option <%= (tour.peopleType || []).includes("Open to All") ? "selected" : "" %>>Open to All</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pricing -->
+      <div class="card shadow-sm mb-4">
+        <div class="card-header bg-success text-white">💰 Pricing</div>
+        <div class="card-body">
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="price">Price per Person</label>
+              <input type="text" class="form-control" id="price" name="price" value="<%= tour.price %>" required>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="addon">Add-on Price</label>
+              <input type="text" class="form-control" id="addon" name="addons" value="<%= tour.addons %>">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="kidsPolicy">Kids Policy</label>
+            <input type="text" class="form-control" id="kidsPolicy" name="kidsPolicy" value="<%= tour.kidsPolicy %>">
+          </div>
+        </div>
+      </div>
+
+      <!-- Travel Details -->
+      <div class="card shadow-sm mb-4">
+        <div class="card-header bg-info text-white">✈️ Travel Details</div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="airport">Airport</label>
+            <input type="text" class="form-control" id="airport" name="airport" value="<%= tour.airport %>">
+          </div>
+          <div class="form-group">
+            <label for="flightSuggestion">Flight Suggestion</label>
+            <textarea class="form-control" id="flightSuggestion" name="flightSuggestion" rows="3"><%= tour.flightSuggestion %></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- Highlights & Overview -->
+      <div class="card shadow-sm mb-4">
+        <div class="card-header bg-warning">🌍 Trip Highlights</div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="whyTravelWithUs">Why Travel With Us?</label>
+            <textarea class="form-control" id="whyTravelWithUs" name="whyTravelWithUs" rows="3"><%= (Array.isArray(tour.whyTravelWithUs) ? tour.whyTravelWithUs.join("\n") : tour.whyTravelWithUs) %></textarea>
+          </div>
+          <div class="form-group">
+            <label for="overview">Trip Overview</label>
+            <textarea class="form-control" id="overview" name="tripOverview" rows="3"><%= tour.tripOverview %></textarea>
+          </div>
+
+          <!-- Itinerary -->
+          <div class="card shadow-sm mb-4">
+            <div class="card-header bg-warning">🗓️ Itinerary</div>
+            <div class="card-body" id="itineraryContainer">
+              <% if (tour.itinerary && tour.itinerary.length) { %>
+                <% tour.itinerary.forEach((day, index) => { %>
+                  <div class="itinerary-day border rounded p-3 mb-3">
+                    <h5>Day <%= index + 1 %></h5>
+                    <div class="form-group">
+                      <label>Title</label>
+                      <input type="text" class="form-control" name="dayTitle" value="<%= day.title %>">
+                    </div>
+                    <div class="form-group">
+                      <label>Activities (one per line)</label>
+                      <textarea class="form-control" name="dayActivities" rows="2"><%= (day.activities || []).join("\n") %></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label>Overnight</label>
+                      <input type="text" class="form-control" name="dayOvernight" value="<%= day.overnight %>">
+                    </div>
+                    <div class="form-group">
+                      <label>Included (comma separated)</label>
+                      <input type="text" class="form-control" name="dayIncluded" value="<%= (day.included || []).join(", ") %>">
+                    </div>
+                  </div>
+                <% }) %>
+              <% } %>
+            </div>
+            <div class="text-center">
+              <button type="button" class="btn btn-outline-primary" id="addDayBtn">➕ Add Day</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Includes & Not Included -->
+      <div class="card shadow-sm mb-4">
+        <div class="card-header bg-dark text-white">✅ What's Included & ❌ Not Included</div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="included">What's Included</label>
+            <textarea class="form-control" id="included" name="included" rows="3"><%= (Array.isArray(tour.included) ? tour.included.join(", ") : tour.included) %></textarea>
+          </div>
+          <div class="form-group">
+            <label for="notIncluded">What's Not Included</label>
+            <textarea class="form-control" id="notIncluded" name="notIncluded" rows="3"><%= (Array.isArray(tour.notIncluded) ? tour.notIncluded.join(", ") : tour.notIncluded) %></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- Payment & Contact -->
+<div class="card shadow-sm mb-4">
+  <div class="card-header bg-secondary text-white">💳 Payment & 📲 Contact</div>
+  <div class="card-body">
+
+    <div class="form-group">
+      <label for="payment">Booking & Payment Details</label>
+      <textarea class="form-control" id="payment" name="paymentDetails" rows="3"><%= JSON.stringify(tour.paymentDetails) %></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="whatsapp">Whatsapp</label>
+      <input type="text" class="form-control" id="whatsapp" name="whatsapp" value="<%= tour.contact.whatsapp %>">
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="text" class="form-control" id="email" name="email" value="<%= tour.contact.email %>">
+    </div>
+
+  </div>
+</div>
+
+
+      <!-- Images -->
+      <div class="card shadow-sm mb-4">
+        <div class="card-header bg-light">📷 Tour Images</div>
+        <div class="card-body">
+          <% if (tour.images && tour.images.length) { %>
+            <div class="d-flex flex-wrap mb-3">
+              <% tour.images.forEach(img => { %>
+                <img src="<%= img %>" alt="Tour Image" class="img-thumbnail m-1" width="120">
+              <% }) %>
+            </div>
+          <% } %>
+          <div class="form-group">
+            <label for="images">Upload New Images (optional)</label>
+            <input type="file" class="form-control-file" id="images" name="images" multiple accept="image/*">
+          </div>
+        </div>
+      </div>
+
+      <!-- Submit -->
+      <div class="text-center">
+        <button type="submit" class="btn btn-lg btn-primary px-5">💾 Update Tour</button>
+      </div>
+    </form>
+  </section>
+</main>
+
+
+                <%-include('../layouts/admin/footer.ejs')%>
+                <!-- Bottom -->
+            </div>
+
+        </div>
+        <!-- /#page -->
+    </div>
+
+    <!-- Modal Popup Bid -->
+
+    <a id="scroll-top" class="button-go"></a>
+
+   
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasRightLabel">Offcanvas right</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            ...
+        </div>
+    </div>
+
+    <!-- Javascript -->
+    <script src="/app/js/jquery.min.js"></script>
+    <script src="/app/js/jquery.nice-select.min.js"></script>
+    <script src="/app/js/bootstrap.min.js"></script>
+    <script src="/app/js/tinymce/tinymce.min.js"></script>
+    <script src="/app/js/tinymce/tinymce-custom.js"></script>
+    <script src="/app/js/swiper-bundle.min.js"></script>
+    <script src="/app/js/swiper.js"></script>
+    <script src="/app/js/plugin.js"></script>
+    <script src="/app/js/map.min.js"></script>
+    <script src="/app/js/map.js"></script>
+    <script src="/app/js/shortcodes.js"></script>
+    <script src="/app/js/main.js"></script>
+    
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+<script>
+const tourId = new URLSearchParams(window.location.search).get("id");
+
+document.getElementById("editTourForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  const form = e.target;
+  const formData = new FormData(form);
+
+  // Itinerary
+  const itineraryArray = Array.from(document.querySelectorAll(".itinerary-day")).map((container, index) => ({
+    day: index + 1,
+    title: container.querySelector("input[name='dayTitle']").value,
+    activities: container.querySelector("textarea[name='dayActivities']").value.split("\n").map(s => s.trim()).filter(Boolean),
+    overnight: container.querySelector("input[name='dayOvernight']").value,
+    included: container.querySelector("input[name='dayIncluded']").value.split(",").map(s => s.trim()).filter(Boolean),
+  }));
+  formData.set("itinerary", JSON.stringify(itineraryArray));
+
+  // Line-separated textareas to arrays
+  ["whyTravelWithUs"].forEach(name => {
+    if (formData.get(name)) formData.set(name, JSON.stringify(formData.get(name).split("\n").map(s => s.trim()).filter(Boolean)));
+  });
+
+  // Comma-separated fields to arrays
+  ["included", "notIncluded"].forEach(name => {
+    if (formData.get(name)) formData.set(name, JSON.stringify(formData.get(name).split(",").map(s => s.trim()).filter(Boolean)));
+  });
+
+  // Payment details
+  try {
+    const val = formData.get("paymentDetails");
+    formData.set("paymentDetails", val ? JSON.stringify(JSON.parse(val)) : JSON.stringify({}));
+  } catch {
+    formData.set("paymentDetails", JSON.stringify({}));
+  }
+
+  // Contact
+  const contactObj = {
+    whatsapp: formData.get("whatsapp") || "",
+    email: formData.get("email") || ""
+  };
+  formData.set("contact", JSON.stringify(contactObj));
+
+  // PUT request
+  fetch(`/admin/tours/${tourId}`, {
+    method: "PUT",
+    headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    body: formData
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.success) {
+      Swal.fire("✅ Success", data.message, "success").then(() => {
+        window.location.href = "/admin/alltour";
+      });
+    } else {
+      Swal.fire("⚠️ Error", data.message || "Something went wrong", "error");
+    }
+  })
+  .catch(err => Swal.fire("🚨 Server Error", err.message, "error"));
+});
+
+// Add new itinerary day dynamically
+document.getElementById("addDayBtn").addEventListener("click", () => {
+  const container = document.getElementById("itineraryContainer");
+  const index = container.querySelectorAll(".itinerary-day").length + 1;
+  const dayDiv = document.createElement("div");
+  dayDiv.classList.add("itinerary-day", "border", "rounded", "p-3", "mb-3");
+  dayDiv.innerHTML = `
+    <h5>Day ${index}</h5>
+    <div class="form-group">
+      <label>Title</label>
+      <input type="text" class="form-control" name="dayTitle">
+    </div>
+    <div class="form-group">
+      <label>Activities (one per line)</label>
+      <textarea class="form-control" name="dayActivities" rows="2"></textarea>
+    </div>
+    <div class="form-group">
+      <label>Overnight</label>
+      <input type="text" class="form-control" name="dayOvernight">
+    </div>
+    <div class="form-group">
+      <label>Included (comma separated)</label>
+      <input type="text" class="form-control" name="dayIncluded">
+    </div>
+  `;
+  container.appendChild(dayDiv);
+});
+</script>
+
+
+
+
+
+</body>
+
+</html>

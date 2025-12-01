@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--<< Header Area >>-->
+
+<head>
+    <!-- ========== Meta Tags ========== -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="pixel-drop">
+       <meta name="description" content="B4 Back packers offers premium travel experiences worldwide – making every journey feel first class. Discover tailor-made trips and unforgettable adventures.">
+    <!-- ======== Page title ============ -->
+        <title>B4 Back packers – Premium Travel Experiences Worldwide</title>
+    <!--<< Favcion >>-->
+        <link rel="shortcut icon" href="asset/img/logo/favcion.png">
+    <!--<< Bootstrap min.css >>-->
+    <link rel="stylesheet" href="asset/css/bootstrap.min.css">
+    <!--<< All Min Css >>-->
+    <link rel="stylesheet" href="asset/css/all.min.css">
+    <!--<< Animate.css >>-->
+    <link rel="stylesheet" href="asset/css/animate.css">
+    <!--<< Magnific Popup.css >>-->
+    <link rel="stylesheet" href="asset/css/magnific-popup.css">
+    <!--<< MeanMenu.css >>-->
+    <link rel="stylesheet" href="asset/css/meanmenu.css">
+    <!--<< Swiper Bundle.css >>-->
+    <link rel="stylesheet" href="asset/css/swiper-bundle.min.css">
+    <!--<< Datepickerboot.css >>-->
+    <link rel="stylesheet" href="asset/css/datepickerboot.css">
+    <!--<< Nice Select.css >>-->
+    <link rel="stylesheet" href="asset/css/nice-select.css">
+    <!--<< Color.css >>-->
+    <link rel="stylesheet" href="asset/css/color.css">
+    <!--<< Main.css >>-->
+    <link rel="stylesheet" href="asset/css/main.css">
+</head>
+
+<body>
+
+    <!-- Preloader Start -->
+     <div id="preloader" class="preloader">
+    <div class="animation-preloader">
+        <!-- Logo popup -->
+        <div class="logo-popup">
+            <img src="asset/img/logo/png 1.png" alt="B4backpackers Logo" />
+        </div>
+       
+    </div>
+</div>
+
+<style>
+/* Preloader full screen */
+.preloader {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #fff; /* background color */
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Logo popup animation */
+.logo-popup img {
+    width: 120px; /* adjust size */
+    opacity: 0;
+    transform: scale(0.5);
+    animation: logoPopup 1s ease-in-out forwards;
+}
+
+/* Fade-in + scale effect */
+@keyframes logoPopup {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Loading text style */
+
+/* Optional: fade out preloader */
+body.loaded #preloader {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+</style>
+
+<script>
+// Hide preloader when page fully loaded
+window.addEventListener('load', function () {
+    document.body.classList.add('loaded');
+});
+</script>
+
+    <!-- Back To Top Start -->
+    <button id="back-top" class="back-to-top">
+        <i class="fa-regular fa-arrow-up"></i>
+    </button>
+
+    <!--<< Mouse Cursor Start >>-->
+    <div class="mouse-cursor cursor-outer"></div>
+    <div class="mouse-cursor cursor-inner"></div>
+
+    <!-- Offcanvas Area Start -->
+   <div class="fix-area">
+            <div class="offcanvas__info">
+                <div class="offcanvas__wrapper">
+                    <div class="offcanvas__content">
+                        <div class="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
+                            <div class="offcanvas__logo">
+                                <a href="/">
+                                    <img src="asset/img/logo/png 1.png" alt="logo-img">
+                                </a>
+                            </div>
+                            <div class="offcanvas__close">
+                                <button>
+                                <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                      
+                        <div class="mobile-menu fix mb-3"></div>
+                        <div class="offcanvas__contact">
+                            <h4>Contact Info</h4>
+                            <ul>
+                                <li class="d-flex align-items-center">
+                                    <div class="offcanvas__contact-icon">
+                                        <i class="fal fa-map-marker-alt"></i>
+                                    </div>
+                                    <div class="offcanvas__contact-text">
+                                        <a target="_blank" href="#">Main Street, Melbourne, Australia</a>
+                                    </div>
+                                </li>
+                                <li class="d-flex align-items-center">
+                                    <div class="offcanvas__contact-icon mr-15">
+                                        <i class="fal fa-envelope"></i>
+                                    </div>
+                                    <div class="offcanvas__contact-text">
+                                        <a href="mailto:B4backpackers@gmail.com"><span class="mailto:B4backpackers@gmail.com">B4backpackers@gmail.com</span></a>
+                                    </div>
+                                </li>
+                                
+                                <li class="d-flex align-items-center">
+                                    <div class="offcanvas__contact-icon mr-15">
+                                        <i class="far fa-phone"></i>
+                                    </div>
+                                    <div class="offcanvas__contact-text">
+                                        <a href="tel:+44 7353 475957">+44 7353 475957</a>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="header-button mt-4">
+                                <a href="contact.html" class="theme-btn"> Request A Quote <i class="fa-sharp fa-regular fa-arrow-right"></i></a>
+                            </div>
+                            <div class="social-icon d-flex align-items-center">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-youtube"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="offcanvas__overlay"></div>
+
+    
+              <%-include('../layouts/user/header.ejs')%>
+
+
+    <!-- breadcrumb-wrappe-Section Start -->
+    <section class="breadcrumb-wrapper fix bg-cover"
+        style="background-image: url(https://res.cloudinary.com/dyv0lsr1o/image/upload/v1757234113/traveller-sitting-rock-holding-camera-take-photo-doi-pha-mon-mountains-chiang-rai-thailand_rajste.webp);">
+        <div class="container">
+            <div class="row">
+                <div class="page-heading">
+                    <h2>About Us</h2>
+                    <ul class="breadcrumb-list">
+                        <li>
+                            <a href="/">Home</a>
+                        </li>
+                        <li><i class="fa-solid fa-chevrons-right"></i></li>
+                        <li>About Us</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  
+
+    <!-- Travel-Feature-Section Start -->
+    <section class="travel-feature-section section-padding fix section-bg">
+        <div class="shape-1">
+            <img src="asset/img/plane-shape1.png" alt="img">
+        </div>
+        <div class="shape-2">
+            <img src="asset/img/plane-shape2.png" alt="img">
+        </div>
+        <div class="container">
+    <div class="feature-wrapper">
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="feature-content">
+                    <div class="section-title">
+                        <span class="sub-title wow fadeInUp">
+                            Are you ready to travel?
+                        </span>
+                        <h2 class="wow fadeInUp wow" data-wow-delay=".2s">
+                            Your Gateway to First-Class Adventures
+                        </h2>
+                    </div>
+                    <p class="wow fadeInUp wow" data-wow-delay=".3s">
+                        At <strong>B4 Back packers</strong>, we don’t just book trips — we create unforgettable journeys. 
+                        Whether you dream of a relaxing escape, a cultural discovery, or a thrilling adventure, 
+                        our expert team ensures every detail is perfectly planned for your comfort and joy.
+                    </p>
+                    <div class="feature-area">
+                        <div class="line-shape">
+                            <img src="asset/img/line-shape.png" alt="img">
+                        </div>
+                        <div class="feature-items wow fadeInUp wow" data-wow-delay=".5s">
+                            <div class="feature-icon-item">
+                                <div class="icon">
+                                    <img src="asset/img/icon/08.svg" alt="img">
+                                </div>
+                                <div class="content">
+                                    <h5>
+                                        Unforgettable <br>
+                                        Adventures
+                                    </h5>
+                                </div>
+                            </div>
+                            <ul class="circle-icon">
+                                <li>
+                                    <i class="fa-solid fa-badge-check"></i>
+                                </li>
+                                <li>
+                                    Explore unique destinations with <br>
+                                    handpicked itineraries.
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="feature-items wow fadeInUp wow" data-wow-delay=".7s">
+                            <div class="feature-icon-item">
+                                <div class="icon">
+                                    <img src="asset/img/icon/09.svg" alt="img">
+                                </div>
+                                <div class="content">
+                                    <h5>
+                                        Seamless Travel <br>
+                                        Experience
+                                    </h5>
+                                </div>
+                            </div>
+                            <ul class="circle-icon">
+                                <li>
+                                    <i class="fa-solid fa-badge-check"></i>
+                                </li>
+                                <li>
+                                    From booking to boarding — <br>
+                                    stress-free every step of the way.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <a href="contact.html" class="theme-btn wow fadeInUp wow" data-wow-delay=".9s">
+                        Contact Us <i class="fa-sharp fa-regular fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="feature-image wow fadeInUp wow" data-wow-delay=".3s">
+                    <img src="asset/img/man-image.png" alt="img">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </section>
+
+    <!-- Counter-Section Start -->
+    <section class="counter-section theme-bg fix section-bg-3">
+        <div class="container">
+            <div class="counter-wrapper-3">
+                <div class="counter-items wow fadeInUp wow" data-wow-delay=".2s">
+                    <div class="icon">
+                        <img src="asset/img/icon/35.svg" alt="img">
+                    </div>
+                    <div class="counter-content">
+                        <h2><span class="count">10,00</span>+</h2>
+                        <p>Our Explorers</p>
+                    </div>
+                </div>
+                <div class="counter-items wow fadeInUp wow" data-wow-delay=".4s">
+                    <div class="icon">
+                        <img src="asset/img/icon/36.svg" alt="img">
+                    </div>
+                    <div class="counter-content">
+                        <h2><span class="count">500</span>+</h2>
+                        <p>Destinations</p>
+                    </div>
+                </div>
+                <div class="counter-items wow fadeInUp wow" data-wow-delay=".6s">
+                    <div class="icon">
+                        <img src="asset/img/icon/37.svg" alt="img">
+                    </div>
+                    <div class="counter-content">
+                        <h2><span class="count">10,00</span>+</h2>
+                        <p>More Trips</p>
+                    </div>
+                </div>
+                <div class="counter-items style-2 wow fadeInUp wow" data-wow-delay=".8s">
+                    <div class="icon">
+                        <img src="asset/img/icon/38.svg" alt="img">
+                    </div>
+                    <div class="counter-content">
+                        <h2><span class="count">200</span>+</h2>
+                        <p>Luxary Hotel</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+               <%-include('../layouts/user/footer.ejs')%>
+
+
+    <!--<< All JS Plugins >>-->
+    <script src="asset/js/jquery-3.7.1.min.js"></script>
+    <!--<< Viewport Js >>-->
+    <script src="asset/js/viewport.jquery.js"></script>
+    <!--<< Bootstrap Js >>-->
+    <script src="asset/js/bootstrap.bundle.min.js"></script>
+    <!--<< nice-selec Js >>-->
+    <script src="asset/js/jquery.nice-select.min.js"></script>
+    <!--<< Waypoints Js >>-->
+    <script src="asset/js/jquery.waypoints.js"></script>
+    <!--<< Counterup Js >>-->
+    <script src="asset/js/jquery.counterup.min.js"></script>
+    <!--<< Swiper Slider Js >>-->
+    <script src="asset/js/swiper-bundle.min.js"></script>
+    <!--<< MeanMenu Js >>-->
+    <script src="asset/js/jquery.meanmenu.min.js"></script>
+    <!--<< Datepicker Js >>-->
+    <script src="asset/js/bootstrap-datepicker.js"></script>
+    <!--<< Magnific Popup Js >>-->
+    <script src="asset/js/jquery.magnific-popup.min.js"></script>
+    <!--<< Wow Animation Js >>-->
+    <script src="asset/js/wow.min.js"></script>
+    <!--<< Main.js >>-->
+    <script src="asset/js/main.js"></script>
+</body>
+
+</html>

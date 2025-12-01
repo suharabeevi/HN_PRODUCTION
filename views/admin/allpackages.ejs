@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <title>All Packages | Admin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <link rel="stylesheet" href="/app/css/app.css" />
+  <link rel="stylesheet" href="/app/css/map.min.css" />
+  <%- include('../layouts/admin/favicon.ejs') %>
+</head>
+<body class="body header-fixed">
+
+
+  <div id="wrapper">
+    <div id="pagee" class="clearfix">
+      <%- include('../layouts/admin/sideheader.ejs') %>
+
+      <main id="main">
+        <section class="profile-dashboard">
+          <section class="form-add-tour">
+            <div class="widget-dash-board pr-256 mb-75">
+              <div class="inner-header mb-40 flex justify-space align-center">
+                <h3 class="title">All Packages</h3>
+                <a href="/admin/packages/add" class="btn btn-primary" style="background-color: #f29200;">
+                  Add New Package
+                </a>
+              </div>
+
+              <div class="table-responsive">
+                <table class="table table-bordered">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th>#</th>
+                      <th>Package Name</th>
+                      <th>Main Category</th>
+                      <th>Price</th>
+                      <th>Features</th>
+                      <th>Status</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% if (packages && packages.length > 0) { %>
+                      <% packages.forEach((p, index) => { %>
+                        <tr>
+                          <td><%= index + 1 %></td>
+                          <td><strong><%= p.name %></strong></td>
+                          <td><%= p.category ? p.category.name : '-' %></td>
+                          <td><%= p.currency || 'GBP' %> <%= p.price %></td>
+                          <td>
+                            <% if (p.features && p.features.length > 0) { %>
+                              <ul style="margin: 0; padding-left: 20px;">
+                                <% p.features.slice(0, 2).forEach(f => { %>
+                                  <li><%= f.label %>: <%= f.value %></li>
+                                <% }) %>
+                                <% if (p.features.length > 2) { %>
+                                  <li><em>+<%= p.features.length - 2 %> more</em></li>
+                                <% } %>
+                              </ul>
+                            <% } else { %>
+                              <span class="text-muted">No features</span>
+                            <% } %>
+                          </td>
+                          <td>
+                            <span class="badge <%= p.isActive ? 'badge-success' : 'badge-danger' %>">
+                              <%= p.isActive ? 'Active' : 'Inactive' %>
+                            </span>
+                          </td>
+                          <td>
+                            <button
+                              class="btn btn-warning btn-sm"
+                              onclick="location.href='/admin/packages/<%= p._id %>/edit'"
+                            >
+                              Edit
+                            </button>
+                            <button
+                              class="btn btn-danger btn-sm"
+                              onclick="deletePackage('<%= p._id %>')"
+                            >
+                              Delete
+                            </button>
+                          </td>
+                        </tr>
+                      <% }) %>
+                    <% } else { %>
+                      <tr>
+                        <td colspan="7" class="text-center">No packages found. <a href="/admin/packages/add">Add your first package</a></td>
+                      </tr>
+                    <% } %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+        </section>
+      </main>
+
+      <%- include('../layouts/admin/footer.ejs') %>
+    </div>
+  </div>
+
+  <a id="scroll-top" class="button-go"></a>
+
+  <script src="/app/js/jquery.min.js"></script>
+  <script src="/app/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+  <script>
+    function deletePackage(id) {
+      swal({
+        title: 'Are you sure?',
+        text: 'This will mark the package as inactive',
+        icon: 'warning',
+        buttons: ['Cancel', 'Delete'],
+        dangerMode: true,
+      }).then((willDelete) => {
+        if (!willDelete) return;
+
+        fetch('/admin/packages/' + id, {
+          method: 'DELETE',
+          headers: { 'Content-Type': 'application/json' },
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.success) {
+              swal('Deleted!', data.message, 'success').then(() => location.reload());
+            } else {
+              swal('Error', data.message || 'Failed to delete', 'error');
+            }
+          })
+          .catch(() => swal('Error', 'Unexpected error', 'error'));
+      });
+    }
+  </script>
+</body>
+</html>
+

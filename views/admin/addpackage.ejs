@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <title>Add Package | Admin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <link rel="stylesheet" href="/app/css/app.css" />
+  <link rel="stylesheet" href="/app/css/map.min.css" />
+  <%- include('../layouts/admin/favicon.ejs') %>
+</head>
+<body class="body header-fixed">
+  
+
+  <div id="wrapper">
+    <div id="pagee" class="clearfix">
+      <%- include('../layouts/admin/sideheader.ejs') %>
+
+      <main id="main">
+        <section class="profile-dashboard">
+          <section class="form-add-tour">
+            <div class="widget-dash-board pr-256 mb-75">
+              <div class="inner-header mb-40 flex justify-space align-center">
+                <h3 class="title">Add Package (Subcategory)</h3>
+                <a href="/admin/packages" class="btn btn-outline-secondary btn-sm">
+                  View All Packages
+                </a>
+              </div>
+
+              <div class="grid-input-2 mb-20">
+                <div class="input-wrap">
+                  <label>Main Category *</label>
+                  <select id="category-id" required>
+                    <option value="">Select Category</option>
+                    <% categories.forEach(c => { %>
+                      <option value="<%= c._id %>"><%= c.name %></option>
+                    <% }) %>
+                  </select>
+                </div>
+                <div class="input-wrap">
+                  <label>Package Name *</label>
+                  <input
+                    type="text"
+                    id="package-name"
+                    placeholder="e.g. Basic Photography"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="grid-input-2 mb-20">
+                <div class="input-wrap">
+                  <label>Price *</label>
+                  <input type="number" id="package-price" placeholder="120" step="0.01" required />
+                </div>
+                <div class="input-wrap">
+                  <label>Currency</label>
+                  <select id="package-currency">
+                    <option value="GBP" selected>GBP (£)</option>
+                    <option value="USD">USD ($)</option>
+                    <option value="EUR">EUR (€)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="input-wrap mb-20">
+                <label>Description (optional)</label>
+                <textarea
+                  id="package-description"
+                  placeholder="Short description of the package"
+                  rows="3"
+                ></textarea>
+              </div>
+
+              <div class="inner-header mb-20">
+                <h4 class="title">Package Features</h4>
+                <p class="text-muted">Add features for this package (e.g., Session Duration, Edited Photos, etc.)</p>
+              </div>
+
+              <div id="features-container">
+                <!-- Dynamic feature fields will be added here -->
+              </div>
+
+              <div class="mb-20">
+                <button type="button" class="btn btn-secondary btn-sm" onclick="addFeatureField()">
+                  + Add Feature
+                </button>
+              </div>
+
+              <div class="input-wrap">
+                <button type="button" class="button-add">Save Package</button>
+              </div>
+            </div>
+          </section>
+        </section>
+      </main>
+
+      <%- include('../layouts/admin/footer.ejs') %>
+    </div>
+  </div>
+
+  <a id="scroll-top" class="button-go"></a>
+
+  <script src="/app/js/jquery.min.js"></script>
+  <script src="/app/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <script>
+    let featureCount = 0;
+
+    function addFeatureField(label = '', value = '') {
+      featureCount++;
+      const container = document.getElementById('features-container');
+      const featureDiv = document.createElement('div');
+      featureDiv.className = 'grid-input-2 mb-15 feature-row';
+      featureDiv.innerHTML = `
+        <div class="input-wrap">
+          <label>Feature Label</label>
+          <input type="text" class="feature-label" placeholder="e.g. Session Duration" value="${label}" />
+        </div>
+        <div class="input-wrap">
+          <label>Feature Value</label>
+          <div class="flex align-center">
+            <input type="text" class="feature-value" placeholder="e.g. 1 hour" value="${value}" />
+            <button type="button" class="btn btn-danger btn-sm ml-10" onclick="removeFeatureField(this)">Remove</button>
+          </div>
+        </div>
+      `;
+      container.appendChild(featureDiv);
+    }
+
+    function removeFeatureField(btn) {
+      btn.closest('.feature-row').remove();
+    }
+
+    // Add initial feature fields (3 common ones)
+    document.addEventListener('DOMContentLoaded', () => {
+      addFeatureField('Session Duration', '');
+      addFeatureField('Edited Photos', '');
+      addFeatureField('Delivery', '');
+    });
+
+    document.querySelector('.button-add').addEventListener('click', async () => {
+      const categoryId = document.querySelector('#category-id').value;
+      const name = document.querySelector('#package-name').value.trim();
+      const price = document.querySelector('#package-price').value;
+      const currency = document.querySelector('#package-currency').value || 'GBP';
+      const description = document.querySelector('#package-description').value.trim();
+
+      if (!categoryId || !name || !price) {
+        return Swal.fire('Error', 'Category, name and price are required', 'error');
+      }
+
+      // Collect features
+      const featureRows = document.querySelectorAll('.feature-row');
+      const features = [];
+      featureRows.forEach((row) => {
+        const label = row.querySelector('.feature-label').value.trim();
+        const value = row.querySelector('.feature-value').value.trim();
+        if (label && value) {
+          features.push({ label, value });
+        }
+      });
+
+      try {
+        const res = await fetch('/admin/packages', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            categoryId,
+            name,
+            price: Number(price),
+            currency,
+            description,
+            features: JSON.stringify(features),
+          }),
+        });
+
+        const data = await res.json();
+        if (res.ok) {
+          Swal.fire('Success', data.message, 'success').then(() => {
+            window.location.href = '/admin/packages';
+          });
+        } else {
+          Swal.fire('Error', data.message || 'Failed to create package', 'error');
+        }
+      } catch (err) {
+        console.error(err);
+        Swal.fire('Error', 'Unexpected error occurred', 'error');
+      }
+    });
+  </script>
+</body>
+</html>
+

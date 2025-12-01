@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!--<< Header Area >>-->
+    <head>
+        <!-- ========== Meta Tags ========== -->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="pixel-drop">
+       <title>First Class Trails – Premium Travel Experiences Worldwide</title>
+       <meta name="description" content="First Class Trails offers premium travel experiences worldwide – making every journey feel first class. Discover tailor-made trips and unforgettable adventures.">
+        <!--<< Favcion >>-->
+        <link rel="shortcut icon" href="asset/img/logo/favcion.png">
+        <!--<< Bootstrap min.css >>-->
+        <link rel="stylesheet" href="asset/css/bootstrap.min.css">
+        <!--<< All Min Css >>-->
+        <link rel="stylesheet" href="asset/css/all.min.css">
+        <!--<< Animate.css >>-->
+        <link rel="stylesheet" href="asset/css/animate.css">
+        <!--<< Magnific Popup.css >>-->
+        <link rel="stylesheet" href="asset/css/magnific-popup.css">
+        <!--<< MeanMenu.css >>-->
+        <link rel="stylesheet" href="asset/css/meanmenu.css">
+        <!--<< Swiper Bundle.css >>-->
+        <link rel="stylesheet" href="asset/css/swiper-bundle.min.css">
+        <!--<< Datepickerboot.css >>-->
+        <link rel="stylesheet" href="asset/css/datepickerboot.css">
+        <!--<< Nice Select.css >>-->
+        <link rel="stylesheet" href="asset/css/nice-select.css">
+        <!--<< Color.css >>-->
+        <link rel="stylesheet" href="asset/css/color.css">
+        <!--<< Main.css >>-->
+        <link rel="stylesheet" href="asset/css/main.css">
+    </head>
+    <body>
+
+        <!-- Preloader Start -->
+        <div id="preloader" class="preloader">
+    <div class="animation-preloader">
+        <!-- Logo popup -->
+        <div class="logo-popup">
+            <img src="asset/img/logo/png 1.png" alt="B4backpackers Logo" />
+        </div>
+       
+    </div>
+</div>
+
+<style>
+/* Preloader full screen */
+.preloader {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #fff; /* background color */
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Logo popup animation */
+.logo-popup img {
+    width: 120px; /* adjust size */
+    opacity: 0;
+    transform: scale(0.5);
+    animation: logoPopup 1s ease-in-out forwards;
+}
+
+/* Fade-in + scale effect */
+@keyframes logoPopup {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Loading text style */
+
+/* Optional: fade out preloader */
+body.loaded #preloader {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+</style>
+
+<script>
+// Hide preloader when page fully loaded
+window.addEventListener('load', function () {
+    document.body.classList.add('loaded');
+});
+</script>
+         <!-- Back To Top Start -->
+         <button id="back-top" class="back-to-top">
+            <i class="fa-regular fa-arrow-up"></i>
+        </button>
+
+        <!--<< Mouse Cursor Start >>-->  
+        <div class="mouse-cursor cursor-outer"></div>
+        <div class="mouse-cursor cursor-inner"></div>
+
+        <!-- Offcanvas Area Start -->
+        <div class="fix-area">
+            <div class="offcanvas__info">
+                <div class="offcanvas__wrapper">
+                    <div class="offcanvas__content">
+                        <div class="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
+                            <div class="offcanvas__logo">
+                                <a href="/">
+                                    <img src="asset/img/logo/png 1.png" alt="logo-img">
+                                </a>
+                            </div>
+                            <div class="offcanvas__close">
+                                <button>
+                                <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                      
+                        <div class="mobile-menu fix mb-3"></div>
+                        <div class="offcanvas__contact">
+                            <h4>Contact Info</h4>
+                            <ul>
+                                <li class="d-flex align-items-center">
+                                    <div class="offcanvas__contact-icon">
+                                        <i class="fal fa-map-marker-alt"></i>
+                                    </div>
+                                    <div class="offcanvas__contact-text">
+                                        <a target="_blank" href="#">Main Street, Melbourne, Australia</a>
+                                    </div>
+                                </li>
+                                <li class="d-flex align-items-center">
+                                    <div class="offcanvas__contact-icon mr-15">
+                                        <i class="fal fa-envelope"></i>
+                                    </div>
+                                    <div class="offcanvas__contact-text">
+                                        <a href="mailto:B4backpackers@gmail.com"><span class="mailto:B4backpackers@gmail.com">B4backpackers@gmail.com</span></a>
+                                    </div>
+                                </li>
+                                
+                                <li class="d-flex align-items-center">
+                                    <div class="offcanvas__contact-icon mr-15">
+                                        <i class="far fa-phone"></i>
+                                    </div>
+                                    <div class="offcanvas__contact-text">
+                                        <a href="tel:+44 7353 475957">+44 7353 475957</a>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="header-button mt-4">
+                                <a href="contact.html" class="theme-btn"> Request A Quote <i class="fa-sharp fa-regular fa-arrow-right"></i></a>
+                            </div>
+                            <div class="social-icon d-flex align-items-center">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-youtube"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="offcanvas__overlay"></div>
+              <%-include('../layouts/user/header.ejs')%>
+        <!-- breadcrumb-wrappe-Section Start -->
+        <section class="breadcrumb-wrapper fix bg-cover" style="background-image: url(https://res.cloudinary.com/dyv0lsr1o/image/upload/v1757234095/traveling-with-off-road-car_aynfua.webp);">
+            <div class="container">
+                <div class="row">
+                    <div class="page-heading">
+                        <h2>Tour</h2>
+                        <ul class="breadcrumb-list">
+                            <li>
+                                <a href="/">Home</a>
+                            </li>
+                            <li><i class="fa-solid fa-chevrons-right"></i></li>
+                            <li>Tour</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="tour-section section-padding fix">
+           <div class="container custom-container">
+    <div class="tour-destination-wrapper">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+
+            <div class="col wow fadeInUp" data-wow-delay=".3s">
+                 <% tours.forEach((tour, index) => { %>
+                <div class="col wow fadeInUp" data-wow-delay="<%= 0.3 + (index * 0.2) %>s">
+                    <div class="destination-card-items mt-0">
+                        <div class="destination-image">
+                            <img src="<%= tour.images && tour.images.length ? tour.images[0] : 'asset/img/destination/placeholder.jpg' %>" alt="img">
+                            <div class="heart-icon">
+                                <i class="fa-regular fa-heart"></i>
+                            </div>
+                        </div>
+                        <div class="destination-content">
+                            <ul class="meta">
+                                <li><i class="fa-thin fa-location-dot"></i> <%= tour.tourPlace %></li>
+                                <li class="rating">
+                                    <div class="star"><i class="fa-solid fa-star"></i></div>
+                                    <p>4.7</p>
+                                </li>
+                            </ul>
+                            <h5>
+                                <a href="/tour-details?id=<%= tour._id %>"><%= tour.title %></a>
+                            </h5>
+                            <ul class="info">
+                                <li><i class="fa-regular fa-clock"></i><%= tour.subtitle %> <%= tour.duration %></li>
+                                <li><i class="fa-thin fa-users"></i> <%= tour.groupSize %>+</li>
+                            </ul>
+                            <div class="price">
+                                <h6><%= tour.price %> <span>/Per person</span></h6>
+                                <a href="/tour-details?id=<%= tour._id %>" class="theme-btn style-2">
+                                    Book Now <i class="fa-sharp fa-regular fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+            </div>
+
+       
+        </div>
+
+        <!-- Pagination -->
+        <div class="page-nav-wrap text-center mt-4">
+            <ul>
+                <li><a class="page-numbers" href="#"><i class="fal fa-long-arrow-left"></i></a></li>
+                <li><a class="page-numbers" href="#">01</a></li>
+                <li><a class="page-numbers" href="#">02</a></li>
+                <li><a class="page-numbers" href="#">03</a></li>
+                <li><a class="page-numbers" href="#"><i class="fal fa-long-arrow-right"></i></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        </section>
+
+                 <%-include('../layouts/user/footer.ejs')%>
+
+
+        <!--<< All JS Plugins >>-->
+        <script src="asset/js/jquery-3.7.1.min.js"></script>
+        <!--<< Viewport Js >>-->
+        <script src="asset/js/viewport.jquery.js"></script>
+        <!--<< Bootstrap Js >>-->
+        <script src="asset/js/bootstrap.bundle.min.js"></script>
+        <!--<< nice-selec Js >>-->
+        <script src="asset/js/jquery.nice-select.min.js"></script>
+        <!--<< Waypoints Js >>-->
+        <script src="asset/js/jquery.waypoints.js"></script>
+        <!--<< Counterup Js >>-->
+        <script src="asset/js/jquery.counterup.min.js"></script>
+        <!--<< Swiper Slider Js >>-->
+        <script src="asset/js/swiper-bundle.min.js"></script>
+        <!--<< MeanMenu Js >>-->
+        <script src="asset/js/jquery.meanmenu.min.js"></script>
+         <!--<< Datepicker Js >>-->
+         <script src="asset/js/bootstrap-datepicker.js"></script>
+        <!--<< Magnific Popup Js >>-->
+        <script src="asset/js/jquery.magnific-popup.min.js"></script>
+        <!--<< Wow Animation Js >>-->
+        <script src="asset/js/wow.min.js"></script>
+        <!--<< Main.js >>-->
+        <script src="asset/js/main.js"></script>
+    </body>
+</html>

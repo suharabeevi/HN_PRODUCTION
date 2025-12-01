@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <title>First Class Trails</title>
+
+    <meta name="author" content="themesflat.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link rel="stylesheet" href="/app/css/app.css">
+    <link rel="stylesheet" href="/app/css/map.min.css">
+
+    <%-include('../layouts/admin/favicon.ejs')%>
+
+</head>
+
+<body class="body header-fixed ">
+
+    <div class="preload preload-container">
+        <svg class="pl" width="240" height="240" viewBox="0 0 240 240">
+            <circle class="pl__ring pl__ring--a" cx="120" cy="120" r="105" fill="none" stroke="#000" stroke-width="20" stroke-dasharray="0 660" stroke-dashoffset="-330" stroke-linecap="round"></circle>
+            <circle class="pl__ring pl__ring--b" cx="120" cy="120" r="35" fill="none" stroke="#000" stroke-width="20" stroke-dasharray="0 220" stroke-dashoffset="-110" stroke-linecap="round"></circle>
+            <circle class="pl__ring pl__ring--c" cx="85" cy="120" r="70" fill="none" stroke="#000" stroke-width="20" stroke-dasharray="0 440" stroke-linecap="round"></circle>
+            <circle class="pl__ring pl__ring--d" cx="155" cy="120" r="70" fill="none" stroke="#000" stroke-width="20" stroke-dasharray="0 440" stroke-linecap="round"></circle>
+        </svg>
+    </div>
+
+    <!-- /preload -->
+
+    <div id="wrapper">
+
+        <div id="pagee" class="clearfix">
+
+            <%-include('../layouts/admin/sideheader.ejs')%>
+            
+                <!-- End Main Header -->
+<main id="main" class="container py-5">
+  <section class="profile-dashboard">
+    <div class="inner-header text-center mb-5">
+      <h2 class="title font-weight-bold">➕ Add New Tour</h2>
+      <p class="text-muted">Fill out the form below to create a new tour package</p>
+    </div>
+
+    <form id="addTourForm" action="/admin/tours" method="POST" enctype="multipart/form-data" class="tour-form">
+
+      <!-- Tour Basic Info -->
+      <div class="card shadow-sm mb-4">
+        <div class="card-header bg-primary text-white">📝 Basic Information</div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="title">Tour Title</label>
+            <input type="text" class="form-control" id="title" name="title"
+              placeholder="e.g. B4Backpackers FAMILY TRIP – ALBANIA & MONTENEGRO ADVENTURE" required>
+          </div>
+
+          <div class="form-group">
+            <label for="dates">Tour Dates</label>
+            <input type="text" class="form-control" id="dates" name="subtitle" placeholder="e.g. October 17-21" required>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="tourPlace">Tour Place</label>
+              <input type="text" class="form-control" id="tourPlace" name="tourPlace"
+                placeholder="e.g. Albania & Montenegro">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="duration">Duration</label>
+              <input type="text" class="form-control" id="duration" name="duration" placeholder="e.g. 5 Days / 4 Nights">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="groupSize">Group Size</label>
+              <input type="number" class="form-control" id="groupSize" name="groupSize" placeholder="e.g. 50">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>People Type</label>
+            <select multiple class="form-control" name="peopleType">
+              <option>Families</option>
+              <option>Friends</option>
+              <option>Couples</option>
+              <option>Open to All</option>
+            </select>
+            <small class="text-muted">Hold CTRL (Windows) or CMD (Mac) to select multiple</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pricing -->
+      <div class="card shadow-sm mb-4">
+        <div class="card-header bg-success text-white">💰 Pricing</div>
+        <div class="card-body">
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="price">Price per Person</label>
+              <input type="text" class="form-control" id="price" name="price" placeholder="e.g. £399" required>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="addon">Add-on Price</label>
+              <input type="text" class="form-control" id="addon" name="addons"
+                placeholder="e.g. + £143 for South Albania">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="kidsPolicy">Kids Policy</label>
+            <input type="text" class="form-control" id="kidsPolicy" name="kidsPolicy"
+              placeholder="e.g. Kids under 5 travel FREE!">
+          </div>
+        </div>
+      </div>
+
+      <!-- Travel Details -->
+      <div class="card shadow-sm mb-4">
+        <div class="card-header bg-info text-white">✈️ Travel Details</div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="airport">Airport</label>
+            <input type="text" class="form-control" id="airport" name="airport" placeholder="e.g. TIA">
+          </div>
+          <div class="form-group">
+            <label for="flightSuggestion">Flight Suggestion</label>
+            <textarea class="form-control" id="flightSuggestion" name="flightSuggestion" rows="3"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- Highlights & Overview -->
+      <div class="card shadow-sm mb-4">
+        <div class="card-header bg-warning">🌍 Trip Highlights</div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="whyUs">Why Travel With Us?</label>
+            <textarea class="form-control" id="whyTravelWithUs" name="whyTravelWithUs" rows="3"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="overview">Trip Overview</label>
+            <textarea class="form-control" id="overview" name="tripOverview" rows="3"></textarea>
+          </div>
+
+          <!-- Itinerary -->
+          <div class="card shadow-sm mb-4">
+            <div class="card-header bg-warning">🗓️ Itinerary</div>
+            <div class="card-body" id="itineraryContainer">
+              <!-- Dynamic Itinerary Days -->
+            </div>
+            <div class="text-center">
+              <button type="button" class="btn btn-outline-primary" id="addDayBtn">➕ Add Day</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Includes -->
+      <div class="card shadow-sm mb-4">
+        <div class="card-header bg-dark text-white">✅ What's Included & ❌ Not Included</div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="included">What's Included</label>
+            <textarea class="form-control" id="included" name="included" rows="3"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="notIncluded">What's Not Included</label>
+            <textarea class="form-control" id="notIncluded" name="notIncluded" rows="3"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- Payment & Contact -->
+      <div class="card shadow-sm mb-4">
+        <div class="card-header bg-secondary text-white">💳 Payment & 📲 Contact</div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="payment">Booking & Payment Details</label>
+            <textarea class="form-control" id="payment" name="paymentDetails" rows="3"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="contact">Contact Information</label>
+            <textarea class="form-control" id="contact" name="contact" rows="3"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- Images -->
+      <div class="card shadow-sm mb-4">
+        <div class="card-header bg-light">📷 Tour Images</div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="images">Upload up to 5 Images</label>
+            <input type="file" class="form-control-file" id="images" name="images" multiple accept="image/*">
+          </div>
+          <div id="preview" class="d-flex flex-wrap mt-3"></div>
+        </div>
+      </div>
+
+      <!-- Submit -->
+      <div class="text-center">
+        <button type="submit" class="btn btn-lg btn-primary px-5">💾 Save Tour</button>
+      </div>
+    </form>
+  </section>
+</main>
+
+
+
+
+
+
+                <%-include('../layouts/admin/footer.ejs')%>
+                <!-- Bottom -->
+            </div>
+
+        </div>
+        <!-- /#page -->
+    </div>
+
+    <!-- Modal Popup Bid -->
+
+    <a id="scroll-top" class="button-go"></a>
+
+   
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasRightLabel">Offcanvas right</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            ...
+        </div>
+    </div>
+
+    <!-- Javascript -->
+    <script src="/app/js/jquery.min.js"></script>
+    <script src="/app/js/jquery.nice-select.min.js"></script>
+    <script src="/app/js/bootstrap.min.js"></script>
+    <script src="/app/js/tinymce/tinymce.min.js"></script>
+    <script src="/app/js/tinymce/tinymce-custom.js"></script>
+    <script src="/app/js/swiper-bundle.min.js"></script>
+    <script src="/app/js/swiper.js"></script>
+    <script src="/app/js/plugin.js"></script>
+    <script src="/app/js/map.min.js"></script>
+    <script src="/app/js/map.js"></script>
+    <script src="/app/js/shortcodes.js"></script>
+    <script src="/app/js/main.js"></script>
+    
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+  // ---------- Image Preview ----------
+  document.getElementById("images").addEventListener("change", function (e) {
+    const preview = document.getElementById("preview");
+    preview.innerHTML = "";
+    [...e.target.files].forEach((file) => {
+      const reader = new FileReader();
+      reader.onload = function (event) {
+        const img = document.createElement("img");
+        img.src = event.target.result;
+        img.classList.add("m-2", "border", "rounded");
+        img.style.width = "120px";
+        img.style.height = "120px";
+        img.style.objectFit = "cover";
+        preview.appendChild(img);
+      };
+      reader.readAsDataURL(file);
+    });
+  });
+
+  // ---------- Add Itinerary Day ----------
+  let dayCount = 0;
+  document.getElementById("addDayBtn").addEventListener("click", function () {
+    dayCount++;
+    const container = document.getElementById("itineraryContainer");
+
+    const dayDiv = document.createElement("div");
+    dayDiv.classList.add("card", "mb-3", "p-3", "border");
+    dayDiv.innerHTML = `
+      <h5 class="mb-3">Day ${dayCount}</h5>
+      <div class="form-group">
+        <label>Title</label>
+        <input type="text" class="form-control day-title" placeholder="e.g. Arrival in Tirana">
+      </div>
+      <div class="form-group">
+        <label>Activities (one per line)</label>
+        <textarea class="form-control day-activity" rows="3" placeholder="e.g. City Tour\nDinner at local restaurant"></textarea>
+      </div>
+      <div class="form-group">
+        <label>Overnight</label>
+        <input type="text" class="form-control day-overnight" placeholder="e.g. Tirana Hotel">
+      </div>
+      <div class="form-group">
+        <label>Included (comma separated)</label>
+        <input type="text" class="form-control day-included" placeholder="e.g. Breakfast, Transport">
+      </div>
+      <button type="button" class="btn btn-sm btn-danger remove-day">❌ Remove</button>
+    `;
+
+    // remove functionality
+    dayDiv.querySelector(".remove-day").addEventListener("click", function () {
+      dayDiv.remove();
+    });
+
+    container.appendChild(dayDiv);
+  });
+
+  // ---------- AJAX Form Submit ----------
+  document.getElementById("addTourForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const form = e.target;
+    const formData = new FormData(form);
+
+    // ✅ Handle peopleType
+    const peopleSelect = document.querySelector("[name='peopleType']");
+    if (peopleSelect) {
+      const values = [...peopleSelect.selectedOptions].map(o => o.value);
+      formData.set("peopleType", JSON.stringify(values));
+    }
+
+    // ✅ Handle whyTravelWithUs, included, notIncluded
+    ["whyTravelWithUs", "included", "notIncluded"].forEach((field) => {
+      const el = document.getElementById(field);
+      if (el && el.value.trim()) {
+        const arr = el.value.split("\n").map(item => item.trim()).filter(Boolean);
+        formData.set(field, JSON.stringify(arr));
+      }
+    });
+
+    // ✅ Handle Itinerary
+    const itineraryArr = [];
+    document.querySelectorAll("#itineraryContainer > div").forEach((dayDiv, index) => {
+      const title = dayDiv.querySelector(".day-title").value.trim();
+      const overnight = dayDiv.querySelector(".day-overnight").value.trim();
+      const included = dayDiv.querySelector(".day-included").value
+        ? dayDiv.querySelector(".day-included").value.split(",").map(s => s.trim()).filter(Boolean)
+        : [];
+      const activities = dayDiv.querySelector(".day-activity").value
+        ? dayDiv.querySelector(".day-activity").value.split("\n").map(a => a.trim()).filter(Boolean)
+        : [];
+
+      itineraryArr.push({
+        day: index + 1,
+        title,
+        activities,
+        overnight,
+        included,
+      });
+    });
+    if (itineraryArr.length > 0) {
+      formData.set("itinerary", JSON.stringify(itineraryArr));
+    }
+
+    // ✅ Handle paymentDetails
+    const paymentEl = document.getElementById("payment");
+    if (paymentEl && paymentEl.value.trim()) {
+      formData.set("paymentDetails", JSON.stringify({
+        pricePerPerson: 0,
+        bankDetails: {
+          accountName: paymentEl.value.trim(),
+          sortCode: "",
+          accountNumber: "",
+          iban: ""
+        }
+      }));
+    }
+
+    // ✅ Handle contact
+    const contactEl = document.getElementById("contact");
+    if (contactEl && contactEl.value.trim()) {
+      formData.set("contact", JSON.stringify({
+        whatsapp: contactEl.value.trim(),
+        email: ""
+      }));
+    }
+
+    // ---------- Submit ----------
+    fetch("/admin/tours", {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          Swal.fire("✅ Success", data.message, "success").then(() => {
+            form.reset();
+            document.getElementById("preview").innerHTML = "";
+            document.getElementById("itineraryContainer").innerHTML = "";
+            dayCount = 0;
+          });
+        } else {
+          Swal.fire("⚠️ Error", data.message || "Something went wrong", "error");
+        }
+      })
+      .catch((err) => {
+        Swal.fire("🚨 Server Error", err.message, "error");
+      });
+  });
+</script>
+
+
+
+</body>
+
+</html>

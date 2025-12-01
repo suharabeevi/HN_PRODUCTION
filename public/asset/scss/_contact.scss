@@ -1,0 +1,308 @@
+.footer-newsletter-wrapper {
+    @include flex;
+    justify-content: space-between;
+    padding: 80px 0 45px;
+    position: relative;
+
+    @include breakpoint(max-xl) {
+        flex-wrap: wrap;
+     }
+
+    .footer-newsletter-item {
+        .widget-head {
+            margin-bottom: 30px;
+        }
+        .footer-content {
+
+            p {
+                color: $white;
+            }
+        }
+
+        .social-icon {
+            gap: 8px;
+            margin-top: 30px;
+
+            a {
+                width: 36px;
+                height: 36px;
+                line-height: 36px;
+                border-radius: 50px;
+                text-align: center;
+                color: $theme-color;
+                background-color: $white;
+                @include transition;
+
+                &:hover {
+                    background-color: $theme-color;
+                    color: $white;
+                }
+            }
+        }
+    }
+
+    .newsletter-input {
+
+        @include breakpoint(max-xl) {
+            margin-top: 20px;
+         }
+
+        h2 {
+            font-size: 32px;
+            color: $white;
+
+            @include breakpoint(max-md) {
+                font-size: 28px;
+             }
+
+            @include breakpoint(max-sm) {
+                font-size: 24px;
+             }
+        }
+
+        p {
+            font-size: 18px;
+            font-weight: 500;
+            color: $white;
+        }
+
+        .footer-input {
+            position: relative;
+            margin-top: 30px;
+
+            input {
+                background: $white;
+                border: none;
+                outline: none;
+                width: 100%;
+                padding: 18px 20px;
+                border-radius: 100px;
+                color: #727171;
+                line-height: 1;
+                text-transform: capitalize;
+
+                @include breakpoint(max-lg) {
+                    padding: 15px 20px;
+                }
+
+                @include breakpoint(max-md) {
+                    padding: 17px 20px;
+                }
+
+                @include breakpoint(max-sm) {
+                    padding: 14px 20px;
+                }
+
+                &::placeholder {
+                    color: #727171;
+                }
+            }
+
+            .newsletter-btn {
+                position: absolute;
+                top: 0px;
+                right: 0px;
+                // color: $white;
+                // width: 100px;
+                // height: 51px;
+                // border-radius: 0px 5px 5px 0px;
+                // background-color: #336AEA;
+                // font-size: 16px;
+            }
+        }
+    }
+}
+
+.contact-us-main {
+    border-radius: 10px;
+    padding: 12px 16px;
+    background-color: $bg-color;
+    text-align: center;
+    position: relative;
+    @include transition;
+
+
+      &.style-2 {
+         background-color: $theme-color;
+
+         .contact-box-items {
+            border: 1px solid $white;
+
+            .icon {
+                color: $white;
+            }
+
+            .content {
+                h3 {
+                    a {
+                        color: $white;
+                    }
+                }
+
+                p {
+                    color: $white;
+                }
+            }
+         }
+
+        }
+
+    .contact-box-items {
+        border-radius: 10px;
+        border: 1px solid $border-color;
+        padding: 28px 30px;
+
+        .icon {
+            margin-bottom: 20px;
+        }
+
+        .content {
+            h3{
+                font-weight: 600;
+                margin-bottom: 5px;
+            }
+
+            p {
+                font-size: 18px;
+                font-weight: 400;
+                color: $text-color;
+            }
+        }
+    }
+
+    &:hover {
+        background-color: $theme-color;
+
+        .contact-box-items {
+
+            .icon {
+
+                img {
+                    filter: grayscale(100%) brightness(300%);
+                }
+            }
+
+            .content {
+                position: relative;
+                z-index: 1;
+
+                h3 {
+                    color: $white;
+                    
+    
+                    a {
+                        color: $white;
+                    }
+                }
+    
+                p {
+                    color: $white;
+                }
+            }
+        }
+    }
+}
+
+.contact-us-wrapper {
+
+    .contact-us-contact {
+        padding: 120px 0;
+
+        @include breakpoint (max-lg){
+            padding: 80px 0 30px;
+        }
+
+        .comment-form-wrap {
+
+            .form-clt {
+                input,textarea {
+                    width: 100%;
+                    outline: none;
+                    border: none;
+                    border-radius: 100px;
+                    border: 1px solid rgba(255, 255, 255, 0.15);
+                    padding: 16px 20px;
+                    background-color: transparent;
+                    font-weight: 400;
+
+                    &::placeholder {
+                        color: $white;
+                    }
+
+                }
+
+                textarea {
+                    padding-bottom: 100px;
+                    border-radius: 20px;
+                    resize: none;
+                }
+
+                .nice-select {
+                    background-color: transparent;
+                    padding: 16px 20px;
+                    border-radius: 100px;
+                    border: 1px solid rgba(255, 255, 255, 0.15);
+
+                    span {
+                        font-size: 14px;
+                        color: $white;
+                        font-weight: 400;
+						text-transform: capitalize;
+                        margin-bottom: 0;
+                    }
+
+                    &::after {
+                       
+						right: 25px;
+						top: 28px;
+                    }
+
+					.list {
+						right: 0;
+						background-color: $bg-color;
+					}
+
+					.option {
+						border: none;
+						padding: 6px 15px;
+					}
+                }
+            }
+
+            .theme-btn {
+                background-color: transparent;
+                border: 1px solid $theme-color;
+
+                &:before {
+                    background-color: $theme-color;
+                }
+
+                &:hover {
+                    color: $white;
+                    box-shadow: none;
+            
+                    &::before {
+                        width: 100%;
+                    }
+                }
+            
+            }
+        }
+    }
+
+    .map-area {
+        margin-left: 25px;
+
+        @include breakpoint(max-xl) {
+            margin-left: 0;
+        }
+
+        .google-map {
+            
+            iframe {
+                width: 1053px;
+                height: 810px;
+            }
+        }
+    }
+}

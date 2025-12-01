@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--<< Header Area >>-->
+
+<head>
+    <!-- ========== Meta Tags ========== -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="pixel-drop">
+      <title>B4 Back packers – Premium Travel Experiences Worldwide</title>
+       <meta name="description" content="B4 Back packers offers premium travel experiences worldwide – making every journey feel first class. Discover tailor-made trips and unforgettable adventures.">
+
+    <!--<< Favcion >>-->
+        <link rel="shortcut icon" href="asset/img/logo/favcion.png">
+    <!--<< Bootstrap min.css >>-->
+    <link rel="stylesheet" href="asset/css/bootstrap.min.css">
+    <!--<< All Min Css >>-->
+    <link rel="stylesheet" href="asset/css/all.min.css">
+    <!--<< Animate.css >>-->
+    <link rel="stylesheet" href="asset/css/animate.css">
+    <!--<< Magnific Popup.css >>-->
+    <link rel="stylesheet" href="asset/css/magnific-popup.css">
+    <!--<< MeanMenu.css >>-->
+    <link rel="stylesheet" href="asset/css/meanmenu.css">
+    <!--<< Swiper Bundle.css >>-->
+    <link rel="stylesheet" href="asset/css/swiper-bundle.min.css">
+    <!--<< Datepickerboot.css >>-->
+    <link rel="stylesheet" href="asset/css/datepickerboot.css">
+    <!--<< Nice Select.css >>-->
+    <link rel="stylesheet" href="asset/css/nice-select.css">
+    <!--<< Color.css >>-->
+    <link rel="stylesheet" href="asset/css/color.css">
+    <!--<< Main.css >>-->
+    <link rel="stylesheet" href="asset/css/main.css">
+</head>
+
+<body>
+
+    <!-- Preloader Start -->
+     <div id="preloader" class="preloader">
+    <div class="animation-preloader">
+        <!-- Logo popup -->
+        <div class="logo-popup">
+            <img src="asset/img/logo/png 1.png" alt="B4backpackers Logo" />
+        </div>
+       
+    </div>
+</div>
+
+<style>
+/* Preloader full screen */
+.preloader {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #fff; /* background color */
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Logo popup animation */
+.logo-popup img {
+    width: 120px; /* adjust size */
+    opacity: 0;
+    transform: scale(0.5);
+    animation: logoPopup 1s ease-in-out forwards;
+}
+
+/* Fade-in + scale effect */
+@keyframes logoPopup {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Loading text style */
+
+/* Optional: fade out preloader */
+body.loaded #preloader {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+</style>
+
+<script>
+// Hide preloader when page fully loaded
+window.addEventListener('load', function () {
+    document.body.classList.add('loaded');
+});
+</script>
+
+    <!-- Back To Top Start -->
+    <button id="back-top" class="back-to-top">
+        <i class="fa-regular fa-arrow-up"></i>
+    </button>
+
+    <!--<< Mouse Cursor Start >>-->
+    <div class="mouse-cursor cursor-outer"></div>
+    <div class="mouse-cursor cursor-inner"></div>
+
+    <!-- Offcanvas Area Start -->
+    <div class="fix-area">
+            <div class="offcanvas__info">
+                <div class="offcanvas__wrapper">
+                    <div class="offcanvas__content">
+                        <div class="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
+                            <div class="offcanvas__logo">
+                                <a href="/">
+                                    <img src="asset/img/logo/png 1.png" alt="logo-img">
+                                </a>
+                            </div>
+                            <div class="offcanvas__close">
+                                <button>
+                                <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                      
+                        <div class="mobile-menu fix mb-3"></div>
+                        <div class="offcanvas__contact">
+                            <h4>Contact Info</h4>
+                            <ul>
+                                <li class="d-flex align-items-center">
+                                    <div class="offcanvas__contact-icon">
+                                        <i class="fal fa-map-marker-alt"></i>
+                                    </div>
+                                    <div class="offcanvas__contact-text">
+                                        <a target="_blank" href="#">Main Street, Melbourne, Australia</a>
+                                    </div>
+                                </li>
+                                <li class="d-flex align-items-center">
+                                    <div class="offcanvas__contact-icon mr-15">
+                                        <i class="fal fa-envelope"></i>
+                                    </div>
+                                    <div class="offcanvas__contact-text">
+                                        <a href="mailto:B4backpackers@gmail.com"><span class="mailto:B4backpackers@gmail.com">B4backpackers@gmail.com</span></a>
+                                    </div>
+                                </li>
+                                
+                                <li class="d-flex align-items-center">
+                                    <div class="offcanvas__contact-icon mr-15">
+                                        <i class="far fa-phone"></i>
+                                    </div>
+                                    <div class="offcanvas__contact-text">
+                                        <a href="tel:+44 7353 475957">+44 7353 475957</a>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="header-button mt-4">
+                                <a href="contact.html" class="theme-btn"> Request A Quote <i class="fa-sharp fa-regular fa-arrow-right"></i></a>
+                            </div>
+                            <div class="social-icon d-flex align-items-center">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-youtube"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="offcanvas__overlay"></div>
+              <%-include('../layouts/user/header.ejs')%>
+
+
+    <!-- Breadcrumb-wrappe-Section Start -->
+    <section class="breadcrumb-wrapper fix bg-cover"
+        style="background-image: url(https://res.cloudinary.com/dyv0lsr1o/image/upload/v1757234097/landmark-camera-architecture-view-woman_dx3gfs.webp);">
+        <div class="container">
+            <div class="row">
+                <div class="page-heading">
+                    <h2>Tour Details</h2>
+                    <ul class="breadcrumb-list">
+                        <li>
+                            <a href="/">Home</a>
+                        </li>
+                        <li><i class="fa-solid fa-chevrons-right"></i></li>
+                        <li>Tour Details</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Activities Section Start -->
+    <section class="activities-details-section fix section-padding">
+    <div class="container">
+    <div class="activities-details-wrapper py-5">
+        <div class="row g-5 justify-content-center align-items-start">
+            
+            <!-- Left side images -->
+            <div class="col-12 col-lg-6">
+              <!-- Main image -->
+<div class="details-thumb shadow-sm rounded overflow-hidden mb-3">
+    <% if(tour.images && tour.images.length > 0){ %>
+        <img src="<%= tour.images[0] %>" alt="Tour Image" class="img-fluid rounded">
+    <% } else { %>
+        <img src="asset/img/destails/tour-details.jpg" alt="Default Image" class="img-fluid rounded">
+    <% } %>
+</div>
+
+<!-- Other images displayed below main image -->
+<% if(tour.images && tour.images.length > 1){ %>
+    <div class="other-images mb-3">
+        <% tour.images.slice(1).forEach(function(img){ %>
+            <div class="mb-2">
+                <img src="<%= img %>" alt="Tour Image" class="img-fluid rounded">
+            </div>
+        <% }); %>
+    </div>
+<% } %>
+
+
+            </div>
+
+            <!-- Right side content -->
+            <div class="col-12 col-lg-6">
+                <div class="activities-details-content p-4 shadow-sm rounded bg-white h-100">
+
+                    <!-- Title & subtitle -->
+                    <h2 class="mb-2 text-primary"><%= tour.title %></h2>
+                    <h5 class="text-muted mb-3"><%= tour.subtitle %> | <%= tour.duration %> | <%= tour.tourPlace %></h5>
+
+                    <!-- Overview -->
+                    <p class="mb-4"><%= tour.tripOverview %></p>
+
+                    <!-- Key Details -->
+                    <div class="mb-4">
+                        <p><strong>Group Size:</strong> <%= tour.groupSize %> people</p>
+                        <p><strong>People Type:</strong> <%= tour.peopleType.join(", ") %></p>
+                        <% if(tour.addons) { %>
+                            <p><strong>Add-ons:</strong> <%= tour.addons %></p>
+                        <% } %>
+                        <% if(tour.kidsPolicy) { %>
+                            <p><strong>Kids Policy:</strong> <%= tour.kidsPolicy %></p>
+                        <% } %>
+                        <% if(tour.airport) { %>
+                            <p><strong>Airport:</strong> <%= tour.airport %></p>
+                        <% } %>
+                        <% if(tour.flightSuggestion) { %>
+                            <p><strong>Flight Suggestion:</strong> <%= tour.flightSuggestion %></p>
+                        <% } %>
+                        <% if(tour.price) { %>
+                            <p><strong>Price:</strong> <%= tour.price %></p>
+                        <% } %>
+                    </div>
+
+                    <!-- Included -->
+                    <div class="activities-list-item mb-4">
+                        <h4 class="mb-2">Included</h4>
+                        <ul class="activities-list list-unstyled">
+                            <% tour.included.forEach(function(item){ %>
+                                <li class="mb-2 d-flex align-items-start">
+                                    <span class="me-2">&#10003;</span> <%= item %>
+                                </li>
+                            <% }); %>
+                        </ul>
+                    </div>
+
+                    <!-- Not Included -->
+                    <div class="activities-list-item mb-4">
+                        <h4 class="mb-2">Not Included</h4>
+                        <ul class="activities-list list-unstyled">
+                            <% tour.notIncluded.forEach(function(item){ %>
+                                <li class="mb-2"><%= item %></li>
+                            <% }); %>
+                        </ul>
+                    </div>
+
+                    <!-- Itinerary -->
+                    <% if(tour.itinerary && tour.itinerary.length > 0) { %>
+                        <div class="mb-4">
+                            <h4 class="mb-3">Itinerary</h4>
+                            <% tour.itinerary.forEach(function(day){ %>
+                                <div class="mb-3">
+                                    <h5>Day <%= day.day %>: <%= day.title %></h5>
+                                    <ul>
+                                        <% day.activities.forEach(function(activity){ %>
+                                            <li><%= activity %></li>
+                                        <% }); %>
+                                    </ul>
+                                    <% if(day.overnight) { %>
+                                        <p><strong>Overnight:</strong> <%= day.overnight %></p>
+                                    <% } %>
+                                </div>
+                            <% }); %>
+                        </div>
+                    <% } %>
+
+                    <!-- Book Now button -->
+<!-- Book Now Button -->
+<a href="javascript:void(0);" 
+   class="theme-btn" 
+   data-bs-toggle="modal" 
+   data-bs-target="#bookTourModal" 
+   data-tourid="<%= tour._id %>" 
+   data-tourname="<%= tour.title %>" 
+   data-price="<%= tour.price %>">
+   Book Now
+</a>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Book Tour Modal -->
+<div class="modal fade" id="bookTourModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content p-4">
+      <h4 class="mb-3">Book Tour</h4>
+      <form id="bookTourForm">
+        <!-- Hidden Fields -->
+        <input type="hidden" id="tourId">
+        <input type="hidden" id="tourName">
+        <input type="hidden" id="tourPrice">
+
+        <!-- Price Info -->
+        <p><strong>Price per Adult:</strong> $<span id="modalTourPrice">0</span></p>
+
+        <!-- User Info -->
+        <div class="mb-3">
+          <label for="userName">Name</label>
+          <input type="text" id="userName" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" class="form-control" required>
+        </div>
+
+        <!-- Adults & Children -->
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="adults">Adults</label>
+            <input type="number" id="adults" class="form-control" value="1" min="1" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="children">Children</label>
+            <input type="number" id="children" class="form-control" value="0" min="0" required>
+          </div>
+        </div>
+
+        <!-- Price Breakdown -->
+        <div class="mb-3">
+          <p>Adults: $<span id="adultPrice">0</span></p>
+          <p>Children (50%): $<span id="childPrice">0</span></p>
+          <strong>Total Price: $<span id="totalPrice">0</span></strong>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="btn btn-success w-100">Send to WhatsApp</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+    </section>
+
+              <%-include('../layouts/user/footer.ejs')%>
+
+
+    <!--<< All JS Plugins >>-->
+    <script src="asset/js/jquery-3.7.1.min.js"></script>
+    <!--<< Viewport Js >>-->
+    <script src="asset/js/viewport.jquery.js"></script>
+    <!--<< Bootstrap Js >>-->
+    <script src="asset/js/bootstrap.bundle.min.js"></script>
+    <!--<< nice-selec Js >>-->
+    <script src="asset/js/jquery.nice-select.min.js"></script>
+    <!--<< Waypoints Js >>-->
+    <script src="asset/js/jquery.waypoints.js"></script>
+    <!--<< Counterup Js >>-->
+    <script src="asset/js/jquery.counterup.min.js"></script>
+    <!--<< Swiper Slider Js >>-->
+    <script src="asset/js/swiper-bundle.min.js"></script>
+    <!--<< MeanMenu Js >>-->
+    <script src="asset/js/jquery.meanmenu.min.js"></script>
+    <!--<< Datepicker Js >>-->
+    <script src="asset/js/bootstrap-datepicker.js"></script>
+    <!--<< Magnific Popup Js >>-->
+    <script src="asset/js/jquery.magnific-popup.min.js"></script>
+    <!--<< Wow Animation Js >>-->
+    <script src="asset/js/wow.min.js"></script>
+    <!--<< Main.js >>-->
+    <script src="asset/js/main.js"></script>
+  <script>
+const bookTourModal = document.getElementById('bookTourModal');
+const adultsInput = document.getElementById('adults');
+const childrenInput = document.getElementById('children');
+const totalPriceSpan = document.getElementById('totalPrice');
+const tourPriceInput = document.getElementById('tourPrice');
+const modalTourPrice = document.getElementById('modalTourPrice');
+
+bookTourModal.addEventListener('show.bs.modal', function (event) {
+    const button = event.relatedTarget;
+    const tourId = button.getAttribute('data-tourid');
+    const tourName = button.getAttribute('data-tourname');
+    const priceRaw = button.getAttribute('data-price') || '0';
+    const price = parseFloat(priceRaw.replace(/[^0-9.]/g, '')) || 0;
+
+    document.getElementById('tourId').value = tourId;
+    document.getElementById('tourName').value = tourName;
+    tourPriceInput.value = price;
+    modalTourPrice.textContent = price.toFixed(2);
+    totalPriceSpan.textContent = price.toFixed(2);
+});
+
+adultsInput.addEventListener('input', updateTotal);
+childrenInput.addEventListener('input', updateTotal);
+
+function updateTotal() {
+    const price = parseFloat(tourPriceInput.value) || 0;
+    const adults = parseInt(adultsInput.value) || 0;
+    const children = parseInt(childrenInput.value) || 0;
+    const total = price * adults + (price * 0.5 * children);
+    totalPriceSpan.textContent = total.toFixed(2);
+}
+
+document.getElementById('bookTourForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = document.getElementById('userName').value;
+    const adults = adultsInput.value;
+    const children = childrenInput.value;
+    const total = totalPriceSpan.textContent;
+    const tourName = document.getElementById('tourName').value;
+
+    const message = `Hello! I want to book the tour *${tourName}*\nName: ${name}\nAdults: ${adults}\nChildren: ${children}\nTotal Price: $${total}`;
+
+    const whatsappNumber = "YOUR_WHATSAPP_NUMBER"; 
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+    window.open(whatsappURL, '_blank');
+});
+
+</script>
+
+
+
+</body>
+
+</html>

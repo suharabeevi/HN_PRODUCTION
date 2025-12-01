@@ -1,0 +1,229 @@
+
+.brand-wrapper {
+
+    .brand-title {
+        text-align: center;
+        margin-bottom: 50px;
+        font-size: 22px;
+        font-weight: 600;
+        position: relative;
+    
+        &::before {
+            @include before;
+            top: 10px;
+            width: 40%;
+            height: 1%;
+            background: #E1E4E5;
+    
+            @include breakpoint(max-xl) {
+               display: none;
+            }
+        }
+    
+        &::after {
+            position: absolute;
+            content: "";
+            top: 10px;
+            right: 0;
+            width: 40%;
+            height: 1%;
+            background: #E1E4E5;
+    
+            @include breakpoint(max-xl) {
+                display: none;
+             }
+        }
+    }
+
+    .brand-image {
+        text-align: center;
+        filter: grayscale(100%);
+        @include transition;
+        opacity: .4;
+    
+        &:hover {
+            filter: initial;
+            opacity: 1;
+        }
+    }
+    
+    .swiper-slide.swiper-slide-active{
+        .brand-image {
+            filter: initial;
+            opacity: 1;
+        }
+    }
+}
+
+.brand-section {
+    position: relative;
+
+    .left-shape {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+
+        @include breakpoint(max-xl) {
+           display: none;
+        }
+    }
+}
+
+.swiper-3d-section {
+	.container {
+		max-width: 1500px;
+		margin: 0 auto;
+	}
+	.card3d-content {
+		position: absolute;
+		left: 50%;
+		width: 100%;
+		text-align: center;
+        display: grid;
+
+        h3 {
+            a {
+                color: $white;
+            }
+        }
+		opacity: 0;
+		span {
+			margin: 0 auto;
+            color: $white;
+		}
+
+        .theme-btn {
+            border: 1px solid $white;
+            background-color: transparent;
+			max-width: 160px;
+			text-align: center;
+			margin: 0 auto;
+
+            &:hover {
+                color: $white;
+                border: 1px solid $header-color;
+                box-shadow: none;
+        
+                &::before {
+                    width: 100%;
+                }
+            }
+        }
+	}
+}
+.swiper-3d-section .swiper-3d-container {
+	width: 100%;
+}
+.swiper-3d-section .swiper-3d-container .swiper-slide {
+	width: 320px;
+}
+.swiper-3d-section .swiper-3d-container .swiper-slide .card-3d {
+	position: relative;
+	width: 320px;
+	transition: all 0.5s ease;
+	// opacity: 0.5;
+}
+.swiper-3d-section .swiper-3d-container .swiper-slide .card-3d .img-area {
+	border-radius: inherit;
+	position: relative;
+
+	// &::before {
+
+	// 	@include breakpoint(max-sm) {
+	// 		@include before;
+    //         background: rgba(10, 31, 36, 0.50);
+	// 	}
+	// }
+}
+.swiper-3d-section .swiper-3d-container .swiper-slide .card-3d .img-area img {
+	border-radius: inherit;
+	transition: all 0.5s ease;
+}
+
+
+.swiper-3d-section .swiper-3d-container .swiper-slide .card-3d .card-date {
+	border-radius: 12px;
+	background: rgba(var(--n1), 0.45);
+}
+.swiper-3d-section .swiper-3d-container .swiper-slide .card-3d .card-status {
+	border-radius: 46px;
+	border: 1px solid $border-color;
+	background: $theme-color;
+	bottom: -10px;
+}
+.swiper-3d-section .swiper-3d-container .swiper-slide .card-3d .card-info {
+	border-radius: 12px;
+	background: $theme-color;
+}
+.swiper-3d-section .swiper-3d-container .swiper-slide-active .card-3d {
+	opacity: 1;
+	.card3d-content {
+		position: absolute;
+		bottom: 30px;
+		left: 40px;
+		width: 100%;
+		text-align: center;
+		z-index: 1;
+		opacity: 1;
+		span {
+			margin: 0 auto;
+		}
+	}
+	z-index: 1;
+	position: relative;
+	&::before {
+		position: absolute;
+		bottom: -220px;
+		left: 0;
+		content: "";
+		width: 400px;
+		border-radius: 50%;
+		height: 430px;
+		background: $theme-color;
+        z-index: 1;
+
+		@include breakpoint(max-xl) {
+			background: none;
+		}
+	}
+	&::after {
+		position: absolute;
+		bottom: -220px;
+		left: 0;
+		width: 400px;
+		height: 400px;
+		content: "";
+		background: rgba(5, 5, 5, 0.486);
+		border-radius: 50%;
+
+		@include breakpoint(max-xl) {
+			background: none;
+		}
+	}
+
+	@include breakpoint(max-sm) {
+		width: 100%;
+        overflow: hidden;
+        .card3d-content{
+            left: 50%;
+            transform: translateX(-50%);
+        }
+		img {
+			width: 100%;
+		}
+		&::before {
+			bottom: -220px;
+			left: 50%;
+            transform: translateX(-50%);
+			width: 300px;
+			height: 300px;
+		}
+		&::after {
+			bottom: -220px;
+			left: 50%;
+            transform: translateX(-50%);
+			width: 300px;
+			height: 300px;
+		}
+	}
+}

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <title>First Class Trails - add tour page</title>
+
+    <meta name="author" content="themesflat.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link rel="stylesheet" href="/app/css/app.css">
+    <link rel="stylesheet" href="/app/css/map.min.css">
+
+    <%-include('../layouts/admin/favicon.ejs')%>
+
+</head>
+
+<body class="body header-fixed">
+
+    <div class="preload preload-container">
+        <svg class="pl" width="240" height="240" viewBox="0 0 240 240">
+            <circle class="pl__ring pl__ring--a" cx="120" cy="120" r="105" fill="none" stroke="#000" stroke-width="20" stroke-dasharray="0 660" stroke-dashoffset="-330" stroke-linecap="round"></circle>
+            <circle class="pl__ring pl__ring--b" cx="120" cy="120" r="35" fill="none" stroke="#000" stroke-width="20" stroke-dasharray="0 220" stroke-dashoffset="-110" stroke-linecap="round"></circle>
+            <circle class="pl__ring pl__ring--c" cx="85" cy="120" r="70" fill="none" stroke="#000" stroke-width="20" stroke-dasharray="0 440" stroke-linecap="round"></circle>
+            <circle class="pl__ring pl__ring--d" cx="155" cy="120" r="70" fill="none" stroke="#000" stroke-width="20" stroke-dasharray="0 440" stroke-linecap="round"></circle>
+        </svg>
+    </div>
+
+    <!-- /preload -->
+
+    <div id="wrapper">
+        <div id="pagee" class="clearfix">
+      <%-include('../layouts/admin/sideheader.ejs')%>
+
+    <main id="main">
+       
+    <section class="profile-dashboard">
+        <div class="inner-header mb-40">
+            <h3 class="title">All Tours</h3>
+            
+           
+
+           
+        </div>
+
+        <div class="container my-4">
+  <div class="row">
+    <% tour.forEach((t, index) => { %>
+      <div class="col-md-3 mb-4">
+        <div class="card h-100 shadow-sm">
+          <img src="<%= t.images[0] %>" class="card-img-top" alt="<%= t.title %>">
+          <div class="card-body">
+            <h5 class="card-title"><%= t.title %></h5>
+            <p class="card-text"><%= t.tourPlace %></p>
+            <p class="fw-bold">Price: <%= t.price %></p>
+          </div>
+          <div class="card-footer d-flex justify-content-between">
+      <a href="/admin/tours?id=<%= t._id %>" class="btn btn-sm btn-primary">Edit</a>
+<button class="btn btn-sm btn-danger" onclick="deleteTour('<%= t._id %>')">Delete</button>
+          </div>
+        </div>
+      </div>
+
+      <% if ((index + 1) % 4 === 0) { %>
+        </div><div class="row"> <!-- Close and start a new row every 4 cards -->
+      <% } %>
+    <% }); %>
+  </div>
+</div>
+
+
+        
+    </section>
+    
+</main>
+
+                <%-include('../layouts/admin/footer.ejs')%>
+                <!-- Bottom -->
+            </div>
+
+        </div>
+        <!-- /#page -->
+    </div>
+
+    <!-- Modal Popup Bid -->
+
+    <a id="scroll-top" class="button-go"></a>
+
+    <!-- Modal search-->
+    <div class="modal search-mobie fade" id="exampleModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="modal-body">
+                    <form action="/" class="search-form-mobie">
+                        <div class="search">
+                            <i class="icon-circle2017"></i>
+                            <input type="search" placeholder="Search Travel" class="search-input" autocomplete="off">
+                            <button type="button">Search</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Javascript -->
+    <script src="/app/js/jquery.min.js"></script>
+    <script src="/app/js/jquery.nice-select.min.js"></script>
+    <script src="/app/js/bootstrap.min.js"></script>
+    <script src="/app/js/tinymce/tinymce.min.js"></script>
+    <script src="/app/js/tinymce/tinymce-custom.js"></script>
+    <script src="/app/js/swiper-bundle.min.js"></script>
+    <script src="/app/js/swiper.js"></script>
+    <script src="/app/js/plugin.js"></script>
+    <script src="/app/js/map.min.js"></script>
+    <script src="/app/js/map.js"></script>
+    <script src="/app/js/shortcodes.js"></script>
+    <script src="/app/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        function editTour(tourId) {
+          // Redirect to the edit page
+          location.href = `/admin/tours/${tourId}`;
+        }
+      </script>
+
+<script>
+function deleteTour(tourId) {
+  Swal.fire({
+    title: "Are you sure?",
+    text: "This will remove the tour from active listings!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Yes, delete it!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      fetch(`/admin/tours/delete/${tourId}`, {  // <-- use param instead of query
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${localStorage.getItem("token")}`
+        }
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          Swal.fire("Deleted!", data.message, "success").then(() => {
+            window.location.reload();
+          });
+        } else {
+          Swal.fire("Error!", data.message || "Something went wrong", "error");
+        }
+      })
+      .catch(err => Swal.fire("Server Error", err.message, "error"));
+    }
+  });
+}
+</script>
+
+<script>
+    function toggleStatus(button) {
+    const currentStatus = button.getAttribute('data-status') === 'true'; // Get current status (true or false)
+    const newStatus = !currentStatus;  // Toggle status: if true -> false, if false -> true
+
+    // Change the button text and class based on the new status
+    button.textContent = newStatus ? 'Active' : 'Inactive';
+    button.classList.toggle('active', newStatus);
+    button.classList.toggle('inactive', !newStatus);
+
+    // Update the status in the button's data attribute
+    button.setAttribute('data-status', newStatus);
+
+    // Get the tour ID from the parent element's data attribute
+    const tourId = button.closest('.booking-list-table').getAttribute('data-tour-id');
+    
+    // Send the update to the backend
+    updateTourStatus(tourId, newStatus);
+}
+
+function updateTourStatus(tourId, newStatus) {
+    fetch(`/admin/toursactive/${tourId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ status: newStatus }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.message === 'Tour status updated') {
+            alert(`Tour status has been updated to ${newStatus ? 'Active' : 'Inactive'}.`);
+            location.reload()
+        }
+    })
+    .catch(error => {
+        console.error('Error updating tour status:', error);
+        alert('There was an error updating the tour status. Please try again.');
+    });
+}
+
+</script>
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

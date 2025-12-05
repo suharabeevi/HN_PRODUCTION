@@ -59,14 +59,31 @@ router.get('/packages', verifyToken, packageController.getAllPackagesPage);
 // Add package page
 router.get('/packages/add', verifyToken, packageController.getAddPackagePage);
 
-// API: create package
-router.post('/packages', verifyToken, packageController.createPackage);
+// API: create package (images only, videos are YouTube URLs)
+router.post(
+  '/packages',
+  verifyToken,
+  upload.array('images', 10),
+  packageController.createPackage
+);
 
 // Edit package page
 router.get('/packages/:id/edit', verifyToken, packageController.getEditPackagePage);
 
-// API: update package
-router.put('/packages/:id', verifyToken, packageController.updatePackage);
+// API: delete a single image from a package (MUST be before /packages/:id routes)
+router.delete(
+  '/packages/:id/image',
+  verifyToken,
+  packageController.deletePackageImage
+);
+
+// API: update package (images only, videos are YouTube URLs)
+router.put(
+  '/packages/:id',
+  verifyToken,
+  upload.array('images', 10),
+  packageController.updatePackage
+);
 
 // API: soft delete package
 router.delete('/packages/:id', verifyToken, packageController.deletePackage);

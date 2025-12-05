@@ -1,5 +1,6 @@
 const Package = require('../models/packagemodel');
 const Category = require('../models/categorymodel');
+const { uploadToCloudinary } = require('../config/multer');
 
 // RENDER: Add package page
 exports.getAddPackagePage = async (req, res) => {
@@ -15,7 +16,7 @@ exports.getAddPackagePage = async (req, res) => {
 // CREATE: Add new package
 exports.createPackage = async (req, res) => {
   try {
-    const { categoryId, name, description, price, currency, features } = req.body;
+    const { categoryId, name, description, price, currency, features, videos } = req.body;
 
     if (!categoryId || !name || !price) {
       return res
@@ -35,6 +36,31 @@ exports.createPackage = async (req, res) => {
       }
     }
 
+    // Handle image uploads (optional)
+    const imageUrls = [];
+    if (req.files && req.files.length > 0) {
+      for (const file of req.files) {
+        const url = await uploadToCloudinary(file.path, 'image');
+        imageUrls.push(url);
+      }
+    }
+
+    // Handle videos as YouTube URLs (optional)
+    let videoUrls = [];
+    if (videos) {
+      try {
+        const parsed = typeof videos === 'string' ? JSON.parse(videos) : videos;
+        if (Array.isArray(parsed)) {
+          // basic trimming / filtering
+          videoUrls = parsed.map(v => String(v).trim()).filter(Boolean);
+        }
+      } catch (e) {
+        return res
+          .status(400)
+          .json({ success: false, message: 'Invalid videos format' });
+      }
+    }
+
     const pkg = await Package.create({
       category: categoryId,
       name,
@@ -42,6 +68,8 @@ exports.createPackage = async (req, res) => {
       price: Number(price),
       currency: currency || 'GBP',
       features: parsedFeatures,
+      images: imageUrls,
+      videos: videoUrls,
     });
 
     res.status(201).json({ success: true, message: 'Package created successfully', package: pkg });
@@ -54,7 +82,8 @@ exports.createPackage = async (req, res) => {
 // RENDER: All packages list
 exports.getAllPackagesPage = async (req, res) => {
   try {
-    const packages = await Package.find({})
+    // Only show active packages (isActive: true or undefined/null for backward compatibility)
+    const packages = await Package.find({ isActive: { $ne: false } })
       .populate('category', 'name')
       .sort({ createdAt: -1 })
       .lean();
@@ -85,7 +114,7 @@ exports.getEditPackagePage = async (req, res) => {
 exports.updatePackage = async (req, res) => {
   try {
     const { id } = req.params;
-    const { categoryId, name, description, price, currency, features } = req.body;
+    const { categoryId, name, description, price, currency, features, videos } = req.body;
 
     let parsedFeatures = [];
     if (features) {
@@ -98,16 +127,55 @@ exports.updatePackage = async (req, res) => {
       }
     }
 
+    // Upload new images if provided (optional)
+    const imageUrls = [];
+    if (req.files && req.files.length > 0) {
+      for (const file of req.files) {
+        const url = await uploadToCloudinary(file.path, 'image');
+        imageUrls.push(url);
+      }
+    }
+
+    // Handle videos as YouTube URLs (optional)
+    let videoUrls = null;
+    if (videos !== undefined && videos !== null && videos !== '') {
+      try {
+        const parsed = typeof videos === 'string' ? JSON.parse(videos) : videos;
+        if (Array.isArray(parsed)) {
+          videoUrls = parsed.map(v => String(v).trim()).filter(Boolean);
+        } else {
+          videoUrls = [];
+        }
+      } catch (e) {
+        console.error('Error parsing videos:', e);
+        videoUrls = [];
+      }
+    }
+
+    const updateData = {
+      category: categoryId,
+      name,
+      description,
+      price: Number(price),
+      currency: currency || 'GBP',
+      features: parsedFeatures,
+    };
+
+    // If new images uploaded, append them to existing images
+    if (imageUrls.length > 0) {
+      const existing = await Package.findById(id).select('images');
+      const existingImages = existing && Array.isArray(existing.images) ? existing.images : [];
+      updateData.images = [...existingImages, ...imageUrls];
+    }
+
+    // If videos provided (including empty array), update the list (YouTube URLs)
+    if (videoUrls !== null) {
+      updateData.videos = videoUrls;
+    }
+
     const updated = await Package.findByIdAndUpdate(
       id,
-      {
-        category: categoryId,
-        name,
-        description,
-        price: Number(price),
-        currency: currency || 'GBP',
-        features: parsedFeatures,
-      },
+      updateData,
       { new: true, runValidators: true }
     );
 
@@ -138,6 +206,45 @@ exports.deletePackage = async (req, res) => {
     res.json({ success: true, message: 'Package deleted successfully', package: updated });
   } catch (err) {
     console.error('deletePackage error:', err);
+    res.status(500).json({ success: false, message: 'Server error', error: err.message });
+  }
+};
+
+// DELETE: single image from a package
+exports.deletePackageImage = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { imageUrl } = req.query; // send via query string to avoid body parsing issues
+
+    if (!imageUrl) {
+      return res
+        .status(400)
+        .json({ success: false, message: 'imageUrl is required' });
+    }
+
+    const pkg = await Package.findById(id);
+    if (!pkg) {
+      return res
+        .status(404)
+        .json({ success: false, message: 'Package not found' });
+    }
+
+    const beforeCount = (pkg.images || []).length;
+    pkg.images = (pkg.images || []).filter((img) => img !== imageUrl);
+    const afterCount = pkg.images.length;
+
+    if (beforeCount === afterCount) {
+      // Image URL not found in package
+      return res
+        .status(404)
+        .json({ success: false, message: 'Image not found in package' });
+    }
+
+    await pkg.save();
+
+    res.json({ success: true, message: 'Image deleted successfully', package: pkg });
+  } catch (err) {
+    console.error('deletePackageImage error:', err);
     res.status(500).json({ success: false, message: 'Server error', error: err.message });
   }
 };

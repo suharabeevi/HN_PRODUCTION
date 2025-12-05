@@ -24,10 +24,12 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // Upload to Cloudinary helper
-const uploadToCloudinary = async (localFilePath) => {
+// resourceType: 'image' (default), 'video', or 'auto'
+const uploadToCloudinary = async (localFilePath, resourceType = 'image') => {
   try {
     const result = await cloudinary.uploader.upload(localFilePath, {
       folder: 'tours',
+      resource_type: resourceType,
     });
     fs.unlinkSync(localFilePath); // remove local file
     return result.secure_url;

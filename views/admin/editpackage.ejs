@@ -87,6 +87,67 @@
                 </button>
               </div>
 
+              <!-- Existing media -->
+              <div class="inner-header mb-20">
+                <h4 class="title">Existing Media</h4>
+                <p class="text-muted">Current images and videos for this package.</p>
+              </div>
+
+              <div class="grid-input-2 mb-20">
+                <div class="input-wrap">
+                  <% if (pkg.images && pkg.images.length) { %>
+                    <div class="flex wrap">
+                      <% pkg.images.forEach(img => { %>
+                        <div class="mr-10 mb-10" style="position: relative; display: inline-block;">
+                          <img src="<%= img %>" style="width: 100px; height: 100px; object-fit: cover;" />
+                          <button
+                            type="button"
+                            class="btn btn-danger btn-xs"
+                            style="position:absolute;top:2px;right:2px;padding:2px 5px;font-size:10px;"
+                            onclick="deletePackageImage('<%= pkg._id %>', '<%= img %>')"
+                          >
+                            X
+                          </button>
+                        </div>
+                      <% }) %>
+                    </div>
+                  <% } else { %>
+                    <p class="text-muted">No images uploaded.</p>
+                  <% } %>
+                </div>
+                <div class="input-wrap">
+                  <% if (pkg.videos && pkg.videos.length) { %>
+                    <ul>
+                      <% pkg.videos.forEach(v => { %>
+                        <li><a href="<%= v %>" target="_blank"><%= v %></a></li>
+                      <% }) %>
+                    </ul>
+                  <% } else { %>
+                    <p class="text-muted">No videos added.</p>
+                  <% } %>
+                </div>
+              </div>
+
+              <!-- Optional media upload -->
+              <div class="inner-header mb-20">
+                <h4 class="title">Media (optional)</h4>
+                <p class="text-muted">Images can be uploaded, videos are YouTube URLs.</p>
+              </div>
+
+              <div class="grid-input-2 mb-20">
+                <div class="input-wrap">
+                  <label>Images (optional)</label>
+                  <input type="file" id="package-images" multiple accept="image/*" />
+                </div>
+                <div class="input-wrap">
+                  <label>YouTube Video URLs (optional)</label>
+                  <div id="video-url-container"></div>
+                  <button type="button" class="btn btn-secondary btn-sm mt-10" id="add-video-url-btn">
+                    + Add YouTube URL
+                  </button>
+                </div>
+              </div>
+
               <div class="input-wrap">
                 <button type="button" class="button-add">Update Package</button>
               </div>
@@ -143,7 +204,49 @@
       } else {
         addFeatureField('', '');
       }
+
+      // Load existing YouTube video URLs
+      const existingVideos = <%- JSON.stringify(pkg.videos || []) %>;
+      if (existingVideos.length > 0) {
+        existingVideos.forEach(v => addVideoUrlField(v));
+      } else {
+        addVideoUrlField('');
+      }
     });
+
+    function addVideoUrlField(value = '') {
+      const container = document.getElementById('video-url-container');
+      const wrap = document.createElement('div');
+      wrap.className = 'mb-10 flex align-center video-url-row';
+      wrap.innerHTML = `
+        <input type="text" class="video-url-input" placeholder="https://www.youtube.com/..." value="${value}" style="flex:1" />
+        <button type="button" class="btn btn-danger btn-sm ml-10" onclick="this.parentElement.remove()">Remove</button>
+      `;
+      container.appendChild(wrap);
+    }
+
+    document.getElementById('add-video-url-btn').addEventListener('click', () => {
+      addVideoUrlField();
+    });
+
+    async function deletePackageImage(id, imageUrl) {
+      try {
+        const res = await fetch(`/admin/packages/${id}/image?imageUrl=${encodeURIComponent(imageUrl)}`, {
+          method: 'DELETE',
+        });
+        const data = await res.json();
+        if (res.ok) {
+          Swal.fire('Success', data.message, 'success').then(() => {
+            window.location.reload();
+          });
+        } else {
+          Swal.fire('Error', data.message || 'Failed to delete image', 'error');
+        }
+      } catch (err) {
+        console.error(err);
+        Swal.fire('Error', 'Unexpected error occurred', 'error');
+      }
+    }
 
     document.querySelector('.button-add').addEventListener('click', async () => {
       const categoryId = document.querySelector('#category-id').value;
@@ -168,17 +271,35 @@
       });
 
       try {
+        const formData = new FormData();
+        formData.append('categoryId', categoryId);
+        formData.append('name', name);
+        formData.append('price', Number(price));
+        formData.append('currency', currency);
+        formData.append('description', description);
+        formData.append('features', JSON.stringify(features));
+
+        // Optional images
+        const imagesInput = document.getElementById('package-images');
+        if (imagesInput && imagesInput.files && imagesInput.files.length > 0) {
+          Array.from(imagesInput.files).forEach((file) => {
+            formData.append('images', file);
+          });
+        }
+
+        // Optional YouTube video URLs (always send, even if empty, to allow clearing)
+        const videoRows = document.querySelectorAll('.video-url-row .video-url-input');
+        const videoUrls = [];
+        videoRows.forEach((input) => {
+          const v = input.value.trim();
+          if (v) videoUrls.push(v);
+        });
+        // Always send videos field, even if empty array, so we can update/clear existing videos
+        formData.append('videos', JSON.stringify(videoUrls));
+
         const res = await fetch('/admin/packages/<%= pkg._id %>', {
           method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            categoryId,
-            name,
-            price: Number(price),
-            currency,
-            description,
-            features: JSON.stringify(features),
-          }),
+          body: formData,
         });
 
         const data = await res.json();

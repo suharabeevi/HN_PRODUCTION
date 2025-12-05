@@ -36,6 +36,20 @@ const packageSchema = new mongoose.Schema(
     // Flexible features array
     features: [featureSchema],
 
+    // Media
+    images: [
+      {
+        type: String,          // Cloudinary image URL
+        trim: true,
+      },
+    ],
+    videos: [
+      {
+        type: String,          // Cloudinary video URL
+        trim: true,
+      },
+    ],
+
     // Status
     isActive: {
       type: Boolean,

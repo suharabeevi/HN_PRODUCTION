@@ -63,7 +63,7 @@ router.get('/packages/add', verifyToken, packageController.getAddPackagePage);
 router.post(
   '/packages',
   verifyToken,
-  upload.array('images', 10),
+    upload.any(), // <-- THIS FIXES IT
   packageController.createPackage
 );
 

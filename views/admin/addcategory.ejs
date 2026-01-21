@@ -68,34 +68,45 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <script>
-    document.querySelector('.button-add').addEventListener('click', async () => {
-      const name = document.querySelector('#category-name').value.trim();
-      const description = document.querySelector('#category-description').value.trim();
+document.addEventListener('DOMContentLoaded', () => {
+  const button = document.querySelector('.button-add');
+  if (!button) return;
 
-      if (!name) {
-        return Swal.fire('Error', 'Category name is required', 'error');
-      }
+  button.addEventListener('click', async (e) => {
+    e.preventDefault();
 
+    const name = document.querySelector('#category-name')?.value.trim();
+    const description = document.querySelector('#category-description')?.value.trim();
+
+    if (!name) {
+      return Swal.fire('Error', 'Category name is required', 'error');
+    }
+
+    try {
+      const res = await fetch('/admin/categories', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, description }),
+      });
+
+      let data = {};
       try {
-        const res = await fetch('/admin/categories', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name, description }),
-        });
-        const data = await res.json();
+        data = await res.json();
+      } catch {}
 
-        if (res.ok) {
-          Swal.fire('Success', data.message, 'success').then(() => {
-            window.location.href = '/admin/allcategory';
-          });
-        } else {
-          Swal.fire('Error', data.message || 'Failed to add category', 'error');
-        }
-      } catch (err) {
-        console.error(err);
-        Swal.fire('Error', 'Unexpected error occurred', 'error');
+      if (res.ok) {
+        Swal.fire('Success', data.message || 'Category added', 'success')
+          .then(() => window.location.href = '/admin/allcategory');
+      } else {
+        Swal.fire('Error', data.message || 'Failed to add category', 'error');
       }
-    });
-  </script>
+    } catch (err) {
+      console.error(err);
+      Swal.fire('Error', 'Unexpected error occurred', 'error');
+    }
+  });
+});
+</script>
+
 </body>
 </html>

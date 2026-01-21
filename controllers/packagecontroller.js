@@ -17,6 +17,7 @@ exports.getAddPackagePage = async (req, res) => {
 exports.createPackage = async (req, res) => {
   try {
     const { categoryId, name, description, price, currency, features, videos } = req.body;
+console.log(features,"hhhhhhhhhhhhhhhhh");
 
     if (!categoryId || !name || !price) {
       return res
@@ -35,6 +36,9 @@ exports.createPackage = async (req, res) => {
           .json({ success: false, message: 'Invalid features JSON format' });
       }
     }
+console.log(parsedFeatures);
+
+
 
     // Handle image uploads (optional)
     const imageUrls = [];
@@ -67,7 +71,7 @@ exports.createPackage = async (req, res) => {
       description,
       price: Number(price),
       currency: currency || 'GBP',
-      features: parsedFeatures,
+  features: parsedFeatures, // ✅ WILL SAVE NOW
       images: imageUrls,
       videos: videoUrls,
     });

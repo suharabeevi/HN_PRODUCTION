@@ -44,6 +44,22 @@
     <meta name="msapplication-navbutton-color" content="#141414">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <style>
+      /* Portfolio image resizing */
+.portfolio-img {
+  width: 100%;
+  height: 420px;       /* control height here */
+  object-fit: cover;  /* prevents stretching */
+  border-radius: 12px;
+}
+
+@media (max-width: 768px) {
+  .portfolio-img {
+    height: 280px;
+  }
+}
+
+    </style>
     <!-- Custom Browser Color End -->
   </head>
 
@@ -457,81 +473,60 @@
                       <!-- Portfolio Gallery Start -->
                       <div class="row gx-0 my-gallery" itemscope itemtype="http://schema.org/ImageGallery" data-masonry='{"percentPosition": true }'>
                         <!-- portfolio gallery single item -->
-                        <figure class="col-12 col-md-6 gallery__item grid-item animate-card-2" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-                          <a href="https://res.cloudinary.com/dpgbodkae/image/upload/v1770486831/DSC08795_iryzrw.jpg" data-image="https://res.cloudinary.com/dpgbodkae/image/upload/v1770486831/DSC08795_iryzrw.jpg" class="gallery__link" itemprop="contentUrl" data-size="1400x1050">
-                            <img src="https://res.cloudinary.com/dpgbodkae/image/upload/v1770486831/DSC08795_iryzrw.jpg" class="gallery__image" itemprop="thumbnail" alt="Image description">
-                          </a>
-                          <figcaption class="gallery__descr" itemprop="caption description">
-                            <h5>Designer Portfolio
-                              <small>UI/UX design</small>
-                            </h5>
-                            <p class="small">Mauris porttitor lobortis ligula, quis molestie lorem scelerisque eu. Morbi aliquam enim odio,
-                              a mollis ipsum tristique eu.
-                            </p>
-                          </figcaption>
-                        </figure>
-                        <!-- portfolio gallery single item -->
-                        <figure class="col-12 col-md-6 gallery__item grid-item animate-card-2" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-                          <a href="https://res.cloudinary.com/dpgbodkae/image/upload/v1770487059/DSC08844_stiatn.jpg" data-image="https://res.cloudinary.com/dpgbodkae/image/upload/v1770487059/DSC08844_stiatn.jpg" class="gallery__link" itemprop="contentUrl" data-size="1100x1400">
-                            <img src="https://res.cloudinary.com/dpgbodkae/image/upload/v1770487059/DSC08844_stiatn.jpg" class="gallery__image" itemprop="thumbnail" alt="Image description">
-                          </a>
-                          <figcaption class="gallery__descr opposite" itemprop="caption description">
-                            <h5 class="opposite">Idea Character
-                              <small>AI Illustration</small>
-                            </h5>
-                            <p class="small">Mauris porttitor lobortis ligula, quis molestie lorem scelerisque eu. Morbi aliquam enim odio,
-                              a mollis ipsum tristique eu.
-                            </p>
-                          </figcaption>
-                        </figure>
-                        <!-- portfolio gallery single item -->
-                        <figure class="col-12 col-md-6 gallery__item grid-item animate-card-2" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-                          <a href="asset/img/works/IMG_1485.webp" data-image="asset/img/works/IMG_1485.webp" class="gallery__link" itemprop="contentUrl" data-size="1400x1400">
-                            <img src="asset/img/works/IMG_1485.webp" class="gallery__image" itemprop="thumbnail" alt="Image description">
-                          </a>
-                          <figcaption class="gallery__descr opposite" itemprop="caption description">
-                            <h5 class="opposite">Robot Character
-                              <small>3D Render</small>
-                            </h5>
-                            <p class="small">Mauris porttitor lobortis ligula, quis molestie lorem scelerisque eu. Morbi aliquam enim odio,
-                              a mollis ipsum tristique eu.
-                            </p>
-                          </figcaption>
-                        </figure>
-                        <!-- portfolio gallery single item -->
-                        <figure class="col-12 col-md-6 gallery__item grid-item animate-card-2" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-                          <a href="asset/img/works/1400x1050_w04.webp" data-image="asset/img/works/1400x1050_w04.webp" class="gallery__link" itemprop="contentUrl" data-size="1400x1050">
-                            <img src="asset/img/works/1400x1050_w04.webp" class="gallery__image" itemprop="thumbnail" alt="Image description">
-                          </a>
-                          <figcaption class="gallery__descr " itemprop="caption description">
-                            <h5>Infinity
-                              <small>3D Illustration</small>
-                            </h5>
-                            <p class="small">Mauris porttitor lobortis ligula, quis molestie lorem scelerisque eu. Morbi aliquam enim odio,
-                              a mollis ipsum tristique eu.
-                            </p>
-                          </figcaption>
-                        </figure>
-                        <!-- portfolio gallery single item -->
-                        <figure class="col-12 col-md-6 gallery__item grid-item animate-card-2" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-                          <a href="asset/img/works/1400x1050_w05.webp" data-image="asset/img/works/1400x1050_w05.webp" class="gallery__link" itemprop="contentUrl" data-size="1400x1050">
-                            <img src="asset/img/works/1400x1050_w05.webp" class="gallery__image" itemprop="thumbnail" alt="Image description">
-                          </a>
-                          <figcaption class="gallery__descr" itemprop="caption description">
-                            <h5>Designer Portfolio
-                              <small>UI/UX design</small>
-                            </h5>
-                            <p class="small">Mauris porttitor lobortis ligula, quis molestie lorem scelerisque eu. Morbi aliquam enim odio,
-                              a mollis ipsum tristique eu.
-                            </p>
-                          </figcaption>
-                        </figure>
+                        <!-- portfolio item 1 -->
+<figure class="col-12 col-md-6 gallery__item grid-item animate-card-2">
+  <a href="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770788680/IMG_1657_e5dxte.jpg"
+     data-image="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770788680/IMG_1657_e5dxte.jpg"
+     class="gallery__link" data-size="1200x900">
+    <img src="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770788680/IMG_1657_e5dxte.jpg"
+         class="gallery__image portfolio-img" alt="Portfolio image">
+  </a>
+</figure>
+
+<!-- portfolio item 2 -->
+<figure class="col-12 col-md-6 gallery__item grid-item animate-card-2">
+  <a href="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770788673/DSC08844_a94flj.jpg"
+     data-image="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770788673/DSC08844_a94flj.jpg"
+     class="gallery__link" data-size="900x1200">
+    <img src="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770788673/DSC08844_a94flj.jpg"
+         class="gallery__image portfolio-img" alt="Portfolio image">
+  </a>
+</figure>
+
+<!-- portfolio item 3 -->
+<figure class="col-12 col-md-6 gallery__item grid-item animate-card-2">
+  <a href="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770788671/IMG_3639_jnhkd6.jpg"
+     data-image="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770788671/IMG_3639_jnhkd6.jpg"
+     class="gallery__link" data-size="1200x1200">
+    <img src="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770788671/IMG_3639_jnhkd6.jpg"
+         class="gallery__image portfolio-img" alt="Portfolio image">
+  </a>
+</figure>
+
+<!-- portfolio item 4 -->
+<figure class="col-12 col-md-6 gallery__item grid-item animate-card-2">
+  <a href="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770788672/DSC08795_jeqqqz.jpg"
+     data-image="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770788672/DSC08795_jeqqqz.jpg"
+     class="gallery__link" data-size="1200x900">
+    <img src="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770788672/DSC08795_jeqqqz.jpg"
+         class="gallery__image portfolio-img" alt="Portfolio image">
+  </a>
+</figure>
+<!-- portfolio item 4 -->
+<figure class="col-12 col-md-6 gallery__item grid-item animate-card-2">
+  <a href="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
+     data-image="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
+     class="gallery__link" data-size="1200x900">
+    <img src="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
+         class="gallery__image portfolio-img" alt="Portfolio image">
+  </a>
+</figure>
                       </div>
                       <!-- Portfolio Gallery End -->
 
                       <!-- External Portfolio Link Start -->
                       <div class="gallery__btn animate-in-up">
-                        <a href="#0" class="btn btn-line-circle-icon">
+                        <a href="https://drive.google.com/drive/folders/1erx4RSUaiHGnAGXacSE_bGTHd9QiDraE?usp=share_link" class="btn btn-line-circle-icon">
                           <span class="btn-caption">Behance profile</span>
                           <span class="circle hover-circle">
                             <em></em>

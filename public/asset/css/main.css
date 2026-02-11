@@ -6759,7 +6759,7 @@ form textarea:required:valid {
     position: absolute;
     top: 0;
     right: 0;
-    width: 100%;
+    width: 45%;
     height: 100%;
     padding-left: 0;
   }

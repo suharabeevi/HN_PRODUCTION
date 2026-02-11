@@ -22,7 +22,21 @@ userhome: async (req, res) => {
     }
   },
 
+projectspage: async (req, res) => {
+    try {
+      // Fetch all tours (you can add filters or limits later)
+      const tours = await Tour.find({}, "title subtitle duration groupSize price images tourPlace").lean();
 
+      // Render the home page and pass tours
+      res.render("user/project", { tours });
+    } catch (error) {
+      console.error("Error fetching home page:", error);
+      res.status(400).json({
+        message: "Error fetching home page",
+        error: error.message,
+      });
+    }
+  },
     getservicepage: async (req, res) => {
         try {
             const category = await Category.find({})

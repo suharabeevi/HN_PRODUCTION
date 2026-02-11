@@ -7,7 +7,7 @@ const usercontroller = require('../controllers/usercontroller')
 router.get("/",usercontroller.userhome);
 // router.get('/service',usercontroller.getservicepage)
 // router.get('/offer',usercontroller.getofferpage)
-router.get('/aboutus',usercontroller.getaboutpage)
+router.get('/projects',usercontroller.projectspage)
 // router.get('/search',usercontroller.searchtour)
 // router.get('/tickets',usercontroller.ticketpge)
 

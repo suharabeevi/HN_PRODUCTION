@@ -44,6 +44,55 @@
     <meta name="msapplication-navbutton-color" content="#141414">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <style>
+      /* Portfolio image resizing */
+.portfolio-img {
+  width: 100%;
+  height: 420px;       /* control height here */
+  object-fit: cover;  /* prevents stretching */
+  border-radius: 12px;
+}
+
+@media (max-width: 768px) {
+  .portfolio-img {
+    height: 280px;
+  }
+}
+
+@media (max-width: 768px) {
+  .portfolio-img {
+    height: 280px;
+  }
+}
+
+/* Override Headline Sizes to be medium */
+.headline__title {
+  font-size: 4.2rem !important; /* Mobile medium size */
+  line-height: 1.1;
+}
+
+.headline__subtitle {
+  font-size: 1.8rem !important;
+  margin-bottom: 2.5rem !important;
+}
+
+@media (min-width: 768px) {
+  .headline__title {
+    font-size: 6.5rem !important; /* Tablet medium size */
+  }
+}
+
+@media (min-width: 1200px) {
+  .headline__title {
+    font-size: 8.5rem !important; /* Desktop medium size (was 11rem+, prev 6.5rem) */
+  }
+  .headline__subtitle {
+    font-size: 2rem !important;
+  }
+}
+
+    </style>
     <!-- Custom Browser Color End -->
   </head>
 
@@ -69,7 +118,7 @@
         <nav id="menu" class="menu">
           <ul class="menu__list d-flex justify-content-start">
             <li class="menu__item">
-              <a class="menu__link btn" href="#home">
+              <a class="menu__link btn" href="/">
                 <span class="menu__caption">Home</span>
                 <i class="ph ph-house-simple"></i>
               </a>
@@ -119,7 +168,7 @@
 
     <!-- Fixed Logo Start -->
    <div class="logo loading__fade">
-  <a href="#home" class="logo__link">
+  <a href="/" class="logo__link">
     
     <!-- logo image -->
     <img 
@@ -198,146 +247,14 @@
         <!-- Main Section Intro End -->
 
         <!-- Main Section Media Start -->
-        <div class="main__media media-grid-bottom">
-          <div class="container-fluid p-0">
-            <div class="row g-0">
-
-              <!-- Media Data Line #1 (if needed) Start -->
-              <div class="col-12 col-xl-2"></div>
-              <!-- Media Data Line #1 (if needed) End -->
-
-              <!-- Media Content Start -->
-              <div class="col-12 col-xl-8">
-
-                <!-- Content Block - Image Divider Start -->
-                <div class="content__block">
-                  <div class="container-fluid p-0">
-                    <div class="row g-0">
-                      <div class="col-12">
-                        <!-- change the background image in the main.css file - .main-image-1 -->
-                        <div class="divider divider-image main-image-1 animate-in-up"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- Content Block - Image Divider End -->
-
-                <!-- Content Block - Blockquote Start -->
-                <div class="content__block large-text-block">
-                  <div class="container-fluid p-0">
-                    <div class="row g-0">
-                      <div class="col-12">
-                        <blockquote class="reveal-type animate-in-up">
-                          Here we must run as fast as we can, just to stay in place. And if you wish to go anywhere you must run twice as fast as that.
-                        </blockquote>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- Content Block - Blockquote End -->
-
-              </div>
-              <!-- Media Content End -->
-
-              <!-- Media Data Line #2 (if needed) Start -->
-              <div class="col-12 col-xl-2"></div>
-              <!-- Media Data Line #2 (if needed) End -->
-
-              <!-- Media Fullwidth Divider Start -->
-              <div class="media__fullwidth">
-
-                <!-- Marquee V1 Divider Start -->
-                <div class="items items--gsap">
-                  <div class="items__container">
         
-                    <!-- single item -->
-                    <div class="item icon">
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 92.3 93.1" fill="currentColor">
-                        <g>
-                          <rect x="45.7" class="st0" width="1" height="93.1"/>
-                          <rect x="45.7" y="0" transform="matrix(0.8412 -0.5407 0.5407 0.8412 -17.8476 32.3497)" class="st0" width="1" height="93.1"/>
-                          <rect x="45.7" y="0" transform="matrix(0.4155 -0.9096 0.9096 0.4155 -15.3764 69.2119)" class="st0" width="1" height="93.1"/>
-                          <rect x="-0.4" y="46.1" transform="matrix(0.9898 -0.1425 0.1425 0.9898 -6.1646 7.0506)" class="st0" width="93.1" height="1"/>
-                          <rect x="-0.4" y="46.1" transform="matrix(0.7556 -0.655 0.655 0.7556 -19.2157 41.618)" class="st0" width="93.1" height="1"/>
-                          <rect x="-0.4" y="46.1" transform="matrix(0.2812 -0.9597 0.9597 0.2812 -11.5032 77.7858)" class="st0" width="93.1" height="1"/>
-                          <rect x="45.7" y="0" transform="matrix(0.9595 -0.2817 0.2817 0.9595 -11.2479 14.8866)" class="st0" width="1" height="93.1"/>
-                          <rect x="45.7" y="0" transform="matrix(0.6549 -0.7557 0.7557 0.6549 -19.2631 50.9572)" class="st0" width="1" height="93.1"/>
-                          <rect x="45.7" y="0" transform="matrix(0.1423 -0.9898 0.9898 0.1423 -6.4999 85.629)" class="st0" width="1" height="93.1"/>
-                          <rect x="-0.4" y="46.1" transform="matrix(0.9097 -0.4153 0.4153 0.9097 -15.1716 23.381)" class="st0" width="93.1" height="1"/>
-                          <rect x="-0.4" y="46.1" transform="matrix(0.5411 -0.8409 0.8409 0.5411 -17.9774 60.1901)" class="st0" width="93.1" height="1"/>
-                        </g>
-                      </svg>
-                    </div>
-              
-                    <!-- single item -->
-                    <div class="item image image-1">
-                      <img src="asset/img/marquee/01.webp" alt="Image">
-                    </div>
-              
-                    <!-- single item -->
-                    <div class="item icon">
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89.2 82.8" fill="currentColor">
-                        <g>
-                          <g>
-                            <rect class="st0" width="89.2" height="1"/>
-                            <rect y="20.5" class="st0" width="89.2" height="1"/>
-                            <rect y="40.9" class="st0" width="89.2" height="1"/>
-                            <rect y="61.4" class="st0" width="89.2" height="1"/>
-                            <rect y="81.8" class="st0" width="89.2" height="1"/>
-                          </g>
-                          <rect x="2.5" y="10.2" transform="matrix(0.9712 -0.2384 0.2384 0.9712 -1.2518 11.1229)" class="st0" width="85.7" height="1"/>
-                          <rect x="2.5" y="30.7" transform="matrix(0.9712 -0.2384 0.2384 0.9712 -6.1265 11.7116)" class="st0" width="85.7" height="1"/>
-                          <rect x="2.5" y="51.2" transform="matrix(0.9712 -0.2384 0.2384 0.9712 -11.0059 12.3009)" class="st0" width="85.7" height="1"/>
-                          <rect x="2.5" y="71.6" transform="matrix(0.9712 -0.2384 0.2384 0.9712 -15.8827 12.8923)" class="st0" width="85.7" height="1"/>
-                        </g>
-                      </svg>
-                    </div>
-              
-                    <!-- single item -->
-                    <div class="item image image-2">
-                      <img src="asset/img/marquee/02.webp" alt="Image">
-                    </div>
-              
-                    <!-- single item -->
-                    <div class="item icon">
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 84 84" fill="currentColor">
-                        <g>
-                          <path d="M42,84C18.8,84,0,65.1,0,42S18.8,0,42,0s42,18.8,42,42S65.1,84,42,84z M42,1C19.4,1,1,19.4,1,42
-                            s18.4,41,41,41s41-18.4,41-41S64.6,1,42,1z"/>
-                          <path d="M42,69.8c-15.8,0-28.6-12.8-28.6-28.6h1c0,15.2,12.4,27.6,27.6,27.6s27.6-12.4,27.6-27.6h1
-                            C70.6,57,57.7,69.8,42,69.8z"/>
-                          <g>
-                            <path d="M31.7,31.1H17.8v-0.5c0-3.8,3.1-7,7-7s7,3.1,7,7L31.7,31.1L31.7,31.1z M18.8,30.1h11.9
-                              c-0.2-3-2.8-5.5-5.9-5.5S19.1,27.1,18.8,30.1L18.8,30.1z"/>
-                            <path d="M66.2,31.1H52.2v-0.5c0-3.8,3.1-7,7-7s7,3.1,7,7L66.2,31.1L66.2,31.1z M53.3,30.1h11.9
-                              c-0.2-3-2.8-5.5-5.9-5.5S53.5,27.1,53.3,30.1L53.3,30.1z"/>
-                          </g>
-                        </g>
-                      </svg>
-                    </div>
-              
-                    <!-- single item -->
-                    <div class="item image image-3">
-                      <img src="asset/img/marquee/03.webp" alt="Image">
-                    </div>
-              
-                  </div>
-                </div>
-                <!-- Marquee V1 Divider End -->
-
-              </div>
-              <!-- Media Fullwidth Divider End -->
-
-            </div>
-          </div>
-        </div>
         <!-- Main Section Media End -->
 
       </section>
       <!-- Main Section End -->
 
       <!-- Inner Section - Portfolio - Start -->
-      <section id="portfolio" class="inner inner-grid-bottom portfolio">
+    <section id="portfolio" class="inner inner-grid-bottom portfolio">
         <div class="inner__wrapper">
           <div class="container-fluid p-0">
             <div class="row g-0">
@@ -366,9 +283,8 @@
                   <!-- Content Block - H2 Section Title Start -->
                   <div class="content__block section-grid-text-title">
                     <div class="block__descr">
-                      <h2 class="reveal-type animate-in-up">Design, tech &<br>some magic</h2>
-                      <p class="h2__text type-basic-160lh animate-in-up">I wonder if I've been changed in the night? Let me think. 
-                        Was I the same when I got up this morning? I almost think I can remember feeling a little different.</p>
+                      <h2 class="reveal-type animate-in-up">Latest<br>Works</h2>
+                      <p class="h2__text type-basic-160lh animate-in-up">Explore our selected commercial and creative projects. From automotive visuals to corporate brand films, we deliver quality content that speaks for itself.</p>
                     </div>
                   </div>
                   <!-- Content Block - H2 Section Title End -->
@@ -380,81 +296,158 @@
                       <!-- Portfolio Gallery Start -->
                       <div class="row gx-0 my-gallery" itemscope itemtype="http://schema.org/ImageGallery" data-masonry='{"percentPosition": true }'>
                         <!-- portfolio gallery single item -->
-                        <figure class="col-12 col-md-6 gallery__item grid-item animate-card-2" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-                          <a href="asset/img/works/1400x1050_w01.webp" data-image="asset/img/works/1400x1050_w01.webp" class="gallery__link" itemprop="contentUrl" data-size="1400x1050">
-                            <img src="asset/img/works/1400x1050_w01.webp" class="gallery__image" itemprop="thumbnail" alt="Image description">
-                          </a>
-                          <figcaption class="gallery__descr" itemprop="caption description">
-                            <h5>Designer Portfolio
-                              <small>UI/UX design</small>
-                            </h5>
-                            <p class="small">Mauris porttitor lobortis ligula, quis molestie lorem scelerisque eu. Morbi aliquam enim odio,
-                              a mollis ipsum tristique eu.
-                            </p>
-                          </figcaption>
-                        </figure>
-                        <!-- portfolio gallery single item -->
-                        <figure class="col-12 col-md-6 gallery__item grid-item animate-card-2" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-                          <a href="asset/img/works/1100x1400_w02.webp" data-image="asset/img/works/1100x1400_w02.webp" class="gallery__link" itemprop="contentUrl" data-size="1100x1400">
-                            <img src="asset/img/works/1100x1400_w02.webp" class="gallery__image" itemprop="thumbnail" alt="Image description">
-                          </a>
-                          <figcaption class="gallery__descr opposite" itemprop="caption description">
-                            <h5 class="opposite">Idea Character
-                              <small>AI Illustration</small>
-                            </h5>
-                            <p class="small">Mauris porttitor lobortis ligula, quis molestie lorem scelerisque eu. Morbi aliquam enim odio,
-                              a mollis ipsum tristique eu.
-                            </p>
-                          </figcaption>
-                        </figure>
-                        <!-- portfolio gallery single item -->
-                        <figure class="col-12 col-md-6 gallery__item grid-item animate-card-2" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-                          <a href="asset/img/works/IMG_1485.webp" data-image="asset/img/works/IMG_1485.webp" class="gallery__link" itemprop="contentUrl" data-size="1400x1400">
-                            <img src="asset/img/works/IMG_1485.webp" class="gallery__image" itemprop="thumbnail" alt="Image description">
-                          </a>
-                          <figcaption class="gallery__descr opposite" itemprop="caption description">
-                            <h5 class="opposite">Robot Character
-                              <small>3D Render</small>
-                            </h5>
-                            <p class="small">Mauris porttitor lobortis ligula, quis molestie lorem scelerisque eu. Morbi aliquam enim odio,
-                              a mollis ipsum tristique eu.
-                            </p>
-                          </figcaption>
-                        </figure>
-                        <!-- portfolio gallery single item -->
-                        <figure class="col-12 col-md-6 gallery__item grid-item animate-card-2" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-                          <a href="asset/img/works/1400x1050_w04.webp" data-image="asset/img/works/1400x1050_w04.webp" class="gallery__link" itemprop="contentUrl" data-size="1400x1050">
-                            <img src="asset/img/works/1400x1050_w04.webp" class="gallery__image" itemprop="thumbnail" alt="Image description">
-                          </a>
-                          <figcaption class="gallery__descr " itemprop="caption description">
-                            <h5>Infinity
-                              <small>3D Illustration</small>
-                            </h5>
-                            <p class="small">Mauris porttitor lobortis ligula, quis molestie lorem scelerisque eu. Morbi aliquam enim odio,
-                              a mollis ipsum tristique eu.
-                            </p>
-                          </figcaption>
-                        </figure>
-                        <!-- portfolio gallery single item -->
-                        <figure class="col-12 col-md-6 gallery__item grid-item animate-card-2" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-                          <a href="asset/img/works/1400x1050_w05.webp" data-image="asset/img/works/1400x1050_w05.webp" class="gallery__link" itemprop="contentUrl" data-size="1400x1050">
-                            <img src="asset/img/works/1400x1050_w05.webp" class="gallery__image" itemprop="thumbnail" alt="Image description">
-                          </a>
-                          <figcaption class="gallery__descr" itemprop="caption description">
-                            <h5>Designer Portfolio
-                              <small>UI/UX design</small>
-                            </h5>
-                            <p class="small">Mauris porttitor lobortis ligula, quis molestie lorem scelerisque eu. Morbi aliquam enim odio,
-                              a mollis ipsum tristique eu.
-                            </p>
-                          </figcaption>
-                        </figure>
+                        <!-- portfolio item 1 -->
+<figure class="col-12 col-md-6 gallery__item grid-item animate-card-2">
+  <a href="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770788680/IMG_1657_e5dxte.jpg"
+     data-image="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770788680/IMG_1657_e5dxte.jpg"
+     class="gallery__link" data-size="1200x900">
+    <img src="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770788680/IMG_1657_e5dxte.jpg"
+         class="gallery__image portfolio-img" alt="Portfolio image">
+  </a>
+</figure>
+
+<!-- portfolio item 2 -->
+<figure class="col-12 col-md-6 gallery__item grid-item animate-card-2">
+  <a href="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770788673/DSC08844_a94flj.jpg"
+     data-image="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770788673/DSC08844_a94flj.jpg"
+     class="gallery__link" data-size="900x1200">
+    <img src="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770788673/DSC08844_a94flj.jpg"
+         class="gallery__image portfolio-img" alt="Portfolio image">
+  </a>
+</figure>
+
+<!-- portfolio item 3 -->
+<figure class="col-12 col-md-6 gallery__item grid-item animate-card-2">
+  <a href="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770788671/IMG_3639_jnhkd6.jpg"
+     data-image="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770788671/IMG_3639_jnhkd6.jpg"
+     class="gallery__link" data-size="1200x1200">
+    <img src="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770788671/IMG_3639_jnhkd6.jpg"
+         class="gallery__image portfolio-img" alt="Portfolio image">
+  </a>
+</figure>
+
+<!-- portfolio item 4 -->
+<figure class="col-12 col-md-6 gallery__item grid-item animate-card-2">
+  <a href="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770788672/DSC08795_jeqqqz.jpg"
+     data-image="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770788672/DSC08795_jeqqqz.jpg"
+     class="gallery__link" data-size="1200x900">
+    <img src="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770788672/DSC08795_jeqqqz.jpg"
+         class="gallery__image portfolio-img" alt="Portfolio image">
+  </a>
+</figure>
+<!-- portfolio item 4 -->
+<figure class="col-12 col-md-6 gallery__item grid-item animate-card-2">
+  <a href="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
+     data-image="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
+     class="gallery__link" data-size="1200x900">
+    <img src="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
+         class="gallery__image portfolio-img" alt="Portfolio image">
+  </a>
+</figure>
+<figure class="col-12 col-md-6 gallery__item grid-item animate-card-2">
+  <a href="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
+     data-image="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
+     class="gallery__link" data-size="1200x900">
+    <img src="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
+         class="gallery__image portfolio-img" alt="Portfolio image">
+  </a>
+</figure>
+<figure class="col-12 col-md-6 gallery__item grid-item animate-card-2">
+  <a href="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
+     data-image="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
+     class="gallery__link" data-size="1200x900">
+    <img src="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
+         class="gallery__image portfolio-img" alt="Portfolio image">
+  </a>
+</figure>
+<figure class="col-12 col-md-6 gallery__item grid-item animate-card-2">
+  <a href="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
+     data-image="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
+     class="gallery__link" data-size="1200x900">
+    <img src="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
+         class="gallery__image portfolio-img" alt="Portfolio image">
+  </a>
+</figure>
+<figure class="col-12 col-md-6 gallery__item grid-item animate-card-2">
+  <a href="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
+     data-image="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
+     class="gallery__link" data-size="1200x900">
+    <img src="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
+         class="gallery__image portfolio-img" alt="Portfolio image">
+  </a>
+</figure>
+<figure class="col-12 col-md-6 gallery__item grid-item animate-card-2">
+  <a href="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
+     data-image="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
+     class="gallery__link" data-size="1200x900">
+    <img src="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
+         class="gallery__image portfolio-img" alt="Portfolio image">
+  </a>
+</figure><figure class="col-12 col-md-6 gallery__item grid-item animate-card-2">
+  <a href="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
+     data-image="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
+     class="gallery__link" data-size="1200x900">
+    <img src="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
+         class="gallery__image portfolio-img" alt="Portfolio image">
+  </a>
+</figure>
+<figure class="col-12 col-md-6 gallery__item grid-item animate-card-2">
+  <a href="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
+     data-image="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
+     class="gallery__link" data-size="1200x900">
+    <img src="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
+         class="gallery__image portfolio-img" alt="Portfolio image">
+  </a>
+</figure>
+<figure class="col-12 col-md-6 gallery__item grid-item animate-card-2">
+  <a href="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
+     data-image="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
+     class="gallery__link" data-size="1200x900">
+    <img src="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
+         class="gallery__image portfolio-img" alt="Portfolio image">
+  </a>
+</figure>
+<figure class="col-12 col-md-6 gallery__item grid-item animate-card-2">
+  <a href="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
+     data-image="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
+     class="gallery__link" data-size="1200x900">
+    <img src="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
+         class="gallery__image portfolio-img" alt="Portfolio image">
+  </a>
+</figure>
+<figure class="col-12 col-md-6 gallery__item grid-item animate-card-2">
+  <a href="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
+     data-image="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
+     class="gallery__link" data-size="1200x900">
+    <img src="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
+         class="gallery__image portfolio-img" alt="Portfolio image">
+  </a>
+</figure>
+<figure class="col-12 col-md-6 gallery__item grid-item animate-card-2">
+  <a href="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
+     data-image="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
+     class="gallery__link" data-size="1200x900">
+    <img src="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
+         class="gallery__image portfolio-img" alt="Portfolio image">
+  </a>
+</figure>
+<figure class="col-12 col-md-6 gallery__item grid-item animate-card-2">
+  <a href="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
+     data-image="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
+     class="gallery__link" data-size="1200x900">
+    <img src="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
+         class="gallery__image portfolio-img" alt="Portfolio image">
+  </a>
+</figure>
+
+
+
                       </div>
                       <!-- Portfolio Gallery End -->
 
                       <!-- External Portfolio Link Start -->
                       <div class="gallery__btn animate-in-up">
-                        <a href="#0" class="btn btn-line-circle-icon">
+                        <a href="https://drive.google.com/drive/folders/1erx4RSUaiHGnAGXacSE_bGTHd9QiDraE?usp=share_link" class="btn btn-line-circle-icon">
                           <span class="btn-caption">Behance profile</span>
                           <span class="circle hover-circle">
                             <em></em>
@@ -487,131 +480,7 @@
       <!-- Inner Section - About - End -->
 
       <!-- Inner Section - Services - Start -->
-      <section id="services" class="inner inner-stack-bottom services">
-        <div class="inner__wrapper">
-          <div class="container-fluid p-0">
-            <div class="row g-0">
-
-              <!-- Inner Section Name Start -->
-              <div class="col-12 col-xl-2">
-                <div class="inner__name">
-
-                  <!-- Content Block - Section Name Start -->
-                  <div class="content__block name-block">
-                    <span class="section-name icon-right animate-in-up">
-                      <span class="section-name-caption">Services</span>
-                      <i class="ph ph-arrow-down-right"></i>
-                    </span>
-                  </div>
-                  <!-- Content Block - Section Name Start -->
-
-                </div>
-              </div>
-              <!-- Inner Section Name End -->
-
-              <!-- Inner Section Content Start -->
-              <div class="col-12 col-xl-8">
-                <div class="inner__content">
-
-                  <!-- Content Block - H2 Section Title Start -->
-                  <div class="content__block pre-stack-text-block">
-                    <div class="block__descr">
-                      <h2 class="reveal-type animate-in-up">Creating<br>impactful projects</h2>
-                      <p class="h2__text type-basic-160lh animate-in-up">I wonder if I've been changed in the night? Let me think. 
-                        Was I the same when I got up this morning? I almost think I can remember feeling a little different.</p>
-                    </div>
-                  </div>
-                  <!-- Content Block - H2 Section Title End -->
-
-                  <!-- Content Block - Services/Features Stacking Cards Block Start -->
-                  <div class="content__block">
-                    <div class="stack-wrapper">
-                      <div class="stack-offset"></div>
-                      <div class="services-stack">
-                        <!-- services stack single item -->
-                        <div class="stack-item">
-                          <div class="services-stack__inner">
-                            <div class="services-stack__title">
-                              <h3>Digital art and graphic design</h3>
-                            </div>
-                            <div class="services-stack__descr">
-                              <i class="ph-thin ph-bezier-curve"></i>
-                              <p class="services-stack__text type-basic-160lh">I use Adobe Photoshop, Fresco and Blender to create 
-                                illustrations and 3D renders for my clients and stocks.</p>
-                            </div>
-                            <div class="services-stack__image">
-                              <img class="service-img service-img-s" src="asset/img/services/1200x1000_s01.webp" alt="Service/Feature Image">
-                              <img class="service-img service-img-m" src="asset/img/services/800x1000_s01.webp" alt="Service/Feature Image">
-                            </div>
-                          </div>
-                        </div>
-                        <!-- services stack single item -->
-                        <div class="stack-item">
-                          <div class="services-stack__inner">
-                            <div class="services-stack__title">
-                              <h3>Frontend<br>development</h3>
-                            </div>
-                            <div class="services-stack__descr">
-                              <i class="ph-thin ph-code"></i>
-                              <p class="services-stack__text type-basic-160lh">I work with HTML/CSS, Framer and WordPress.</p>
-                            </div>
-                            <div class="services-stack__image">
-                              <img class="service-img service-img-s" src="asset/img/services/1200x1000_s02.webp" alt="Service/Feature Image">
-                              <img class="service-img service-img-m" src="asset/img/services/800x1000_s02.webp" alt="Service/Feature Image">
-                            </div>
-                          </div>
-                        </div>
-                        <!-- services stack single item -->
-                        <div class="stack-item">
-                          <div class="services-stack__inner">
-                            <div class="services-stack__title">
-                              <h3>Brand<br>identity</h3>
-                            </div>
-                            <div class="services-stack__descr">
-                              <i class="ph-thin ph-cube"></i>
-                              <p class="services-stack__text type-basic-160lh">I help my clients to develop a personality and brand voice, 
-                                design the brand look and logo.</p>
-                            </div>
-                            <div class="services-stack__image">
-                              <img class="service-img service-img-s" src="asset/img/services/1200x1000_s03.webp" alt="Service/Feature Image">
-                              <img class="service-img service-img-m" src="asset/img/services/800x1000_s03.webp" alt="Service/Feature Image">
-                            </div>
-                          </div>
-                        </div>
-                        <!-- services stack single item -->
-                        <div class="stack-item">
-                          <div class="services-stack__inner">
-                            <div class="services-stack__title">
-                              <h3>SEO/Digital marketing solutions</h3>
-                            </div>
-                            <div class="services-stack__descr">
-                              <i class="ph-thin ph-graph"></i>
-                              <p class="services-stack__text type-basic-160lh">Social media content plans, media monitoring, 
-                                email and text messaging and search engine optimization.</p>
-                            </div>
-                            <div class="services-stack__image">
-                              <img class="service-img service-img-s" src="asset/img/services/1200x1000_s04.webp" alt="Service/Feature Image">
-                              <img class="service-img service-img-m" src="asset/img/services/800x1000_s04.webp" alt="Service/Feature Image">
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- Content Block - Services/Features Stacking Cards Block End -->
-                  
-                </div>
-              </div>
-              <!-- Inner Section Content End -->
-
-              <!-- Inner Section Aside Start -->
-              <div class="col-12 col-xl-2"></div>
-              <!-- Inner Section Aside End -->
-
-            </div>
-          </div>
-        </div>
-      </section>
+     
       <!-- Inner Section - Services - End -->
 
       <!-- Inner Section - Resume - Start -->

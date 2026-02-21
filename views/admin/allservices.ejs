@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <title>All Services | Admin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <link rel="stylesheet" href="/app/css/app.css" />
+  <link rel="stylesheet" href="/app/css/map.min.css" />
+  <%- include('../layouts/admin/favicon.ejs') %>
+</head>
+<body class="body header-fixed">
+
+  <div id="wrapper">
+    <div id="pagee" class="clearfix">
+      <%- include('../layouts/admin/sideheader.ejs') %>
+
+      <main id="main">
+        <section class="profile-dashboard">
+          <section class="form-add-tour">
+            <div class="widget-dash-board pr-256 mb-75">
+              <div class="inner-header mb-40 flex justify-space align-center">
+                <h3 class="title">All Services</h3>
+                <a href="/admin/services/add" class="btn btn-primary" style="background-color: #f29200;">
+                  Add New Service
+                </a>
+              </div>
+
+              <div class="table-responsive">
+                <table class="table table-bordered">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th>#</th>
+                      <th>Title</th>
+                      <th>Icon</th>
+                      <th>Priority</th>
+                      <th>Images</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% if (services && services.length > 0) { %>
+                      <% services.forEach((s, index) => { %>
+                        <tr>
+                          <td><%= index + 1 %></td>
+                          <td><strong><%= s.title %></strong></td>
+                          <td><i class="<%= s.icon %>" style="font-size: 24px;"></i> <%= s.icon %></td>
+                          <td><%= s.priority %></td>
+                          <td>
+                            <% if (s.imageSmall) { %>
+                              <img src="<%= s.imageSmall %>" width="50" alt="Small" />
+                            <% } %>
+                            <% if (s.imageMedium) { %>
+                              <img src="<%= s.imageMedium %>" width="50" alt="Medium" />
+                            <% } %>
+                          </td>
+                          <td>
+                            <button
+                              class="btn btn-warning btn-sm"
+                              onclick="location.href='/admin/services/<%= s._id %>/edit'"
+                            >
+                              Edit
+                            </button>
+                            <button
+                              class="btn btn-danger btn-sm"
+                              onclick="deleteService('<%= s._id %>')"
+                            >
+                              Delete
+                            </button>
+                          </td>
+                        </tr>
+                      <% }) %>
+                    <% } else { %>
+                      <tr>
+                        <td colspan="6" class="text-center">No services found. <a href="/admin/services/add">Add your first service</a></td>
+                      </tr>
+                    <% } %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+        </section>
+      </main>
+
+      <%- include('../layouts/admin/footer.ejs') %>
+    </div>
+  </div>
+
+  <a id="scroll-top" class="button-go"></a>
+
+  <script src="/app/js/jquery.min.js"></script>
+  <script src="/app/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+  <script>
+    function deleteService(id) {
+      swal({
+        title: 'Are you sure?',
+        text: 'This will mark the service as inactive',
+        icon: 'warning',
+        buttons: ['Cancel', 'Delete'],
+        dangerMode: true,
+      }).then((willDelete) => {
+        if (!willDelete) return;
+
+        fetch('/admin/services/' + id, {
+          method: 'DELETE',
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.success) {
+              swal('Deleted!', data.message, 'success').then(() => location.reload());
+            } else {
+              swal('Error', data.message || 'Failed to delete', 'error');
+            }
+          })
+          .catch(() => swal('Error', 'Unexpected error', 'error'));
+      });
+    }
+  </script>
+</body>
+</html>

@@ -17,10 +17,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <!-- Template Favicon & Icons Start -->
-    <link rel="icon" href="asset/img/favicon/favicon.ico" sizes="any">
-    <link rel="icon" href="asset/img/favicon/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="asset/img/favicon/apple-touch-icon.png">
-    <link rel="manifest" href="asset/img/favicon/manifest.webmanifest">
+    <link rel="icon" href="asset/img/works/HM PRODUCTION.png" sizes="any">
+    <link rel="icon" href="asset/img/works/HM PRODUCTION.png" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="asset/img/works/HM PRODUCTION.png">
+    <link rel="manifest" href="asset/img/works/HM PRODUCTION.png">
     <!-- Template Favicon & Icons End -->
 
     <!-- Facebook Metadata Start -->
@@ -193,18 +193,18 @@
     <main id="page-content" class="page-content">
 
       <!-- Main Section Start -->
-      <section id="home" class="main home">
+        <section id="home" class="main home">
 
         <!-- Main Section Intro Start -->
         <div class="main__intro">
 
           <!-- Intro Background Start -->
           <div class="intro__background intro-bg-01">
-            <div class="intro-bg-01__01" data-speed="0.6">
+            <div class="intro-bg-01__01" data-speed="0.6" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">
               <img src="asset/img/backgrounds/1200x1200_bg01.webp" alt="Background Objects">
               <div class="intro-bg__shadow"></div>
             </div>
-            <div class="intro-bg-01__02" data-speed="0.8">
+            <div class="intro-bg-01__02" data-speed="0.8" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">
               <img src="asset/img/backgrounds/1200x1200_bg02.webp" alt="Background Objects">
               <div class="intro-bg__shadow"></div>
             </div>
@@ -223,9 +223,15 @@
 
                 <!-- Headline Start -->
                 <div id="headline" class="headline d-flex align-items-start flex-column loading-wrap">
-                  <p class="headline__subtitle space-bottom loading__item">Hello!<br>I am Alex Walker</p>
-                  <h1 class="headline__title loading__item">Digital designer<br>& illustrator</h1>
-                  <div class="headline__btn loading__item">
+                  <p class="headline__subtitle space-bottom loading__item" style="opacity: 1; translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">
+  Welcome to<br>H and M Productions
+</p>
+
+<h1 class="headline__title loading__item" style="opacity: 1; translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">
+  Cinematic Visuals<br>&amp; Brand Stories
+</h1>
+
+                  <div class="headline__btn loading__item" style="opacity: 1; translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">
                     <a class="btn btn-line-small icon-right slide-right-down" href="#portfolio">
                       <span class="btn-caption">Scroll for more</span>
                       <i class="ph ph-arrow-down-right"></i>
@@ -246,9 +252,7 @@
         </div>
         <!-- Main Section Intro End -->
 
-        <!-- Main Section Media Start -->
-        
-        <!-- Main Section Media End -->
+      
 
       </section>
       <!-- Main Section End -->
@@ -585,12 +589,7 @@
                             <a class="link-small-160lh animate-in-up" href="https://maps.app.goo.gl/xMJXTEUeHkv6kYRQ6" target="_blank">Odesa, Ukraine<br>65000</a>
                           </p>
                         </div>
-                        <div class="col-12 col-md-6 col-lg-3 contact-data__item grid-item">
-                          <p class="contact-data__title tagline-chapter animate-in-up">Location</p>
-                          <p class="contact-data__text small type-basic-160lh">
-                            <a class="link-small-160lh animate-in-up" href="https://maps.app.goo.gl/CGucvMFbkYuZiprv6" target="_blank">Kyiv, Ukraine<br>02000</a>
-                          </p>
-                        </div>
+                        
                         <div class="col-12 col-md-6 col-lg-3 contact-data__item grid-item">
                           <p class="contact-data__title tagline-chapter animate-in-up">Phone</p>
                           <p class="contact-data__text small type-basic-160lh">
@@ -824,6 +823,31 @@
     <script src="asset/js/libs.min.js"></script>
     <script src="asset/js/gallery-init.js"></script>
     <script src="asset/js/app.js"></script>
+    <script>
+document.getElementById("contact-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    var name = document.querySelector("input[name='Name']").value;
+    var company = document.querySelector("input[name='Company']").value;
+    var email = document.querySelector("input[name='E-mail']").value;
+    var phone = document.querySelector("input[name='Phone']").value;
+    var message = document.querySelector("textarea[name='Message']").value;
+
+    var whatsappNumber = "447767599149"; // 👉 Replace with your WhatsApp number (with country code, no +)
+
+    var text = 
+        "New Project Inquiry%0A%0A" +
+        "Name: " + name + "%0A" +
+        "Company: " + company + "%0A" +
+        "Email: " + email + "%0A" +
+        "Phone: " + phone + "%0A%0A" +
+        "Message:%0A" + message;
+
+    var url = "https://wa.me/" + whatsappNumber + "?text=" + text;
+
+    window.open(url, "_blank");
+});
+</script>
     <!-- Load Scripts End -->
     
   </body>

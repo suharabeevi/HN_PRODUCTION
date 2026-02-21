@@ -1,9 +1,7 @@
-// const Category = require('../models/categorymodel')
 const Tour = require("../models/tourmodel");
-// const Blog = require("../models/blogmodel");
+const Service = require("../models/servicemodel");
+const Package = require("../models/packagemodel");
 const mongoose = require('mongoose');
-// const Ticket = require('../models/ticketmodel')
-
 
 module.exports = {
 userhome: async (req, res) => {
@@ -11,8 +9,14 @@ userhome: async (req, res) => {
       // Fetch all tours (you can add filters or limits later)
       const tours = await Tour.find({}, "title subtitle duration groupSize price images tourPlace").lean();
 
-      // Render the home page and pass tours
-      res.render("user/home", { tours });
+      // Fetch all services
+      const services = await Service.find({ isActive: true }).sort({ priority: 1 }).lean();
+
+      // Fetch all packages
+      const packages = await Package.find({ isActive: { $ne: false } }).sort({ createdAt: 1 }).lean();
+
+      // Render the home page and pass data
+      res.render("user/home", { tours, services, packages });
     } catch (error) {
       console.error("Error fetching home page:", error);
       res.status(400).json({
@@ -21,6 +25,7 @@ userhome: async (req, res) => {
       });
     }
   },
+
 
 projectspage: async (req, res) => {
     try {

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <title>Edit Service | Admin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <link rel="stylesheet" href="/app/css/app.css" />
+  <link rel="stylesheet" href="/app/css/map.min.css" />
+  <%- include('../layouts/admin/favicon.ejs') %>
+</head>
+<body class="body header-fixed">
+  
+  <div id="wrapper">
+    <div id="pagee" class="clearfix">
+      <%- include('../layouts/admin/sideheader.ejs') %>
+
+      <main id="main">
+        <section class="profile-dashboard">
+          <section class="form-add-tour">
+            <div class="widget-dash-board pr-256 mb-75">
+              <div class="inner-header mb-40 flex justify-space align-center">
+                <h3 class="title">Edit Service: <%= service.title %></h3>
+                <a href="/admin/services" class="btn btn-outline-secondary btn-sm">
+                  View All Services
+                </a>
+              </div>
+
+              <div class="grid-input-2 mb-20">
+                <div class="input-wrap">
+                  <label>Service Title *</label>
+                  <input
+                    type="text"
+                    id="service-title"
+                    value="<%= service.title %>"
+                    required
+                  />
+                </div>
+                <div class="input-wrap">
+                  <label>Icon Class (Phosphor Icons)</label>
+                  <input
+                    type="text"
+                    id="service-icon"
+                    value="<%= service.icon %>"
+                  />
+                </div>
+              </div>
+
+              <div class="input-wrap mb-20">
+                <label>Description *</label>
+                <textarea
+                  id="service-description"
+                  rows="4"
+                  required
+                ><%= service.description %></textarea>
+              </div>
+
+              <div class="grid-input-2 mb-20">
+                <div class="input-wrap">
+                  <label>Display Priority (Lower = First)</label>
+                  <input type="number" id="service-priority" value="<%= service.priority %>" />
+                </div>
+              </div>
+
+              <div class="inner-header mb-20">
+                <h4 class="title">Media</h4>
+                <p class="text-muted">Upload new images to replace existing ones.</p>
+              </div>
+
+              <div class="grid-input-2 mb-20">
+                <div class="input-wrap">
+                  <label>Small Image</label>
+                  <% if (service.imageSmall) { %>
+                    <div class="mb-10"><img src="<%= service.imageSmall %>" width="100" /></div>
+                  <% } %>
+                  <input type="file" id="service-image-small" accept="image/*" />
+                </div>
+                <div class="input-wrap">
+                  <label>Medium Image</label>
+                  <% if (service.imageMedium) { %>
+                    <div class="mb-10"><img src="<%= service.imageMedium %>" width="100" /></div>
+                  <% } %>
+                  <input type="file" id="service-image-medium" accept="image/*" />
+                </div>
+              </div>
+
+              <div class="input-wrap">
+                <button type="button" class="button-update">Update Service</button>
+              </div>
+            </div>
+          </section>
+        </section>
+      </main>
+
+      <%- include('../layouts/admin/footer.ejs') %>
+    </div>
+  </div>
+
+  <a id="scroll-top" class="button-go"></a>
+
+  <script src="/app/js/jquery.min.js"></script>
+  <script src="/app/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <script>
+  document.querySelector('.button-update').addEventListener('click', async () => {
+    const title = document.querySelector('#service-title').value.trim();
+    const description = document.querySelector('#service-description').value.trim();
+    const icon = document.querySelector('#service-icon').value.trim();
+    const priority = document.querySelector('#service-priority').value;
+
+    if (!title || !description) {
+      return Swal.fire('Error', 'Title and description are required', 'error');
+    }
+
+    try {
+      const formData = new FormData();
+      formData.append('title', title);
+      formData.append('description', description);
+      formData.append('icon', icon);
+      formData.append('priority', priority);
+
+      const smallImg = document.getElementById('service-image-small').files[0];
+      const mediumImg = document.getElementById('service-image-medium').files[0];
+
+      if (smallImg) formData.append('imageSmall', smallImg);
+      if (mediumImg) formData.append('imageMedium', mediumImg);
+
+      const res = await fetch('/admin/services/<%= service._id %>', {
+        method: 'PUT',
+        body: formData
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        Swal.fire('Success', data.message, 'success').then(() => {
+          window.location.href = '/admin/services';
+        });
+      } else {
+        Swal.fire('Error', data.message || 'Failed to update service', 'error');
+      }
+    } catch (err) {
+      console.error(err);
+      Swal.fire('Error', 'Unexpected error occurred', 'error');
+    }
+  });
+</script>
+
+</body>
+</html>

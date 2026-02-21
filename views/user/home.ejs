@@ -17,10 +17,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <!-- Template Favicon & Icons Start -->
-    <link rel="icon" href="asset/img/favicon/favicon.ico" sizes="any">
-    <link rel="icon" href="asset/img/favicon/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="asset/img/favicon/apple-touch-icon.png">
-    <link rel="manifest" href="asset/img/favicon/manifest.webmanifest">
+    <link rel="icon" href="asset/img/works/HM PRODUCTION.png" sizes="any">
+    <link rel="icon" href="asset/img/works/HM PRODUCTION.png" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="asset/img/works/HM PRODUCTION.png">
+    <link rel="manifest" href="asset/img/works/HM PRODUCTION.png">
     <!-- Template Favicon & Icons End -->
 
     <!-- Facebook Metadata Start -->
@@ -585,7 +585,7 @@
                       <!-- External Portfolio Link Start -->
                       <div class="gallery__btn animate-in-up">
                         <a href="https://drive.google.com/drive/folders/1erx4RSUaiHGnAGXacSE_bGTHd9QiDraE?usp=share_link" class="btn btn-line-circle-icon">
-                          <span class="btn-caption">Behance profile</span>
+                          <span class="btn-caption">Explore more</span>
                           <span class="circle hover-circle">
                             <em></em>
                             <i class="ph ph-arrow-right"></i>
@@ -642,7 +642,7 @@
                   <!-- Content Block - H2 Section Title Start -->
                   <div class="content__block section-grid-title">
                     <div class="block__descr">
-                      <h2 class="reveal-type animate-in-up">Our Vision &<br>Mission</h2>
+                      <h2 class="reveal-type animate-in-up">Beyond the Portfolio</h2>
                     </div>
                   </div>
                   <!-- Content Block - H2 Section Title End -->
@@ -767,104 +767,45 @@
                     <div class="stack-wrapper">
                       <div class="stack-offset"></div>
                       <div class="services-stack">
-                        <!-- services stack single item -->
-                        <div class="stack-item">
-  <div class="services-stack__inner">
-    <div class="services-stack__title">
-      <h3>Commercial &<br>Brand Films</h3>
-    </div>
-    <div class="services-stack__descr">
-      <i class="ph-thin ph-film-slate"></i>
-      <p class="services-stack__text type-basic-160lh">
-        High-quality brand films and commercials designed to communicate your brand story,
-        values, and vision with cinematic excellence.
-      </p>
-    </div>
-   <div class="services-stack__image">
-                              <img class="service-img service-img-s" src="asset/img/services/cinematic.webp" alt="Service/Feature Image">
-                              <img class="service-img service-img-m" src="asset/img/services/cinematic-commercials.webp" alt="Service/Feature Image">
+                        <% if (services && services.length > 0) { %>
+                          <% services.forEach((service, index) => { %>
+                            <!-- services stack single item -->
+                            <div class="stack-item">
+                              <div class="services-stack__inner">
+                                <div class="services-stack__title">
+                                  <h3><%= service.title%></h3>
+                                </div>
+                                <div class="services-stack__descr">
+                                  <i class="<%= service.icon %>"></i>
+                                  <p class="services-stack__text type-basic-160lh">
+                                    <%= service.description %>
+                                  </p>
+                                </div>
+                                <div class="services-stack__image">
+                                  <img class="service-img service-img-s" src="<%= service.imageSmall || 'asset/img/services/cinematic.webp' %>" alt="<%= service.title %>">
+                                  <img class="service-img service-img-m" src="<%= service.imageMedium || 'asset/img/services/cinematic-commercials.webp' %>" alt="<%= service.title %>">
+                                </div>
+                              </div>
                             </div>
-</div>
-
-                        <!-- services stack single item -->
-                       <div class="stack-item">
-  <div class="services-stack__inner">
-    <div class="services-stack__title">
-      <h3>Social Media<br>Content</h3>
-    </div>
-    <div class="services-stack__descr">
-      <i class="ph-thin ph-instagram-logo"></i>
-      <p class="services-stack__text type-basic-160lh">
-        Engaging short-form videos, reels, and visual content tailored for Instagram,
-        YouTube, and other digital platforms.
-      </p>
-    </div>
-    <div class="services-stack__image">
-                              <img class="service-img service-img-s" src="asset/img/services/social_meadia.jpg" alt="Service/Feature Image">
-                              <img class="service-img service-img-m" src="asset/img/services/social_meadia - Copy.jpg" alt="Service/Feature Image">
+                          <% }) %>
+                        <% } else { %>
+                          <!-- Fallback if no services are added -->
+                          <div class="stack-item">
+                            <div class="services-stack__inner">
+                              <div class="services-stack__title">
+                                <h3>No Services<br>Available</h3>
+                              </div>
+                              <div class="services-stack__descr">
+                                <i class="ph-thin ph-info"></i>
+                                <p class="services-stack__text type-basic-160lh">
+                                  Please add services from the admin panel.
+                                </p>
+                              </div>
                             </div>
-  </div>
-</div>
-
-                        <!-- services stack single item -->
-                       <div class="stack-item">
-  <div class="services-stack__inner">
-    <div class="services-stack__title">
-      <h3>Automotive<br>Photography & Videography</h3>
-    </div>
-    <div class="services-stack__descr">
-      <i class="ph-thin ph-car"></i>
-      <p class="services-stack__text type-basic-160lh">
-        Dynamic automotive shoots capturing performance, design, and motion
-        with precision lighting and cinematic visuals.
-      </p>
-    </div>
-    <div class="services-stack__image">
-      <img class="service-img service-img-s" src="asset/img/services/Automotive.jpg" alt="Automotive Production">
-      <img class="service-img service-img-m" src="asset/img/services/Automotive_copy.jpg" alt="Automotive Production">
-    </div>
-  </div>
-</div>
-
-                        <!-- services stack single item -->
-                      <div class="stack-item">
-  <div class="services-stack__inner">
-    <div class="services-stack__title">
-      <h3>Event<br>Coverage</h3>
-    </div>
-    <div class="services-stack__descr">
-      <i class="ph-thin ph-camera"></i>
-      <p class="services-stack__text type-basic-160lh">
-        Professional photography and videography for corporate events,
-        launches, concerts, and private occasions.
-      </p>
-    </div>
-    <div class="services-stack__image">
-      <img class="service-img service-img-s" src="asset/img/services/Event_Coverage.jpg" alt="Event Coverage">
-      <img class="service-img service-img-m" src="asset/img/services/Event_Coverage - Copy.jpg" alt="Event Coverage">
-    </div>
-  </div>
-</div>
-<div class="stack-item">
-  <div class="services-stack__inner">
-    <div class="services-stack__title">
-      <h3>Corporate<br>Videos</h3>
-    </div>
-    <div class="services-stack__descr">
-      <i class="ph-thin ph-buildings"></i>
-      <p class="services-stack__text type-basic-160lh">
-        Corporate films, interviews, and internal communications
-        that reflect professionalism, trust, and brand identity.
-      </p>
-    </div>
-    <div class="services-stack__image">
-      <img class="service-img service-img-s" src="asset/img/services/Corporate_Videos.jpg" alt="Corporate Videos">
-      <img class="service-img service-img-m" src="asset/img/services/Corporate_Videos - Copy.jpg" alt="Corporate Videos">
-    </div>
-  </div>
-</div>
-
+                          </div>
+                        <% } %>
                       </div>
+
                     </div>
                   </div>
                   <!-- Content Block - Services/Features Stacking Cards Block End -->
@@ -941,120 +882,62 @@
                    <div class="testimonials-slider">
   <div class="swiper-testimonials">
     <div class="swiper-wrapper">
+      <% if (packages && packages.length > 0) { %>
+        <% packages.forEach(pkg => { %>
+          <!-- Package Card -->
+          <div class="swiper-slide">
+            <div class="testimonials-card animate-in-up">
+              <div class="container-fluid p-0 fullheight-l">
+                <div class="row g-0 d-flex align-items-stretch fullheight-l">
 
-      <!-- Package 1 -->
-      <div class="swiper-slide">
-        <div class="testimonials-card animate-in-up">
-          <div class="container-fluid p-0 fullheight-l">
-            <div class="row g-0 d-flex align-items-stretch fullheight-l">
+                  <div class="col-12 col-lg-6 testimonials-card__tdata">
+                    <h3 class="animate-in-up"><%= pkg.name %> — <%= pkg.currency === 'GBP' ? '£' : (pkg.currency === 'USD' ? '$' : (pkg.currency === 'EUR' ? '€' : pkg.currency)) %><%= pkg.price %></h3>
 
-              <div class="col-12 col-lg-6 testimonials-card__tdata">
-                <h3 class="animate-in-up">Launch — £250</h3>
+                    <ul class="type-basic-160lh animate-in-up">
+                      <% if (pkg.features && pkg.features.length > 0) { %>
+                        <% pkg.features.forEach(feature => { %>
+                          <li><%= feature.label %></li>
+                        <% }) %>
+                      <% } else { %>
+                        <li><%= pkg.description %></li>
+                      <% } %>
+                    </ul>
 
-                <ul class="type-basic-160lh animate-in-up">
-                  <li>Up to 2-hour shoot</li>
-                  <li>1 location</li>
-                  <li>1–2 edited videos or photos</li>
-                  <li>Basic colour grading</li>
-                  <li>Social-ready delivery</li>
-                </ul>
+                    <div class="testimonials-card__btnholder animate-in-up">
+                      <a class="btn btn-line icon-right slide-right" href="#contact">
+                        <span class="btn-caption">Choose Package</span>
+                        <i class="ph ph-arrow-right"></i>
+                      </a>
+                    </div>
+                  </div>
 
-                <div class="testimonials-card__btnholder animate-in-up">
-                  <a class="btn btn-line icon-right slide-right" href="#0">
-                    <span class="btn-caption">Choose Package</span>
-                    <i class="ph ph-arrow-right"></i>
-                  </a>
+                  <div class="col-12 col-lg-6 testimonials-card__timage fullheight-l">
+                    <div class="timage__inner fullheight-l animate-in-up">
+                      <img src="<%= (pkg.images && pkg.images.length > 0) ? pkg.images[0] : 'asset/img/marquee/1400x1200_t01.jpg' %>" alt="<%= pkg.name %>">
+                    </div>
+                  </div>
+
                 </div>
               </div>
-
-              <!-- EXISTING IMAGE (UNCHANGED) -->
-              <div class="col-12 col-lg-6 testimonials-card__timage fullheight-l">
-                <div class="timage__inner fullheight-l animate-in-up">
-                  <img src="asset/img/marquee/1400x1200_t01.jpg" alt="Launch Package">
+            </div>
+          </div>
+        <% }) %>
+      <% } else { %>
+        <div class="swiper-slide">
+          <div class="testimonials-card animate-in-up">
+            <div class="container-fluid p-0 fullheight-l">
+              <div class="row g-0 d-flex align-items-stretch fullheight-l text-center">
+                <div class="col-12 testimonials-card__tdata">
+                  <h3>No Packages Available</h3>
+                  <p>Check back later for pricing plans.</p>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
-      </div>
-
-      <!-- Package 2 -->
-      <div class="swiper-slide">
-        <div class="testimonials-card animate-in-up">
-          <div class="container-fluid p-0 fullheight-l">
-            <div class="row g-0 d-flex align-items-stretch fullheight-l">
-
-              <div class="col-12 col-lg-6 testimonials-card__tdata">
-                <h3 class="animate-in-up">Growth — £450</h3>
-
-                <ul class="type-basic-160lh animate-in-up">
-                  <li>Half-day shoot (up to 4 hours)</li>
-                  <li>Multiple shots & angles</li>
-                  <li>3–5 edited videos or photos</li>
-                  <li>Advanced colour grading</li>
-                  <li>Optimised for Instagram & TikTok</li>
-                </ul>
-
-                <div class="testimonials-card__btnholder animate-in-up">
-                  <a class="btn btn-line icon-right slide-right" href="#0">
-                    <span class="btn-caption">Choose Package</span>
-                    <i class="ph ph-arrow-right"></i>
-                  </a>
-                </div>
-              </div>
-
-              <!-- EXISTING IMAGE (UNCHANGED) -->
-              <div class="col-12 col-lg-6 testimonials-card__timage fullheight-l">
-                <div class="timage__inner fullheight-l animate-in-up">
-                  <img src="asset/img/marquee/1400x1200_t01.jpg" alt="Growth Package">
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Package 3 -->
-      <div class="swiper-slide">
-        <div class="testimonials-card animate-in-up">
-          <div class="container-fluid p-0 fullheight-l">
-            <div class="row g-0 d-flex align-items-stretch fullheight-l">
-
-              <div class="col-12 col-lg-6 testimonials-card__tdata">
-                <h3 class="animate-in-up">Signature — £750+</h3>
-
-                <ul class="type-basic-160lh animate-in-up">
-                  <li>Full-day shoot (up to 8 hours)</li>
-                  <li>Creative direction</li>
-                  <li>Multiple locations</li>
-                  <li>6–10 premium deliverables</li>
-                  <li>Advanced editing & sound design</li>
-                  <li>Priority delivery</li>
-                </ul>
-
-                <div class="testimonials-card__btnholder animate-in-up">
-                  <a class="btn btn-line icon-right slide-right" href="#0">
-                    <span class="btn-caption">Book Now</span>
-                    <i class="ph ph-arrow-right"></i>
-                  </a>
-                </div>
-              </div>
-
-              <!-- EXISTING IMAGE (UNCHANGED) -->
-              <div class="col-12 col-lg-6 testimonials-card__timage fullheight-l">
-                <div class="timage__inner fullheight-l animate-in-up">
-                  <img src="asset/img/marquee/1400x1200_t01.jpg" alt="Signature Package">
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
-
+      <% } %>
     </div>
+
 
     <!-- navigation -->
     <div class="swiper-button-prev mxd-slider-btn mxd-slider-btn-square-prev animate-in-up">
@@ -1267,29 +1150,12 @@
                   <!-- Socials Lines Start -->
                   <ul class="socials-lines d-flex flex-column">
                     <!-- socials lines single item -->
-                    <li class="socials-lines__item">
-                      <div class="socials-lines__divider animate-in-up"></div>
-                      <a class="socials-lines__link d-flex align-items-center justify-content-between" href="https://dribbble.com/" target="_blank">
-                        <h4 class="animate-in-up">Dribbble</h4>
-                        <div class="socials-lines__icon d-flex animate-in-up">
-                          <i class="ph ph-arrow-up-right"></i>
-                        </div>
-                      </a>
-                      <div class="socials-lines__divider animate-in-up"></div>
-                    </li>
+                   
                     <!-- socials lines single item -->
-                    <li class="socials-lines__item animate-in-up">
-                      <a class="socials-lines__link d-flex align-items-center justify-content-between animate-in-up" href="https://www.behance.net/" target="_blank">
-                        <h4 class="animate-in-up">Behance</h4>
-                        <div class="socials-lines__icon d-flex animate-in-up">
-                          <i class="ph ph-arrow-up-right"></i>
-                        </div>
-                      </a>
-                      <div class="socials-lines__divider animate-in-up"></div>
-                    </li>
+                    
                     <!-- socials lines single item -->
                     <li class="socials-lines__item">
-                      <a class="socials-lines__link d-flex align-items-center justify-content-between" href="https://www.instagram.com/" target="_blank">
+                      <a class="socials-lines__link d-flex align-items-center justify-content-between" href="https://www.instagram.com/visuals_of_hn?igsh=MTMzeTAwcHNwZWI0MQ%3D%3D&utm_source=qr" target="_blank">
                         <h4 class="animate-in-up">Instagram</h4>
                         <div class="socials-lines__icon d-flex animate-in-up">
                           <i class="ph ph-arrow-up-right"></i>
@@ -1309,7 +1175,7 @@
                     </li>
                     <!-- socials lines single item -->
                     <li class="socials-lines__item">
-                      <a class="socials-lines__link d-flex align-items-center justify-content-between" href="https://www.linkedin.com/" target="_blank">
+                      <a class="socials-lines__link d-flex align-items-center justify-content-between" href="https://www.linkedin.com/in/mohamed-hesham-illikodan-533139141?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank">
                         <h4 class="animate-in-up">Linkedin</h4>
                         <div class="socials-lines__icon d-flex animate-in-up">
                           <i class="ph ph-arrow-up-right"></i>
@@ -1319,7 +1185,7 @@
                     </li>
                     <!-- socials lines single item -->
                     <li class="socials-lines__item">
-                      <a class="socials-lines__link d-flex align-items-center justify-content-between" href="https://www.youtube.com/" target="_blank">
+                      <a class="socials-lines__link d-flex align-items-center justify-content-between" href="https://youtube.com/@hnproductiontm7587?si=zA-IGXbYno6uDvsJ" target="_blank">
                         <h4 class="animate-in-up">Youtube</h4>
                         <div class="socials-lines__icon d-flex animate-in-up">
                           <i class="ph ph-arrow-up-right"></i>
@@ -1440,16 +1306,11 @@
                             <a class="link-small-160lh animate-in-up" href="https://maps.app.goo.gl/xMJXTEUeHkv6kYRQ6" target="_blank">Odesa, Ukraine<br>65000</a>
                           </p>
                         </div>
-                        <div class="col-12 col-md-6 col-lg-3 contact-data__item grid-item">
-                          <p class="contact-data__title tagline-chapter animate-in-up">Location</p>
-                          <p class="contact-data__text small type-basic-160lh">
-                            <a class="link-small-160lh animate-in-up" href="https://maps.app.goo.gl/CGucvMFbkYuZiprv6" target="_blank">Kyiv, Ukraine<br>02000</a>
-                          </p>
-                        </div>
+                        
                         <div class="col-12 col-md-6 col-lg-3 contact-data__item grid-item">
                           <p class="contact-data__title tagline-chapter animate-in-up">Phone</p>
                           <p class="contact-data__text small type-basic-160lh">
-                            <a class="link-small-160lh animate-in-up" href="tel:+12127089400">+1 212-708-9400</a>
+                            <a class="link-small-160lh animate-in-up" href="tel:+447767599149">+447767599149</a>
                             <br>
                             <a class="link-small-160lh animate-in-up" href="tel:+15104570211">+1 510-457-0211</a>
                           </p>
@@ -1679,6 +1540,31 @@
     <script src="asset/js/libs.min.js"></script>
     <script src="asset/js/gallery-init.js"></script>
     <script src="asset/js/app.js"></script>
+    <script>
+document.getElementById("contact-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    var name = document.querySelector("input[name='Name']").value;
+    var company = document.querySelector("input[name='Company']").value;
+    var email = document.querySelector("input[name='E-mail']").value;
+    var phone = document.querySelector("input[name='Phone']").value;
+    var message = document.querySelector("textarea[name='Message']").value;
+
+    var whatsappNumber = "447767599149"; // 👉 Replace with your WhatsApp number (with country code, no +)
+
+    var text = 
+        "New Project Inquiry%0A%0A" +
+        "Name: " + name + "%0A" +
+        "Company: " + company + "%0A" +
+        "Email: " + email + "%0A" +
+        "Phone: " + phone + "%0A%0A" +
+        "Message:%0A" + message;
+
+    var url = "https://wa.me/" + whatsappNumber + "?text=" + text;
+
+    window.open(url, "_blank");
+});
+</script>
     <!-- Load Scripts End -->
     
   </body>

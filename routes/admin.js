@@ -88,4 +88,36 @@ router.put(
 // API: soft delete package
 router.delete('/packages/:id', verifyToken, packageController.deletePackage);
 
+const serviceController = require('../controllers/servicecontroller');
+
+// -------------------- Service Routes --------------------
+// List all services page
+router.get('/services', verifyToken, serviceController.getAllServicesPage);
+
+// Add service page
+router.get('/services/add', verifyToken, serviceController.getAddServicePage);
+
+// API: create service
+router.post(
+  '/services',
+  verifyToken,
+  upload.any(), // Handle potential imageSmall and imageMedium
+  serviceController.createService
+);
+
+// Edit service page
+router.get('/services/:id/edit', verifyToken, serviceController.getEditServicePage);
+
+// API: update service
+router.put(
+  '/services/:id',
+  verifyToken,
+  upload.any(),
+  serviceController.updateService
+);
+
+// API: soft delete service
+router.delete('/services/:id', verifyToken, serviceController.deleteService);
+
 module.exports = router;
+

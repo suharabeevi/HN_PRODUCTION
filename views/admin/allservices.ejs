@@ -46,12 +46,13 @@
                           <td><i class="<%= s.icon %>" style="font-size: 24px;"></i> <%= s.icon %></td>
                           <td><%= s.priority %></td>
                           <td>
-                            <% if (s.imageSmall) { %>
-                              <img src="<%= s.imageSmall %>" width="50" alt="Small" />
-                            <% } %>
-                            <% if (s.imageMedium) { %>
-                              <img src="<%= s.imageMedium %>" width="50" alt="Medium" />
-                            <% } %>
+                            <% if (s.imageSmall) { %> 
+  <img src="<%= s.imageSmall %>" width="30" height="30" alt="Small" />
+<% } %>
+
+<% if (s.imageMedium) { %>
+  <img src="<%= s.imageMedium %>" width="30" height="30" alt="Medium" />
+<% } %>
                           </td>
                           <td>
                             <button

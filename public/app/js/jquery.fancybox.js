@@ -3456,7 +3456,7 @@
 
 		var isTouchDevice = ( e.type == 'touchstart' );
 
-		// Do not respond to both (touch and mouse) events
+		// Do not respond to both (toucH and Nouse) events
 		if ( isTouchDevice ) {
 			self.$container.off( 'mousedown.fb.touch' );
 		}

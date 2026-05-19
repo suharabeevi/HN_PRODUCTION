@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <title>Edit Project | Admin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <link rel="stylesheet" href="/app/css/app.css" />
+  <%- include('../layouts/admin/favicon.ejs') %>
+</head>
+<body class="body header-fixed">
+  <div id="wrapper">
+    <div id="pagee" class="clearfix">
+      <%- include('../layouts/admin/sideheader.ejs') %>
+      <main id="main">
+        <section class="profile-dashboard">
+          <section class="form-add-tour">
+            <div class="widget-dash-board pr-256 mb-75">
+              <div class="inner-header mb-40 flex justify-space align-center">
+                <h3 class="title">Edit Project</h3>
+                <a href="/admin/projects/all" class="btn btn-outline-secondary btn-sm">Back to Projects</a>
+              </div>
+
+              <div class="grid-input-2 mb-20">
+                <div class="input-wrap">
+                  <label>Category *</label>
+                  <select id="category-id" required>
+                    <option value="">Select Category</option>
+                    <% categories.forEach(c => { %>
+                      <option value="<%= c._id %>" <%= project.category && project.category._id.toString() === c._id.toString() ? 'selected' : '' %>><%= c.name %></option>
+                    <% }) %>
+                  </select>
+                </div>
+                <div class="input-wrap">
+                  <label>Project Title *</label>
+                  <input type="text" id="project-title" value="<%= project.title %>" required />
+                </div>
+              </div>
+
+              <div class="input-wrap mb-20">
+                <label>Description (optional)</label>
+                <textarea id="project-description" rows="3"><%= project.description || '' %></textarea>
+              </div>
+
+              <div class="inner-header mb-20">
+                <h4 class="title">Existing Images</h4>
+                <p class="text-muted">Click the X to remove an image from this project.</p>
+              </div>
+
+              <div class="grid-input-2 mb-20">
+                <div class="input-wrap">
+                  <% if (project.images && project.images.length) { %>
+                    <div class="flex wrap">
+                      <% project.images.forEach(img => {
+                          const imageUrl = typeof img === 'string' ? img : img.url;
+                          const publicId = img && img.public_id ? img.public_id : '';
+                      %>
+                        <div class="mr-10 mb-10" style="position: relative; display: inline-block;">
+                          <img src="<%= imageUrl %>" style="width: 120px; height: 90px; object-fit: cover;" />
+                          <button type="button" class="btn btn-danger btn-xs" style="position:absolute;top:2px;right:2px;padding:2px 5px;font-size:10px;" onclick="deleteProjectImage('<%= project._id %>', '<%= imageUrl %>', '<%= publicId %>')">X</button>
+                        </div>
+                      <% }) %>
+                    </div>
+                  <% } else { %>
+                    <p class="text-muted">No images uploaded.</p>
+                  <% } %>
+                </div>
+              </div>
+
+              <div class="grid-input-2 mb-20">
+                <div class="input-wrap">
+                  <label>Upload Additional Images (optional)</label>
+                  <input type="file" id="project-images" multiple accept="image/*" />
+                </div>
+              </div>
+
+              <div class="input-wrap">
+                <button type="button" class="button-add">Update Project</button>
+              </div>
+            </div>
+          </section>
+        </section>
+      </main>
+      <%- include('../layouts/admin/footer.ejs') %>
+    </div>
+  </div>
+
+  <script src="/app/js/jquery.min.js"></script>
+  <script src="/app/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <script>
+    async function deleteProjectImage(id, imageUrl, publicId) {
+      try {
+        const query = [];
+        if (imageUrl) query.push(`imageUrl=${encodeURIComponent(imageUrl)}`);
+        if (publicId) query.push(`publicId=${encodeURIComponent(publicId)}`);
+        const res = await fetch(`/admin/projects/${id}/image?${query.join('&')}`, { method: 'DELETE' });
+        const data = await res.json();
+        if (res.ok) {
+          Swal.fire('Success', data.message, 'success').then(() => { window.location.reload(); });
+        } else {
+          Swal.fire('Error', data.message || 'Failed to delete image', 'error');
+        }
+      } catch (err) {
+        console.error(err);
+        Swal.fire('Error', 'Unexpected error occurred', 'error');
+      }
+    }
+
+    document.querySelector('.button-add').addEventListener('click', async () => {
+      const title = document.querySelector('#project-title').value.trim();
+      const description = document.querySelector('#project-description').value.trim();
+      const categoryId = document.querySelector('#category-id').value;
+      const files = document.querySelector('#project-images').files;
+      if (!title || !categoryId) return Swal.fire('Error', 'Title and category required','error');
+      const fd = new FormData();
+      fd.append('title', title);
+      fd.append('description', description);
+      fd.append('categoryId', categoryId);
+      for (let i=0;i<files.length;i++) fd.append('images', files[i]);
+      try {
+        const res = await fetch('/admin/projects/<%= project._id %>', { method: 'PUT', body: fd });
+        const data = await res.json();
+        if (res.ok) Swal.fire('Success', data.message || 'Updated','success').then(()=> location.href='/admin/projects/all');
+        else Swal.fire('Error', data.message || 'Failed','error');
+      } catch (err) { console.error(err); Swal.fire('Error','Server error','error'); }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <title>All Projects | Admin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <link rel="stylesheet" href="/app/css/app.css" />
+  <%- include('../layouts/admin/favicon.ejs') %>
+</head>
+<body class="body header-fixed">
+  <div id="wrapper">
+    <div id="pagee" class="clearfix">
+      <%- include('../layouts/admin/sideheader.ejs') %>
+      <main id="main">
+        <section class="profile-dashboard">
+          <div class="widget-dash-board pr-256 mb-75">
+            <div class="inner-header mb-40 flex justify-space align-center">
+              <h3 class="title">All Projects</h3>
+              <a href="/admin/projects/add" class="btn btn-outline-secondary btn-sm">Add Project</a>
+            </div>
+            <div class="projects-list">
+              <% if (projects && projects.length) { %>
+                <% projects.forEach(function(p){ %>
+                  <div class="project-item">
+                    <div class="flex justify-space align-center">
+                      <h4><%= p.title %> (<%= p.category ? p.category.name : 'Uncategorized' %>)</h4>
+                      <div class="admin-action-buttons">
+                        <a href="/admin/projects/<%= p._id %>/edit" class="btn btn-sm btn-outline-secondary">Edit</a>
+                        <button type="button" class="btn btn-sm btn-outline-danger project-delete-btn" data-id="<%= p._id %>">Delete</button>
+                      </div>
+                    </div>
+                    <div class="images mt-10">
+                      <% if (p.images && p.images.length) { %>
+                        <% p.images.forEach(function(img){ %>
+                          <img src="<%= typeof img === 'string' ? img : img.url %>" style="max-width:120px; margin-right:8px;" />
+                        <% }) %>
+                      <% } %>
+                    </div>
+                  </div>
+                <% }) %>
+              <% } else { %>
+                <p>No projects yet.</p>
+              <% } %>
+            </div>
+          </div>
+        </section>
+      </main>
+      <%- include('../layouts/admin/footer.ejs') %>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('.project-delete-btn').forEach(function (button) {
+        button.addEventListener('click', async function () {
+          if (!confirm('Are you sure you want to permanently delete this project?')) return;
+          const projectId = this.dataset.id;
+          try {
+            const response = await fetch('/admin/projects/' + projectId, {
+              method: 'DELETE',
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            });
+            const data = await response.json();
+            if (response.ok && data.success) {
+              window.location.reload();
+            } else {
+              alert(data.message || 'Unable to delete the project.');
+            }
+          } catch (error) {
+            console.error(error);
+            alert('Unable to delete the project.');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

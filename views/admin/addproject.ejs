@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <title>Add Project | Admin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <link rel="stylesheet" href="/app/css/app.css" />
+  <%- include('../layouts/admin/favicon.ejs') %>
+</head>
+<body class="body header-fixed">
+  <div id="wrapper">
+    <div id="pagee" class="clearfix">
+      <%- include('../layouts/admin/sideheader.ejs') %>
+      <main id="main">
+        <section class="profile-dashboard">
+          <section class="form-add-tour">
+            <div class="widget-dash-board pr-256 mb-75">
+              <div class="inner-header mb-40 flex justify-space align-center">
+                <h3 class="title">Add Project</h3>
+                <a href="/admin/projects/all" class="btn btn-outline-secondary btn-sm">View All Projects</a>
+              </div>
+              <div class="grid-input-2 mb-30">
+                <div class="input-wrap">
+                  <label>Project Title *</label>
+                  <input type="text" id="project-title" placeholder="Project title" required />
+                </div>
+                <div class="input-wrap">
+                  <label>Category *</label>
+                  <select id="project-category">
+                    <% if (categories) { %>
+                      <% categories.forEach(function(c){ %>
+                        <option value="<%= c._id %>"><%= c.name %></option>
+                      <% }) %>
+                    <% } %>
+                  </select>
+                </div>
+              </div>
+              <div class="grid-input-2 mb-30">
+                <div class="input-wrap">
+                  <label>Description (optional)</label>
+                  <textarea id="project-description" rows="4"></textarea>
+                </div>
+              </div>
+              <div class="grid-input-2 mb-30">
+                <div class="input-wrap">
+                  <label>Images (multiple)</label>
+                  <input type="file" id="project-images" multiple accept="image/*" />
+                </div>
+              </div>
+              <div class="input-wrap">
+                <button type="button" class="button-add">Save Project</button>
+              </div>
+            </div>
+          </section>
+        </section>
+      </main>
+      <%- include('../layouts/admin/footer.ejs') %>
+    </div>
+  </div>
+  <script src="/app/js/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+  const btn = document.querySelector('.button-add');
+  btn.addEventListener('click', async () => {
+    const title = document.querySelector('#project-title').value.trim();
+    const description = document.querySelector('#project-description').value.trim();
+    const categoryId = document.querySelector('#project-category').value;
+    const files = document.querySelector('#project-images').files;
+    if (!title || !categoryId) return Swal.fire('Error', 'Title and category required','error');
+    const fd = new FormData();
+    fd.append('title', title);
+    fd.append('description', description);
+    fd.append('categoryId', categoryId);
+    for (let i=0;i<files.length;i++) fd.append('images', files[i]);
+    try {
+      const res = await fetch('/admin/projects', { method: 'POST', body: fd });
+      const data = await res.json();
+      if (res.ok) Swal.fire('Success', data.message || 'Saved','success').then(()=> location.href='/admin/projects/all');
+      else Swal.fire('Error', data.message || 'Failed','error');
+    } catch (err) { console.error(err); Swal.fire('Error','Server error','error'); }
+  });
+});
+  </script>
+</body>
+</html>

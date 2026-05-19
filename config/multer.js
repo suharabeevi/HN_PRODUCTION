@@ -39,4 +39,18 @@ const uploadToCloudinary = async (localFilePath, resourceType = 'image') => {
   }
 };
 
-module.exports = { upload, uploadToCloudinary };
+const uploadToCloudinaryWithPublicId = async (localFilePath, resourceType = 'image') => {
+  try {
+    const result = await cloudinary.uploader.upload(localFilePath, {
+      folder: 'tours',
+      resource_type: resourceType,
+    });
+    fs.unlinkSync(localFilePath);
+    return { url: result.secure_url, public_id: result.public_id };
+  } catch (err) {
+    console.error('Cloudinary upload error:', err);
+    throw err;
+  }
+};
+
+module.exports = { upload, uploadToCloudinary, uploadToCloudinaryWithPublicId };

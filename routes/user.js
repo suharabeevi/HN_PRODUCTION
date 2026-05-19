@@ -3,11 +3,15 @@ const router = express.Router();
 // const tourcontroller = require('../controllers/tourcontroller')
 
 const usercontroller = require('../controllers/usercontroller')
+const projectController = require('../controllers/projectcontroller');
 // static files
 router.get("/",usercontroller.userhome);
 // router.get('/service',usercontroller.getservicepage)
 // router.get('/offer',usercontroller.getofferpage)
 router.get('/projects',usercontroller.projectspage)
+// API: project categories and projects
+router.get('/api/project-categories', projectController.getCategoriesApi);
+router.get('/api/projects', projectController.getProjectsByCategoryApi);
 // router.get('/search',usercontroller.searchtour)
 // router.get('/tickets',usercontroller.ticketpge)
 

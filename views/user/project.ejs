@@ -3,42 +3,18 @@
 
   <head>
     <meta charset="UTF-8">
+    <title>Projects | H and N Productions</title>
+    <meta name="description" content="H and N Productions project gallery by category." />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-    <!-- Page Title -->
-    <title>H and N Productions</title>
+    <link rel="icon" href="/asset/img/works/HM PRODUCTION.png" sizes="any">
+    <link rel="icon" href="/asset/img/works/HM PRODUCTION.png" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/asset/img/works/HM PRODUCTION.png">
 
-    <!-- Meta Tags -->
-    <meta name="description" content="Show yourself brightly with Blayden - clean and creative portfolio and resume template!">
-    <meta name="keywords" content="mix_design, resume, portfolio, personal page, cv, template, one page, responsive, html5, css3, creative, clean">
-    <meta name="author" content="mix_design">
+    <link rel="stylesheet" type="text/css" href="/asset/css/loaders/loader.css">
+    <link rel="stylesheet" type="text/css" href="/asset/css/plugins.css">
+    <link rel="stylesheet" type="text/css" href="/asset/css/main.css">
 
-    <!-- Viewport Meta-->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-    <!-- Template Favicon & Icons Start -->
-    <link rel="icon" href="asset/img/works/HM PRODUCTION.png" sizes="any">
-    <link rel="icon" href="asset/img/works/HM PRODUCTION.png" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="asset/img/works/HM PRODUCTION.png">
-    <link rel="manifest" href="asset/img/works/HM PRODUCTION.png">
-    <!-- Template Favicon & Icons End -->
-
-    <!-- Facebook Metadata Start -->
-    <meta property="og:image:height" content="1200">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:title" content="Blayden - Personal Portfolio & Resume HTML Template">
-    <meta property="og:description" content="Show yourself brightly with Blayden - clean and creative portfolio and resume template!">
-    <meta property="og:url" content="https://mixdesign.club/themeforest/blayden">
-    <meta property="og:image" content="https://mixdesign.club/themeforest/blayden/asset/img/og-image.jpg">
-    <!-- Facebook Metadata End -->
-
-    <!-- Template Styles Start -->
-    <link rel="stylesheet" type="text/css" href="asset/css/loaders/loader.css">
-    <link rel="stylesheet" type="text/css" href="asset/css/plugins.css">
-    <link rel="stylesheet" type="text/css" href="asset/css/main.css">
-    <!-- Template Styles End -->
-
-    <!-- Custom Browser Color Start -->
     <meta name="theme-color" media="(prefers-color-scheme: light)" content="#BABEC8">
     <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#141414">
     <meta name="msapplication-navbutton-color" content="#141414">
@@ -46,52 +22,111 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
     <style>
-      /* Portfolio image resizing */
-.portfolio-img {
-  width: 100%;
-  height: 420px;       /* control height here */
-  object-fit: cover;  /* prevents stretching */
-  border-radius: 12px;
-}
+      .portfolio-img {
+        width: 100%;
+        height: 420px;
+        object-fit: cover;
+        border-radius: 12px;
+      }
 
-@media (max-width: 768px) {
-  .portfolio-img {
-    height: 280px;
-  }
-}
+      @media (max-width: 768px) {
+        .portfolio-img {
+          height: 280px;
+        }
+      }
 
-@media (max-width: 768px) {
-  .portfolio-img {
-    height: 280px;
-  }
-}
+      .project-categories {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 2rem;
+      }
 
-/* Override Headline Sizes to be medium */
-.headline__title {
-  font-size: 4.2rem !important; /* Mobile medium size */
-  line-height: 1.1;
-}
+      .project-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1.2rem;
+        margin-bottom: 2rem;
+      }
 
-.headline__subtitle {
-  font-size: 1.8rem !important;
-  margin-bottom: 2.5rem !important;
-}
+      .project-item {
+        min-width: 0;
+      }
 
-@media (min-width: 768px) {
-  .headline__title {
-    font-size: 6.5rem !important; /* Tablet medium size */
-  }
-}
+      .project-item-box {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 18px;
+        padding: 1.2rem 1.4rem;
+        color: #ffffff;
+        text-align: left;
+        cursor: pointer;
+        transition: transform 0.25s ease, background-color 0.25s ease, border-color 0.25s ease,
+          color 0.25s ease, box-shadow 0.25s ease;
+        font-size: 0.95rem;
+        font-family: inherit;
+      }
 
-@media (min-width: 1200px) {
-  .headline__title {
-    font-size: 8.5rem !important; /* Desktop medium size (was 11rem+, prev 6.5rem) */
-  }
-  .headline__subtitle {
-    font-size: 2rem !important;
-  }
-}
+      .project-item-box:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateY(-2px);
+      }
 
+      .project-item-box.active {
+        background: rgba(255, 255, 255, 0.14);
+        border-color: rgba(255, 255, 255, 0.22);
+        box-shadow: 0 18px 50px rgba(0, 0, 0, 0.14);
+      }
+
+      .project-item-box.active h3,
+      .project-item-box.active p {
+        color: #ffffff;
+      }
+
+      .project-item-box h3 {
+        margin: 0 0 0.35rem;
+        font-size: 1.05rem;
+        font-weight: 700;
+        letter-spacing: 0.01em;
+      }
+
+      .project-item-box p {
+        margin: 0;
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 0.94rem;
+        line-height: 1.6;
+      }
+
+      .project-gallery-title {
+        margin-bottom: 1.4rem;
+        color: #ffffff;
+        font-size: 0.95rem;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .project-gallery-title span {
+        display: block;
+        opacity: 0.75;
+        font-size: 0.88rem;
+      }
+
+      .project-gallery-title h2 {
+        margin: 0.45rem 0 0;
+        font-size: clamp(1.6rem, 2vw, 2.2rem);
+        font-weight: 800;
+        line-height: 1.05;
+        letter-spacing: normal;
+        text-transform: none;
+      }
+
+      #project-gallery .gallery__link {
+        display: block;
+        border-radius: 12px;
+        overflow: hidden;
+      }
     </style>
     <!-- Custom Browser Color End -->
   </head>
@@ -172,7 +207,7 @@
     
     <!-- logo image -->
     <img 
-      src="asset/img/works/HM PRODUCTION.png" 
+      src="/asset/img/works/HM PRODUCTION.png" 
       alt="Blayden Logo" 
       class="logo__image"
     />
@@ -201,11 +236,11 @@
           <!-- Intro Background Start -->
           <div class="intro__background intro-bg-01">
             <div class="intro-bg-01__01" data-speed="0.6" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">
-              <img src="asset/img/backgrounds/1200x1200_bg01.webp" alt="Background Objects">
+              <img src="/asset/img/backgrounds/1200x1200_bg01.webp" alt="Background Objects">
               <div class="intro-bg__shadow"></div>
             </div>
             <div class="intro-bg-01__02" data-speed="0.8" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">
-              <img src="asset/img/backgrounds/1200x1200_bg02.webp" alt="Background Objects">
+              <img src="/asset/img/backgrounds/1200x1200_bg02.webp" alt="Background Objects">
               <div class="intro-bg__shadow"></div>
             </div>
           </div>
@@ -227,8 +262,17 @@
   Welcome to<br>H and N Productions
 </p>
 
-<h1 class="headline__title loading__item" style="opacity: 1; translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">
-  Cinematic Visuals<br>&amp; Brand Stories
+<h1
+  class="headline__title loading__item"
+  style="
+    opacity: 1;
+    transform: translate(0px, 0px);
+    font-size: 42px;
+    line-height: 1.2;
+  
+  "
+>
+  Cinematic Visuals<br />&amp; Brand Stories
 </h1>
 
                   <div class="headline__btn loading__item" style="opacity: 1; translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">
@@ -298,155 +342,10 @@
                     <div class="container-fluid px-0 inner__gallery">
 
                       <!-- Portfolio Gallery Start -->
-                      <div class="row gx-0 my-gallery" itemscope itemtype="http://schema.org/ImageGallery" data-masonry='{"percentPosition": true }'>
-                        <!-- portfolio gallery single item -->
-                        <!-- portfolio item 1 -->
-<figure class="col-12 col-md-6 gallery__item grid-item animate-card-2">
-  <a href="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770788680/IMG_1657_e5dxte.jpg"
-     data-image="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770788680/IMG_1657_e5dxte.jpg"
-     class="gallery__link" data-size="1200x900">
-    <img src="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770788680/IMG_1657_e5dxte.jpg"
-         class="gallery__image portfolio-img" alt="Portfolio image">
-  </a>
-</figure>
-
-<!-- portfolio item 2 -->
-<figure class="col-12 col-md-6 gallery__item grid-item animate-card-2">
-  <a href="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770788673/DSC08844_a94flj.jpg"
-     data-image="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770788673/DSC08844_a94flj.jpg"
-     class="gallery__link" data-size="900x1200">
-    <img src="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770788673/DSC08844_a94flj.jpg"
-         class="gallery__image portfolio-img" alt="Portfolio image">
-  </a>
-</figure>
-
-<!-- portfolio item 3 -->
-<figure class="col-12 col-md-6 gallery__item grid-item animate-card-2">
-  <a href="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770788671/IMG_3639_jnhkd6.jpg"
-     data-image="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770788671/IMG_3639_jnhkd6.jpg"
-     class="gallery__link" data-size="1200x1200">
-    <img src="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770788671/IMG_3639_jnhkd6.jpg"
-         class="gallery__image portfolio-img" alt="Portfolio image">
-  </a>
-</figure>
-
-<!-- portfolio item 4 -->
-<figure class="col-12 col-md-6 gallery__item grid-item animate-card-2">
-  <a href="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770788672/DSC08795_jeqqqz.jpg"
-     data-image="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770788672/DSC08795_jeqqqz.jpg"
-     class="gallery__link" data-size="1200x900">
-    <img src="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770788672/DSC08795_jeqqqz.jpg"
-         class="gallery__image portfolio-img" alt="Portfolio image">
-  </a>
-</figure>
-<!-- portfolio item 4 -->
-<figure class="col-12 col-md-6 gallery__item grid-item animate-card-2">
-  <a href="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
-     data-image="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
-     class="gallery__link" data-size="1200x900">
-    <img src="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
-         class="gallery__image portfolio-img" alt="Portfolio image">
-  </a>
-</figure>
-<figure class="col-12 col-md-6 gallery__item grid-item animate-card-2">
-  <a href="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
-     data-image="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
-     class="gallery__link" data-size="1200x900">
-    <img src="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
-         class="gallery__image portfolio-img" alt="Portfolio image">
-  </a>
-</figure>
-<figure class="col-12 col-md-6 gallery__item grid-item animate-card-2">
-  <a href="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
-     data-image="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
-     class="gallery__link" data-size="1200x900">
-    <img src="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
-         class="gallery__image portfolio-img" alt="Portfolio image">
-  </a>
-</figure>
-<figure class="col-12 col-md-6 gallery__item grid-item animate-card-2">
-  <a href="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
-     data-image="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
-     class="gallery__link" data-size="1200x900">
-    <img src="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
-         class="gallery__image portfolio-img" alt="Portfolio image">
-  </a>
-</figure>
-<figure class="col-12 col-md-6 gallery__item grid-item animate-card-2">
-  <a href="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
-     data-image="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
-     class="gallery__link" data-size="1200x900">
-    <img src="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
-         class="gallery__image portfolio-img" alt="Portfolio image">
-  </a>
-</figure>
-<figure class="col-12 col-md-6 gallery__item grid-item animate-card-2">
-  <a href="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
-     data-image="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
-     class="gallery__link" data-size="1200x900">
-    <img src="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
-         class="gallery__image portfolio-img" alt="Portfolio image">
-  </a>
-</figure><figure class="col-12 col-md-6 gallery__item grid-item animate-card-2">
-  <a href="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
-     data-image="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
-     class="gallery__link" data-size="1200x900">
-    <img src="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
-         class="gallery__image portfolio-img" alt="Portfolio image">
-  </a>
-</figure>
-<figure class="col-12 col-md-6 gallery__item grid-item animate-card-2">
-  <a href="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
-     data-image="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
-     class="gallery__link" data-size="1200x900">
-    <img src="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
-         class="gallery__image portfolio-img" alt="Portfolio image">
-  </a>
-</figure>
-<figure class="col-12 col-md-6 gallery__item grid-item animate-card-2">
-  <a href="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
-     data-image="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
-     class="gallery__link" data-size="1200x900">
-    <img src="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
-         class="gallery__image portfolio-img" alt="Portfolio image">
-  </a>
-</figure>
-<figure class="col-12 col-md-6 gallery__item grid-item animate-card-2">
-  <a href="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
-     data-image="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
-     class="gallery__link" data-size="1200x900">
-    <img src="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
-         class="gallery__image portfolio-img" alt="Portfolio image">
-  </a>
-</figure>
-<figure class="col-12 col-md-6 gallery__item grid-item animate-card-2">
-  <a href="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
-     data-image="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
-     class="gallery__link" data-size="1200x900">
-    <img src="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
-         class="gallery__image portfolio-img" alt="Portfolio image">
-  </a>
-</figure>
-<figure class="col-12 col-md-6 gallery__item grid-item animate-card-2">
-  <a href="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
-     data-image="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
-     class="gallery__link" data-size="1200x900">
-    <img src="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
-         class="gallery__image portfolio-img" alt="Portfolio image">
-  </a>
-</figure>
-<figure class="col-12 col-md-6 gallery__item grid-item animate-card-2">
-  <a href="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
-     data-image="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
-     class="gallery__link" data-size="1200x900">
-    <img src="https://res.cloudinary.com/dyv0lsr1o/image/upload/v1770789084/compressed_beeyond_cafe_-20_koh0sa.jpg"
-         class="gallery__image portfolio-img" alt="Portfolio image">
-  </a>
-</figure>
-
-
-
-                      </div>
+                      <div class="project-categories mb-4" id="project-categories"></div>
+                      <div id="project-list" class="project-list"></div>
+                      <div class="project-gallery-title" id="project-gallery-title"></div>
+                      <div class="row gx-4 gy-4" id="project-gallery"></div>
                       <!-- Portfolio Gallery End -->
 
                       <!-- External Portfolio Link Start -->
@@ -595,7 +494,6 @@
                           <p class="contact-data__text small type-basic-160lh">
                             <a class="link-small-160lh animate-in-up" href="tel:+12127089400">+44 7767 599149</a>
                             <br>
-                            <a class="link-small-160lh animate-in-up" href="tel:+15104570211">+44 7767 599149</a>
                           </p>
                         </div>
                         <div class="col-12 col-md-6 col-lg-3 contact-data__item grid-item">
@@ -603,7 +501,6 @@
                           <p class="contact-data__text small type-basic-160lh">
                             <a class="link-small-160lh animate-in-up" href="mailto:example@example.com?subject=Message%20from%20your%20site">productionhn98gmail.com</a>
                             <br>
-                            <a class="link-small-160lh animate-in-up" href="mailto:example@example.com?subject=Message%20from%20your%20site">support@example.com</a>
                           </p>
                         </div>
                       </div>
@@ -737,10 +634,10 @@
     <!-- Bottom Background Images Start -->
     <div class="bottom__background bottom-bg-01">
       <div class="bottom-bg-01__02 animate-card-2">
-        <img src="asset/img/backgrounds/1200x1200_bg01.webp" alt="Template background image">
+        <img src="/asset/img/backgrounds/1200x1200_bg01.webp" alt="Template background image">
       </div>
       <div class="bottom-bg-01__01 animate-card-2">
-        <img src="asset/img/backgrounds/1200x1200_bg01.webp" alt="Template background image">
+        <img src="/asset/img/backgrounds/1200x1200_bg01.webp" alt="Template background image">
       </div>
     </div>
     <!-- Bottom Background Images End -->
@@ -820,9 +717,9 @@
     </div>
 
     <!-- Load Scripts Start -->
-    <script src="asset/js/libs.min.js"></script>
-    <script src="asset/js/gallery-init.js"></script>
-    <script src="asset/js/app.js"></script>
+    <script src="/asset/js/libs.min.js"></script>
+    <script src="/asset/js/gallery-init.js"></script>
+    <script src="/asset/js/app.js"></script>
     <script>
 document.getElementById("contact-form").addEventListener("submit", function(e) {
     e.preventDefault();
@@ -846,6 +743,110 @@ document.getElementById("contact-form").addEventListener("submit", function(e) {
     var url = "https://wa.me/" + whatsappNumber + "?text=" + text;
 
     window.open(url, "_blank");
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  const categoriesWrap = document.getElementById('project-categories');
+  const projectListWrap = document.getElementById('project-list');
+  const galleryTitle = document.getElementById('project-gallery-title');
+  const galleryWrap = document.getElementById('project-gallery');
+
+  async function loadCategories() {
+    try {
+      const res = await fetch('/api/project-categories');
+      const data = await res.json();
+      if (!data.success) return;
+      const cats = data.categories || [];
+      if (cats.length === 0) {
+        categoriesWrap.innerHTML = '<p>No categories found</p>';
+        return;
+      }
+      categoriesWrap.innerHTML = '';
+      cats.forEach((c, i) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'btn btn-line-small';
+        btn.textContent = c.name;
+        btn.dataset.id = c._id;
+        btn.addEventListener('click', () => loadProjects(c._id, c.name, btn));
+        categoriesWrap.appendChild(btn);
+        if (i === 0) loadProjects(c._id, c.name, btn);
+      });
+    } catch (err) { console.error('loadCategories', err); }
+  }
+
+  async function loadProjects(categoryId, categoryName, activeBtn) {
+    try {
+      document.querySelectorAll('#project-categories .btn').forEach(b => b.classList.remove('active'));
+      if (activeBtn) activeBtn.classList.add('active');
+
+      galleryTitle.innerHTML = categoryName ? '<span>Category</span><h2>' + categoryName + '</h2>' : '';
+      projectListWrap.innerHTML = '<div class="col-12"><p>Loading projects...</p></div>';
+      galleryWrap.innerHTML = '<div class="col-12"><p>Loading images...</p></div>';
+
+      const res = await fetch('/api/projects?categoryId=' + encodeURIComponent(categoryId));
+      const data = await res.json();
+      if (!data.success) {
+        projectListWrap.innerHTML = '<div class="col-12"><p>No projects found</p></div>';
+        galleryWrap.innerHTML = '<div class="col-12"><p>No images available</p></div>';
+        return;
+      }
+      const projects = data.projects || [];
+      if (projects.length === 0) {
+        projectListWrap.innerHTML = '<div class="col-12"><p>No project titles in this category.</p></div>';
+        galleryWrap.innerHTML = '<div class="col-12"><p>No images in this category.</p></div>';
+        return;
+      }
+
+      renderProjectTitles(projects);
+      const firstBtn = projectListWrap.querySelector('.project-item-box');
+      if (firstBtn) {
+        firstBtn.click();
+      }
+    } catch (err) {
+      console.error('loadProjects', err);
+      projectListWrap.innerHTML = '<div class="col-12"><p>Error loading projects</p></div>';
+      galleryWrap.innerHTML = '<div class="col-12"><p>Error loading images</p></div>';
+    }
+  }
+
+  function renderProjectTitles(projects) {
+    projectListWrap.innerHTML = '';
+    projects.forEach((project, index) => {
+      const item = document.createElement('div');
+      item.className = 'project-item';
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'project-item-box' + (index === 0 ? ' active' : '');
+      button.innerHTML = '<h3>' + project.title + '</h3>' + (project.description ? '<p>' + project.description + '</p>' : '');
+      button.addEventListener('click', () => showProjectImages(project, button));
+      item.appendChild(button);
+      projectListWrap.appendChild(item);
+    });
+  }
+
+  function showProjectImages(project, activeBtn) {
+    document.querySelectorAll('#project-list .project-item-box').forEach(b => b.classList.remove('active'));
+    if (activeBtn) activeBtn.classList.add('active');
+
+    galleryTitle.innerHTML = '<span>Project</span><h2>' + project.title + '</h2>';
+    const images = project.images || [];
+    if (images.length === 0) {
+      galleryWrap.innerHTML = '<div class="col-12"><p>No images available for this project.</p></div>';
+      return;
+    }
+
+    galleryWrap.innerHTML = '';
+    images.forEach(img => {
+      const imageUrl = typeof img === 'string' ? img : img.url;
+      const col = document.createElement('figure');
+      col.className = 'col-12 col-md-6 gallery__item grid-item animate-card-2';
+      col.innerHTML = '<div class="gallery__link"><img src="' + imageUrl + '" class="portfolio-img" alt="Project image"></div>';
+      galleryWrap.appendChild(col);
+    });
+  }
+
+  loadCategories();
 });
 </script>
     <!-- Load Scripts End -->

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <title>Add Project Category | Admin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <link rel="stylesheet" href="/app/css/app.css" />
+  <%- include('../layouts/admin/favicon.ejs') %>
+</head>
+<body class="body header-fixed">
+  <div id="wrapper">
+    <div id="pagee" class="clearfix">
+      <%- include('../layouts/admin/sideheader.ejs') %>
+      <main id="main">
+        <section class="profile-dashboard">
+          <section class="form-add-tour">
+            <div class="widget-dash-board pr-256 mb-75">
+              <div class="inner-header mb-40 flex justify-space align-center">
+                <h3 class="title">Add Project Category</h3>
+                <a href="/admin/projects/categories" class="btn btn-outline-secondary btn-sm">View All Categories</a>
+              </div>
+              <div class="grid-input-2 mb-30">
+                <div class="input-wrap">
+                  <label>Category Name *</label>
+                  <input type="text" id="category-name" placeholder="e.g. travel" required />
+                </div>
+              </div>
+              <div class="grid-input-2 mb-30">
+                <div class="input-wrap">
+                  <label>Description (optional)</label>
+                  <textarea id="category-description" placeholder="Short description" rows="3"></textarea>
+                </div>
+              </div>
+              <div class="input-wrap">
+                <button type="button" class="button-add">Save Category</button>
+              </div>
+            </div>
+          </section>
+        </section>
+      </main>
+      <%- include('../layouts/admin/footer.ejs') %>
+    </div>
+  </div>
+  <a id="scroll-top" class="button-go"></a>
+  <script src="/app/js/jquery.min.js"></script>
+  <script src="/app/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+  const button = document.querySelector('.button-add');
+  button.addEventListener('click', async () => {
+    const name = document.querySelector('#category-name').value.trim();
+    const description = document.querySelector('#category-description').value.trim();
+    if (!name) return Swal.fire('Error', 'Name required', 'error');
+    try {
+      const res = await fetch('/admin/projects/categories', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, description })
+      });
+      const data = await res.json();
+      if (res.ok) Swal.fire('Success', data.message || 'Saved', 'success').then(()=> location.href='/admin/projects/categories');
+      else Swal.fire('Error', data.message || 'Failed', 'error');
+    } catch (err) { console.error(err); Swal.fire('Error', 'Server error', 'error'); }
+  });
+});
+  </script>
+</body>
+</html>

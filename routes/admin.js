@@ -89,6 +89,7 @@ router.put(
 router.delete('/packages/:id', verifyToken, packageController.deletePackage);
 
 const serviceController = require('../controllers/servicecontroller');
+const projectController = require('../controllers/projectcontroller');
 
 // -------------------- Service Routes --------------------
 // List all services page
@@ -118,6 +119,27 @@ router.put(
 
 // API: soft delete service
 router.delete('/services/:id', verifyToken, serviceController.deleteService);
+
+// -------------------- Project Routes --------------------
+// Project categories - list/add
+router.get('/projects/categories/add', verifyToken, projectController.getAddCategoryPage);
+router.post('/projects/categories', verifyToken, projectController.postAddCategory);
+router.get('/projects/categories', verifyToken, projectController.getAllCategoriesPage);
+
+// Add project page
+router.get('/projects/add', verifyToken, projectController.getAddProjectPage);
+// Create project (images)
+router.post('/projects', verifyToken, upload.any(), projectController.createProject);
+// List all projects
+router.get('/projects/all', verifyToken, projectController.getAllProjectsPage);
+// Edit project page
+router.get('/projects/:id/edit', verifyToken, projectController.getEditProjectPage);
+// Update project (append images)
+router.put('/projects/:id', verifyToken, upload.any(), projectController.updateProject);
+// Delete project
+router.delete('/projects/:id', verifyToken, projectController.deleteProject);
+// Delete single image from project
+router.delete('/projects/:id/image', verifyToken, projectController.deleteProjectImage);
 
 module.exports = router;
 

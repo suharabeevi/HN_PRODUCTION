@@ -53,6 +53,19 @@
   border-radius: 12px;
 }
 
+.gallery__image {
+  opacity: 1 !important;
+}
+
+a.gallery__link {
+  pointer-events: none;
+  cursor: default;
+}
+
+a.gallery__link img {
+  pointer-events: none;
+}
+
 @media (max-width: 768px) {
   .portfolio-img {
     height: 280px;
@@ -529,7 +542,7 @@
                     <div class="container-fluid px-0 inner__gallery">
 
                       <!-- Portfolio Gallery Start -->
-                      <div class="row gx-0 my-gallery" itemscope itemtype="http://schema.org/ImageGallery" data-masonry='{"percentPosition": true }'>
+                      <div class="row gx-0" itemscope itemtype="http://schema.org/ImageGallery" data-masonry='{"percentPosition": true }'>
                         <!-- portfolio gallery single item -->
                         <!-- portfolio item 1 -->
 <figure class="col-12 col-md-6 gallery__item grid-item animate-card-2">
@@ -1561,6 +1574,17 @@ document.getElementById("contact-form").addEventListener("submit", function(e) {
     var url = "https://wa.me/" + whatsappNumber + "?text=" + text;
 
     window.open(url, "_blank");
+});
+
+document.querySelectorAll('.my-gallery').forEach(function(gallery) {
+    gallery.classList.remove('my-gallery');
+    gallery.onclick = null;
+});
+
+document.querySelectorAll('.gallery__link').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+    });
 });
 </script>
     <!-- Load Scripts End -->

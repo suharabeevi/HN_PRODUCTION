@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <title>Project Categories | Admin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <link rel="stylesheet" href="/app/css/app.css" />
+  <%- include('../layouts/admin/favicon.ejs') %>
+</head>
+<body class="body header-fixed">
+  <div id="wrapper">
+    <div id="pagee" class="clearfix">
+      <%- include('../layouts/admin/sideheader.ejs') %>
+      <main id="main">
+        <section class="profile-dashboard">
+          <div class="widget-dash-board pr-256 mb-75">
+            <div class="inner-header mb-40 flex justify-space align-center">
+              <h3 class="title">Project Categories</h3>
+              <a href="/admin/projects/categories/add" class="btn btn-outline-secondary btn-sm">Add Category</a>
+            </div>
+            <div class="list-cats">
+              <% if (categories && categories.length) { %>
+                <ul>
+                  <% categories.forEach(function(cat){ %>
+                    <li><%= cat.name %> - <%= cat.description %></li>
+                  <% }) %>
+                </ul>
+              <% } else { %>
+                <p>No categories yet.</p>
+              <% } %>
+            </div>
+          </div>
+        </section>
+      </main>
+      <%- include('../layouts/admin/footer.ejs') %>
+    </div>
+  </div>
+</body>
+</html>
